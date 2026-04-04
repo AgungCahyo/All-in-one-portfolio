@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-black text-white;
+  }
+
+  a {
+    @apply transition-colors;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply text-gray-300 hover:text-white transition-colors;
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl font-bold mb-12;
+  }
+
+  .cta-button {
+    @apply inline-block px-6 py-3 bg-white text-black font-semibold rounded-lg hover:bg-gray-200 transition-colors;
+  }
+
+  .secondary-button {
+    @apply inline-block px-6 py-3 border border-gray-700 text-white hover:border-white transition-colors rounded-lg;
+  }
+}
