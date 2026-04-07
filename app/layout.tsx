@@ -2,11 +2,11 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Agung Cahyo - Videographer & Editor',
-  description: 'Professional videographer and video editor. Transforming stories into stunning visual content.',
+  title: 'Agung Cahyo Prasetyo — Code · Cinema · Craft',
+  description: 'Videographer, Full-Stack Developer, and Beverage Crafter based in Jakarta. Intentionality in every detail.',
   openGraph: {
-    title: 'Agung Cahyo - Videographer & Editor',
-    description: 'Professional videographer and video editor',
+    title: 'Agung Cahyo Prasetyo',
+    description: 'Videographer · Developer · Beverage Crafter',
     type: 'website',
   },
 }
@@ -18,7 +18,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-black text-white">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="bg-black text-white antialiased">
         {children}
       </body>
     </html>

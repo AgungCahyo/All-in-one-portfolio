@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Navigation() {
     const [isOpen, setIsOpen] = useState(false);
@@ -10,9 +11,16 @@ export default function Navigation() {
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 bg-neutral-950/80 backdrop-blur-md border-b border-white/5">
             <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-                <a href="#" className="text-lg font-bold tracking-tight text-white hover:text-neutral-200 transition-colors">
-                    AGUNG CAHYO P.
-                </a>
+                <div className="flex items-center gap-6">
+                    <Link href="/" className="text-lg font-bold tracking-tight text-white hover:text-neutral-200 transition-colors">
+                        AGUNG CAHYO P.
+                    </Link>
+                    <div className="hidden lg:flex items-center gap-4 border-l border-neutral-800 pl-6">
+                        <Link href="/dev" className="text-xs font-semibold uppercase tracking-wider text-neutral-400 hover:text-blue-400 transition-colors">Code</Link>
+                        <Link href="/video" className="text-xs font-semibold uppercase tracking-wider text-neutral-400 hover:text-emerald-400 transition-colors">Cinema</Link>
+                        <Link href="/craft" className="text-xs font-semibold uppercase tracking-wider text-neutral-400 hover:text-amber-400 transition-colors">Craft</Link>
+                    </div>
+                </div>
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center gap-8">
@@ -52,6 +60,11 @@ export default function Navigation() {
                         }}
                     >
                         <div className="p-6 space-y-1">
+                            <div className="flex gap-2 mb-4 pb-4 border-b border-neutral-800">
+                                <Link href="/dev" onClick={() => setIsOpen(false)} className="flex-1 py-2 text-center text-sm font-medium text-blue-400 bg-blue-500/10 rounded-lg hover:bg-blue-500/20 transition-colors">Code</Link>
+                                <Link href="/video" onClick={() => setIsOpen(false)} className="flex-1 py-2 text-center text-sm font-medium text-emerald-400 bg-emerald-500/10 rounded-lg hover:bg-emerald-500/20 transition-colors">Cinema</Link>
+                                <Link href="/craft" onClick={() => setIsOpen(false)} className="flex-1 py-2 text-center text-sm font-medium text-amber-400 bg-amber-500/10 rounded-lg hover:bg-amber-500/20 transition-colors">Craft</Link>
+                            </div>
                             {[
                                 { href: '#about', label: 'About', delay: 0.05 },
                                 { href: '#journey', label: 'Journey', delay: 0.1 },
