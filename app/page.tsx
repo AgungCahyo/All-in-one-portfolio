@@ -14,7 +14,7 @@ const panels = [
     title: 'Videographer\n& Editor',
     titleShort: 'Video',
     subtitle: 'Cinematic storytelling — corporate, documentary & brand films',
-    tag: '4K · Premiere Pro · DaVinci Resolve',
+    tag: '4K · Premiere Pro · DaVinci Resolve · CapCut',
     cta: 'View Visual Work',
     accent: '#cec8c0',
     dim: '#6b6560',
