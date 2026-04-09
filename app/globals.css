@@ -1,8 +1,43 @@
 @import "tailwindcss";
 
+html, body, * {
+  cursor: none !important;
+}
+
+:root {
+  --theme-accent: #cec8c0;
+  --theme-bg: #0d0c0b;
+}
+
+/* Enhanced Selection */
+*::selection {
+  background: var(--theme-accent) !important;
+  color: var(--theme-bg) !important;
+}
+*::-moz-selection {
+  background: var(--theme-accent) !important;
+  color: var(--theme-bg) !important;
+}
+
+/* Enhanced Scrollbar */
+::-webkit-scrollbar {
+  width: 12px !important;
+}
+::-webkit-scrollbar-track {
+  background: var(--theme-bg) !important;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--theme-accent) !important;
+  background-image: linear-gradient(var(--theme-accent), var(--theme-accent)) !important;
+  border: 3px solid var(--theme-bg) !important;
+  border-radius: 10px !important;
+}
+
 @layer base {
   html {
     @apply scroll-smooth;
+    scrollbar-color: var(--theme-accent) var(--theme-bg);
+    scrollbar-width: thin;
   }
 
   body {
@@ -12,6 +47,36 @@
   a {
     @apply transition-colors;
   }
+}
+
+/* Texture Animations */
+@keyframes noise {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -5%); }
+  20% { transform: translate(-10%, 5%); }
+  30% { transform: translate(5%, -10%); }
+  40% { transform: translate(-5%, 15%); }
+  50% { transform: translate(-10%, 5%); }
+  60% { transform: translate(15%, 0); }
+  70% { transform: translate(0, 10%); }
+  80% { transform: translate(-15%, 0); }
+  90% { transform: translate(10%, 5%); }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(15px, -15px); }
+  66% { transform: translate(-10px, 10px); }
+}
+
+@keyframes grid-pulse {
+  0%, 100% { opacity: 0.03; }
+  50% { opacity: 0.1; }
 }
 
 @layer components {

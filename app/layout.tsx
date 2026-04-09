@@ -1,4 +1,10 @@
 import type { Metadata } from 'next'
+import { CursorFollower } from '@/components/ui/CursorFollower'
+import { ThemeColor } from '@/components/ui/ThemeColor'
+import { TextureOverlays } from '@/components/ui/TextureOverlays'
+import { PageTransition } from '@/components/ui/PageTransition'
+import { ActivePanelProvider } from '@/lib/activePanelContext'
+import { LanguageProvider } from '@/lib/languageContext'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -17,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" style={{ cursor: 'none' }}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -26,8 +32,17 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-black text-white antialiased">
-        {children}
+      <body className="bg-black text-white antialiased" style={{ cursor: 'none' }}>
+        <LanguageProvider>
+          <ActivePanelProvider>
+            <ThemeColor />
+            <TextureOverlays />
+            <CursorFollower/>
+            <PageTransition>
+              {children}
+            </PageTransition>
+          </ActivePanelProvider>
+        </LanguageProvider>
       </body>
     </html>
   )
