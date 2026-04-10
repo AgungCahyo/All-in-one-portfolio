@@ -9,6 +9,8 @@ import { JourneyTimeline } from '@/components/ui/JourneyTimeline';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
 import { useLanguage } from '@/lib/languageContext';
+import { useActivePanel } from '@/lib/activePanelContext';
+import { useEffect } from 'react';
 import {
   creations,
   journey,
@@ -22,6 +24,11 @@ import {
 
 export default function BeveragePage() {
   const { lang, t } = useLanguage();
+  const { setActivePanel } = useActivePanel();
+
+  useEffect(() => {
+    setActivePanel('beverage');
+  }, [setActivePanel]);
 
   return (
     <main className="min-h-screen text-amber-50 font-['DM_Sans',sans-serif]" style={{ background: '#0c0906' }}>
@@ -34,13 +41,13 @@ export default function BeveragePage() {
             <svg className="w-3.5 h-3.5" style={{ color: '#3a2a1a' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 12H5M5 12l7-7M5 12l7 7" />
             </svg>
-            <span className="text-[10px] tracking-[0.25em] uppercase" style={{ color: '#3a2a1a' }}>Portfolio</span>
+            <span className="text-[10px] tracking-[0.25em] uppercase" style={{ color: '#3a2a1a' }}>{t('Portfolio', 'Portofolio')}</span>
           </Link>
         </Magnetic>
         <div className="flex items-center gap-7">
           <Magnetic strength={0.2}><Link href="/videographer" className="text-[10px] tracking-[0.2em] uppercase transition-colors" style={{ color: '#3a2a1a' }}>{t('Videographer', 'Videografer')}</Link></Magnetic>
-          <Magnetic strength={0.2}><Link href="/developer" className="text-[10px] tracking-[0.2em] uppercase transition-colors" style={{ color: '#3a2a1a' }}>{t('Developer', 'Pengembang')}</Link></Magnetic>
-          <span className="text-[10px] tracking-[0.2em] uppercase font-medium" style={{ color: '#b89878' }}>{t('Beverage', 'Minuman')}</span>
+          <Magnetic strength={0.2}><Link href="/developer" className="text-[10px] tracking-[0.2em] uppercase transition-colors" style={{ color: '#3a2a1a' }}>{t('Developer', 'Developer')}</Link></Magnetic>
+          <span className="text-[10px] tracking-[0.2em] uppercase font-medium" style={{ color: '#b89878' }}>{t('Beverage', 'Peracik')}</span>
           <div className="ml-2">
             <LanguageSwitcher />
           </div>

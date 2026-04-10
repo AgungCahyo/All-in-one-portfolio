@@ -15,10 +15,17 @@ import {
   heroStats,
 } from '@/data/videographer';
 import { useLanguage } from '@/lib/languageContext';
+import { useActivePanel } from '@/lib/activePanelContext';
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
+import { useEffect } from 'react';
 
 export default function VideographerPage() {
   const { lang, t } = useLanguage();
+  const { setActivePanel } = useActivePanel();
+
+  useEffect(() => {
+    setActivePanel('videographer');
+  }, [setActivePanel]);
   return (
     <main className="min-h-screen text-stone-100 font-['DM_Sans',sans-serif]" style={{ background: '#0c0b0a' }}>
 
@@ -30,7 +37,7 @@ export default function VideographerPage() {
             <svg className="w-3.5 h-3.5 transition-colors" style={{ color: '#4a4540' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 12H5M5 12l7-7M5 12l7 7" />
             </svg>
-            <span className="text-[10px] tracking-[0.25em] uppercase transition-colors" style={{ color: '#4a4540' }}>{t('Portfolio', 'Portfolio')}</span>
+            <span className="text-[10px] tracking-[0.25em] uppercase transition-colors" style={{ color: '#4a4540' }}>{t('Portfolio', 'Portofolio')}</span>
           </Link>
         </Magnetic>
         <div className="flex items-center gap-7">

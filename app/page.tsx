@@ -60,7 +60,9 @@ export default function Home() {
               className="text-[10px] tracking-[0.2em] uppercase transition-colors duration-300"
               style={{ color: active === i ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.2)' }}
             >
-              {p.id}
+              {p.id === 'beverage' ? t('Beverage', 'Peracik') : 
+               p.id === 'developer' ? t('Developer', 'Developer') : 
+               t('Videographer', 'Videografer')}
             </button>
           ))}
           <div className="w-px h-3 bg-white/10 ml-2" />
@@ -77,7 +79,7 @@ export default function Home() {
           className="font-['Cormorant_Garamond',serif] font-bold whitespace-nowrap tracking-[-0.04em]"
           style={{ fontSize: '10vw', color: 'white' }}
         >
-          CODE · CINEMA · CRAFT
+          {t('CODE · CINEMA · CRAFT', 'KODE · SINEMA · KARYA')}
         </motion.p>
       </div>
 
@@ -123,7 +125,7 @@ export default function Home() {
         style={{ borderTop: '1px solid rgba(255,255,255,0.04)', background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(8px)' }}
       >
         <span className="font-mono text-[9px] tracking-[0.2em] uppercase" style={{ color: 'rgba(255,255,255,0.15)' }}>
-          {t('Jakarta, Indonesia', 'Jakarta, Indonesia')}
+          Jakarta, Indonesia
         </span>
         <span className="font-mono text-[9px] tracking-[0.2em] uppercase" style={{ color: 'rgba(255,255,255,0.15)' }}>
           {t('Open for collaboration', 'Terbuka untuk kolaborasi')}

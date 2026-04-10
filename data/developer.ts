@@ -21,59 +21,59 @@ export const statusColors: Record<string, { bg: string; text: string; border: st
 export const projects: DevProject[] = [
   {
     title: 'SkripIn',
-    subtitle: { en: 'AI Script Generator SaaS', id: 'SaaS Generator Skrip AI' },
+    subtitle: { en: 'AI Script Generator SaaS', id: 'SaaS Generator Skrip Berbasis AI' },
     type: { en: 'Web Application', id: 'Aplikasi Web' },
     year: '2024',
     status: 'Production',
     description: {
       en: 'Production-ready AI script generator built from scratch. Features a 4-Agent AI workflow (Strategist → Director → Writer → Reviewer), Brand Voice system, OpenAI TTS, Teleprompter mode, and Midtrans payment integration. Engineered with 84 automated tests and 90%+ coverage.',
-      id: 'Generator skrip AI siap produksi yang dibangun dari nol. Fitur alur kerja AI 4-Agen (Strategist → Director → Writer → Reviewer), sistem Brand Voice, OpenAI TTS, mode Teleprompter, dan integrasi pembayaran Midtrans. Dirancang dengan 84 pengujian otomatis dan cakupan 90%+.'
+      id: 'Generator skrip AI siap produksi yang dibangun dari nol. Dilengkapi alur kerja 4 Agen AI (Strategist → Director → Writer → Reviewer), sistem Brand Voice, OpenAI TTS, mode Teleprompter, dan integrasi pembayaran Midtrans. Dibangun dengan 84 automated test dan cakupan 90%+.'
     },
     tags: ['Next.js 16', 'React 19', 'TypeScript', 'Google Gemini', 'OpenAI TTS', 'Jest', 'PostgreSQL', 'Firebase', 'Midtrans'],
     links: [{ label: 'Live App', href: 'https://skripin.vercel.app' }],
     highlights: [
-      { en: '84 automated tests', id: '84 pengujian otomatis' },
-      { en: '90%+ test coverage', id: '90%+ cakupan pengujian' },
-      { en: '4-Agent AI workflow', id: 'Alur kerja AI 4-Agen' },
+      { en: '84 automated tests', id: '84 automated test' },
+      { en: '90%+ test coverage', id: 'Cakupan tes 90%+' },
+      { en: '4-Agent AI workflow', id: 'Alur 4 Agen AI' },
       { en: 'TTS + Teleprompter', id: 'TTS + Teleprompter' }
     ],
   },
   {
     title: 'MBTI Compatibility Test',
-    subtitle: { en: 'AI-Powered Relationship Analyzer', id: 'Penganalisis Hubungan Berbasis AI' },
+    subtitle: { en: 'AI-Powered Relationship Analyzer', id: 'Analisis Hubungan Berbasis AI' },
     type: { en: 'Web Application', id: 'Aplikasi Web' },
     year: '2024',
     status: 'Live',
     description: {
       en: 'Multi-dimensional MBTI compatibility analyzer with AI-generated relationship insights. Features freemium model with Midtrans payment, WhatsApp result delivery via n8n automation, and dual-person test flow. Sophisticated scoring algorithm across communication styles, conflict resolution, and love languages.',
-      id: 'Penganalisis kecocokan MBTI multi-dimensi dengan wawasan hubungan yang dihasilkan AI. Fitur model freemium dengan pembayaran Midtrans, pengiriman hasil WhatsApp via otomasi n8n, dan alur tes dua orang. Algoritma penilaian canggih di seluruh gaya komunikasi, penyelesaian konflik, dan bahasa cinta.'
+      id: 'Penganalisis kecocokan MBTI multi-dimensi dengan insight hubungan yang dihasilkan AI. Mengusung model freemium dengan pembayaran Midtrans, pengiriman hasil via WhatsApp lewat otomasi n8n, dan alur tes untuk dua orang. Algoritma penilaian yang mencakup gaya komunikasi, penyelesaian konflik, dan bahasa cinta.'
     },
     tags: ['Next.js 16', 'React 19', 'TypeScript', 'Prisma ORM', 'PostgreSQL', 'Zustand', 'Redis', 'Midtrans', 'n8n'],
     links: [{ label: 'Live Site', href: 'https://tes-kecocokan.vercel.app/' }],
     highlights: [
       { en: '16 MBTI types', id: '16 tipe MBTI' },
-      { en: 'Freemium monetization', id: 'Monetisasi freemium' },
-      { en: 'WhatsApp delivery', id: 'Pengiriman WhatsApp' },
-      { en: 'AI-generated insights', id: 'Wawasan yang dihasilkan AI' }
+      { en: 'Freemium monetization', id: 'Model freemium' },
+      { en: 'WhatsApp delivery', id: 'Kirim hasil via WhatsApp' },
+      { en: 'AI-generated insights', id: 'Insight dari AI' }
     ],
   },
   {
     title: 'WhatsApp AI Chatbot',
-    subtitle: { en: 'Intelligent Customer Service Bot', id: 'Bot Layanan Pelanggan Pintar' },
+    subtitle: { en: 'Intelligent Customer Service Bot', id: 'Bot Layanan Pelanggan Cerdas' },
     type: { en: 'Automation', id: 'Otomasi' },
     year: '2024',
     status: 'Live',
     description: {
       en: 'Production-ready WhatsApp AI chatbot with advanced speech-to-text for voice notes, Google Gemini AI agent with custom personality, and per-user chat memory. Includes rate limiting, user tracking via Google Sheets, and multi-format message handling via n8n workflow automation.',
-      id: 'Chatbot AI WhatsApp siap produksi dengan speech-to-text canggih untuk pesan suara, agen AI Google Gemini dengan kepribadian kustom, dan memori obrolan per pengguna. Termasuk pembatasan laju, pelacakan pengguna via Google Sheets, dan penanganan pesan multi-format via otomasi alur kerja n8n.'
+      id: 'Chatbot AI WhatsApp siap produksi dengan kemampuan speech-to-text untuk pesan suara, agen AI Google Gemini berkepribadian kustom, dan memori percakapan per pengguna. Dilengkapi rate limiting, pelacakan pengguna via Google Sheets, dan penanganan berbagai format pesan lewat otomasi n8n.'
     },
     tags: ['n8n', 'Google Gemini', 'WhatsApp Business API', 'Google STT', 'Google TTS', 'LangChain', 'Google Sheets API'],
-    links: [{ label: 'Try Demo', href: 'https://wa.me/6281392290571' }],
+    links: [{ label: 'Coba Demo', href: 'https://wa.me/6281392290571' }],
     highlights: [
       { en: '20+ n8n nodes', id: '20+ node n8n' },
-      { en: 'Voice note STT', id: 'STT pesan suara' },
+      { en: 'Voice note STT', id: 'STT untuk pesan suara' },
       { en: 'Per-user memory', id: 'Memori per pengguna' },
-      { en: 'Rate limiting', id: 'Pembatasan laju' }
+      { en: 'Rate limiting', id: 'Rate limiting' }
     ],
   },
   {
@@ -84,7 +84,7 @@ export const projects: DevProject[] = [
     status: 'Shipped',
     description: {
       en: 'Native mobile app for F&B entrepreneurs to calculate Harga Pokok Produksi (HPP). Users manage ingredient inventory, build recipes, and get automatic cost calculations with selling price recommendations, markup, and profit margin analysis. Offline-first with Firebase sync.',
-      id: 'Aplikasi mobile native untuk pengusaha F&B untuk menghitung Harga Pokok Produksi (HPP). Pengguna mengelola inventaris bahan, membangun resep, dan mendapatkan perhitungan biaya otomatis dengan rekomendasi harga jual, markup, dan analisis margin keuntungan. Offline-first dengan sinkronisasi Firebase.'
+      id: 'Aplikasi mobile native untuk pelaku usaha F&B dalam menghitung Harga Pokok Produksi (HPP). Pengguna bisa mengelola inventaris bahan, menyusun resep, dan mendapat kalkulasi biaya otomatis lengkap dengan rekomendasi harga jual, markup, dan analisis margin keuntungan. Bisa dipakai offline dengan sinkronisasi Firebase.'
     },
     tags: ['React Native', 'Firebase Auth', 'Firestore', 'Firebase Storage'],
     links: [
@@ -94,10 +94,10 @@ export const projects: DevProject[] = [
       },
     ],
     highlights: [
-      { en: 'Offline-first', id: 'Offline-first' },
-      { en: 'Auto HPP calculation', id: 'Perhitungan HPP otomatis' },
+      { en: 'Offline-first', id: 'Bisa dipakai offline' },
+      { en: 'Auto HPP calculation', id: 'Kalkulasi HPP otomatis' },
       { en: 'Margin analysis', id: 'Analisis margin' },
-      { en: 'F&B industry', id: 'Industri F&B' }
+      { en: 'F&B industry', id: 'Khusus industri F&B' }
     ],
   },
 ];
@@ -112,19 +112,19 @@ export const devJourney: JourneyItem[] = [
   {
     year: '2022',
     phase: { en: 'Start', id: 'Awal' },
-    title: { en: 'Self-Taught Foundation', id: 'Fondasi Belajar Mandiri' },
+    title: { en: 'Self-Taught Foundation', id: 'Belajar dari Nol' },
     body: {
       en: 'Started coding from zero — HTML, CSS, JavaScript, then React. Spent months on freeCodeCamp, The Odin Project, and building small projects. Realized quickly that building real things teaches faster than any course.',
-      id: 'Mulai coding dari nol — HTML, CSS, JavaScript, lalu React. Menghabiskan waktu berbulan-bulan di freeCodeCamp, The Odin Project, dan membangun proyek kecil. Segera menyadari bahwa membangun hal nyata melatih lebih cepat daripada kursus apa pun.'
-}
+      id: 'Mulai coding dari nol — HTML, CSS, JavaScript, lalu React. Berbulan-bulan bergulat dengan freeCodeCamp, The Odin Project, dan proyek-proyek kecil. Satu hal yang cepat saya sadari: membangun sesuatu yang nyata jauh lebih efektif dari kursus mana pun.'
+    }
   },
   {
     year: '2023',
     phase: { en: 'Production', id: 'Produksi' },
-    title: { en: 'First Shipped Apps', id: 'Aplikasi Pertama yang Dirilis' },
+    title: { en: 'First Shipped Apps', id: 'Aplikasi Pertama yang Diluncurkan' },
     body: {
       en: 'Shipped HPP Calculator (React Native + Firebase) for real F&B entrepreneurs — the first app used by actual paying users. Validated that I could take an idea from concept to App Store without a team.',
-      id: 'Merilis Kalkulator HPP (React Native + Firebase) untuk pengusaha F&B nyata — aplikasi pertama yang digunakan oleh pengguna berbayar. Memvalidasi bahwa saya bisa membawa ide dari konsep ke App Store tanpa tim.'
+      id: 'Meluncurkan Kalkulator HPP (React Native + Firebase) untuk pelaku usaha F&B nyata — aplikasi pertama yang benar-benar digunakan pengguna berbayar. Ini membuktikan bahwa saya bisa membawa ide dari konsep hingga ke App Store, sendirian.'
     }
   },
   {
@@ -133,25 +133,25 @@ export const devJourney: JourneyItem[] = [
     title: { en: 'Full-Stack SaaS Architecture', id: 'Arsitektur SaaS Full-Stack' },
     body: {
       en: 'Built MBTI Compatibility Test as a freemium SaaS — Prisma ORM, PostgreSQL, Redis, Midtrans payments, n8n WhatsApp delivery. First experience designing a complete monetization and data architecture.',
-      id: 'Membangun Tes Kecocokan MBTI sebagai SaaS freemium — Prisma ORM, PostgreSQL, Redis, pembayaran Midtrans, pengiriman WhatsApp n8n. Pengalaman pertama merancang monetisasi lengkap dan arsitektur data.'
+      id: 'Membangun Tes Kecocokan MBTI sebagai SaaS freemium — Prisma ORM, PostgreSQL, Redis, pembayaran Midtrans, pengiriman hasil via WhatsApp dengan n8n. Pertama kalinya saya merancang arsitektur monetisasi dan data secara menyeluruh.'
     }
   },
   {
     year: '2024 Q2',
     phase: 'AI',
-    title: { en: 'AI Engineering & Automation', id: 'Teknik AI & Otomasi' },
+    title: { en: 'AI Engineering & Automation', id: 'Rekayasa AI & Otomasi' },
     body: {
       en: 'Integrated Google Gemini and OpenAI into production apps. Built a WhatsApp AI chatbot with voice note STT, per-user memory, and rate limiting. Started treating AI as an engineering primitive, not a gimmick.',
-      id: 'Mengintegrasikan Google Gemini dan OpenAI ke dalam aplikasi produksi. Membangun chatbot AI WhatsApp dengan STT pesan suara, memori per pengguna, dan pembatasan laju. Mulai memperlakukan AI sebagai primitif teknik, bukan sekadar gimik.'
+      id: 'Mengintegrasikan Google Gemini dan OpenAI ke dalam aplikasi produksi. Membangun chatbot AI WhatsApp dengan STT pesan suara, memori per pengguna, dan rate limiting. Di sini saya mulai memperlakukan AI sebagai komponen teknik yang serius, bukan sekadar fitur pemanis.'
     }
   },
   {
     year: '2024 Q3–Now',
     phase: { en: 'Quality', id: 'Kualitas' },
-    title: { en: 'Test-Driven, Production-Grade', id: 'Berbasis Tes, Kelas Produksi' },
+    title: { en: 'Test-Driven, Production-Grade', id: 'Berbasis Tes, Standar Produksi' },
     body: {
       en: "SkripIn: 84 automated tests, 90%+ coverage, 4-Agent AI workflow, OpenAI TTS, teleprompter. Shifted from \"it works\" to \"it's engineered\". Production-quality code with CI/CD, error boundaries, and systematic review.",
-      id: "SkripIn: 84 pengujian otomatis, cakupan 90%+, alur kerja AI 4-Agen, OpenAI TTS, teleprompter. Bergeser dari \"asal jalan\" ke \"benar-benar dirancang\". Kode kualitas produksi dengan CI/CD, batas kesalahan, dan tinjauan sistematis."
+      id: 'SkripIn: 84 automated test, cakupan 90%+, alur 4 Agen AI, OpenAI TTS, teleprompter. Pergeseran dari "asal jalan" ke "benar-benar dirancang". Kode berkualitas produksi dengan CI/CD, error boundary, dan review sistematis.'
     }
   },
 ];
@@ -171,6 +171,6 @@ export const heroStats = [
   { n: '2022–Now', l: { en: 'Active', id: 'Aktif' }, key: 'since' },
   { n: '84', l: { en: 'Tests', id: 'Tes' }, key: 'tests' },
   { n: '90%+', l: { en: 'Coverage', id: 'Cakupan' }, key: 'cov' },
-  { n: '4+', l: { en: 'Apps Shipped', id: 'Aplikasi Dirilis' }, key: 'apps' },
+  { n: '4+', l: { en: 'Apps Shipped', id: 'Aplikasi Rilis' }, key: 'apps' },
   { n: '3+', l: { en: 'AI Integrations', id: 'Integrasi AI' }, key: 'ai' },
 ];

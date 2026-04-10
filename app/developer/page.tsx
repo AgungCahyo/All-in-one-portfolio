@@ -9,10 +9,18 @@ import { JourneyTimeline } from '@/components/ui/JourneyTimeline';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { projects, techStack, devJourney, devSkills, heroStats, statusColors } from '@/data/developer';
 import { useLanguage } from '@/lib/languageContext';
+import { useActivePanel } from '@/lib/activePanelContext';
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
+import { useEffect } from 'react';
 
 export default function DeveloperPage() {
   const { lang, t } = useLanguage();
+  const { setActivePanel } = useActivePanel();
+
+  useEffect(() => {
+    setActivePanel('developer');
+  }, [setActivePanel]);
+
   return (
     <main className="min-h-screen text-slate-100 font-['DM_Sans',sans-serif]" style={{ background: '#090c10' }}>
 
@@ -24,7 +32,7 @@ export default function DeveloperPage() {
             <svg className="w-3.5 h-3.5" style={{ color: '#2a3040' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 12H5M5 12l7-7M5 12l7 7" />
             </svg>
-            <span className="text-[10px] tracking-[0.25em] uppercase" style={{ color: '#2a3040' }}>{t('Portfolio', 'Portfolio')}</span>
+            <span className="text-[10px] tracking-[0.25em] uppercase" style={{ color: '#2a3040' }}>{t('Portfolio', 'Portofolio')}</span>
           </Link>
         </Magnetic>
         <div className="flex items-center gap-7">
