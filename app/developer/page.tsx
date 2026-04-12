@@ -228,6 +228,13 @@ export default function DeveloperPage() {
                       </p>
                     </div>
                     <div className="flex gap-2">
+                      {p.status === 'Algo Trading' && (
+                        <div style={{
+                          height: '1px',
+                          background: 'linear-gradient(to right, rgba(100,130,200,0.35), rgba(100,130,200,0.03))',
+                          marginBottom: '20px'
+                        }} />
+                      )}
                       {p.links.map((l, li) => (
                         <a key={li} href={l.href} target="_blank" rel="noopener noreferrer"
                           className="px-4 py-2 rounded-full text-[12px] transition-all"

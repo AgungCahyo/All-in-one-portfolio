@@ -16,14 +16,43 @@ export const statusColors: Record<string, { bg: string; text: string; border: st
   Production: { bg: 'rgba(16,185,129,0.07)', text: '#34d399', border: 'rgba(16,185,129,0.2)' },
   Live: { bg: 'rgba(16,185,129,0.07)', text: '#34d399', border: 'rgba(16,185,129,0.2)' },
   Shipped: { bg: 'rgba(148,163,184,0.07)', text: '#94a3b8', border: 'rgba(148,163,184,0.15)' },
+  'Algo Trading': { bg: 'rgba(100,130,200,0.08)', text: '#6a8ab8', border: 'rgba(100,130,200,0.18)'
+},
 };
 
 export const projects: DevProject[] = [
   {
+  title: 'Crypto Radar Trading Bot',
+  subtitle: {
+    en: 'Autonomous Pump.fun Signal & Trading Bot',
+    id: 'Bot Trading & Sinyal Pump.fun Otonom'
+  },
+  type: { en: 'Automation', id: 'Otomasi' },
+  year: '2026',
+  status: 'Algo Trading',   // ← badge khusus amber
+  description: {
+    en: 'Production-grade Solana trading bot with real-time Pump.fun WebSocket radar, 4-tier trailing stop system, and adaptive risk management. Features a multi-factor signal scorer across velocity, buy pressure, and wallet concentration — with copy trading, DCA & grid strategies, and a full Telegram command interface.',
+    id: 'Bot trading Solana siap produksi dengan radar WebSocket Pump.fun real-time, sistem trailing stop 4 tahap, dan manajemen risiko adaptif. Dilengkapi signal scorer multi-faktor (velocity, buy pressure, konsentrasi wallet), copy trading, strategi DCA & grid, dan antarmuka perintah lengkap via Telegram.'
+  },
+  tags: [
+    'Node.js', 'Solana Web3.js', '@pump-fun/pump-sdk',
+    'Telegraf', 'WebSocket', 'Jupiter API', 'PumpSwap AMM', 'Risk Management'
+  ],
+  links: [
+    { label: 'Telegram Demo', href: 'https://t.me/your_bot' }
+  ],
+  highlights: [
+    { en: 'Real-time Pump.fun WebSocket radar', id: 'Radar WebSocket Pump.fun real-time' },
+    { en: 'Multi-factor signal scorer (score/100)', id: 'Signal scorer multi-faktor (skor/100)' },
+    { en: '4-tier trailing stop + adaptive SL', id: 'Trailing stop 4 tahap + SL adaptif' },
+    { en: 'DCA, grid & copy trading strategies', id: 'Strategi DCA, grid & copy trading' }
+  ],
+},
+  {
     title: 'SkripIn',
     subtitle: { en: 'AI Script Generator SaaS', id: 'SaaS Generator Skrip Berbasis AI' },
     type: { en: 'Web Application', id: 'Aplikasi Web' },
-    year: '2024',
+    year: '2025',
     status: 'Production',
     description: {
       en: 'Production-ready AI script generator built from scratch. Features a 4-Agent AI workflow (Strategist → Director → Writer → Reviewer), Brand Voice system, OpenAI TTS, Teleprompter mode, and Midtrans payment integration. Engineered with 84 automated tests and 90%+ coverage.',
@@ -42,7 +71,7 @@ export const projects: DevProject[] = [
     title: 'MBTI Compatibility Test',
     subtitle: { en: 'AI-Powered Relationship Analyzer', id: 'Analisis Hubungan Berbasis AI' },
     type: { en: 'Web Application', id: 'Aplikasi Web' },
-    year: '2024',
+    year: '2025',
     status: 'Live',
     description: {
       en: 'Multi-dimensional MBTI compatibility analyzer with AI-generated relationship insights. Features freemium model with Midtrans payment, WhatsApp result delivery via n8n automation, and dual-person test flow. Sophisticated scoring algorithm across communication styles, conflict resolution, and love languages.',
