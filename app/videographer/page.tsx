@@ -17,11 +17,12 @@ import {
 import { useLanguage } from '@/lib/languageContext';
 import { useActivePanel } from '@/lib/activePanelContext';
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function VideographerPage() {
   const { lang, t } = useLanguage();
   const { setActivePanel } = useActivePanel();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     setActivePanel('videographer');
@@ -30,7 +31,7 @@ export default function VideographerPage() {
     <main className="min-h-screen text-stone-100 font-['DM_Sans',sans-serif]" style={{ background: '#0c0b0a' }}>
 
       {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-8 py-5 flex justify-between items-center"
+      <nav className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-4 sm:py-5 flex justify-between items-center"
         style={{ background: 'rgba(12,11,10,0.85)', backdropFilter: 'blur(16px)', borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
         <Magnetic strength={0.3}>
           <Link href="/" className="flex items-center gap-3 group">
@@ -40,14 +41,31 @@ export default function VideographerPage() {
             <span className="text-[10px] tracking-[0.25em] uppercase transition-colors" style={{ color: '#4a4540' }}>{t('Portfolio', 'Portofolio')}</span>
           </Link>
         </Magnetic>
-        <div className="flex items-center gap-7">
+        <div className="hidden md:flex items-center gap-7">
           <span className="text-[10px] tracking-[0.2em] uppercase font-medium" style={{ color: '#a09890' }}>{t('Videographer', 'Videografer')}</span>
           <Magnetic strength={0.2}><Link href="/developer" className="text-[10px] tracking-[0.2em] uppercase transition-colors" style={{ color: '#3a3530' }}>{t('Developer', 'Developer')}</Link></Magnetic>
           <Magnetic strength={0.2}><Link href="/beverage" className="text-[10px] tracking-[0.2em] uppercase transition-colors" style={{ color: '#3a3530' }}>{t('Beverage', 'Peracik')}</Link></Magnetic>
           <div className="w-px h-3 bg-stone-900/15 ml-2" />
           <LanguageSwitcher />
         </div>
+        <div className="md:hidden flex items-center gap-2">
+          <LanguageSwitcher />
+          <button onClick={() => setMenuOpen((v) => !v)} className="p-2 rounded-md border border-white/10" aria-label="Toggle menu">
+            <svg className="w-4 h-4 text-white/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d={menuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'} />
+            </svg>
+          </button>
+        </div>
       </nav>
+      {menuOpen && (
+        <div className="fixed top-[58px] left-0 right-0 z-40 md:hidden px-4 py-3 border-b border-white/10 bg-[#0c0b0a]/95 backdrop-blur-xl">
+          <div className="flex flex-col gap-2 text-[11px] tracking-[0.16em] uppercase">
+            <Link href="/videographer" className="px-3 py-2 rounded-md bg-white/10 text-stone-200">{t('Videographer', 'Videografer')}</Link>
+            <Link href="/developer" className="px-3 py-2 rounded-md text-stone-400" onClick={() => setMenuOpen(false)}>{t('Developer', 'Developer')}</Link>
+            <Link href="/beverage" className="px-3 py-2 rounded-md text-stone-400" onClick={() => setMenuOpen(false)}>{t('Beverage', 'Beverage')}</Link>
+          </div>
+        </div>
+      )}
 
       {/* Hero — Cinematic Full-Bleed */}
       <section className="relative overflow-hidden" style={{ minHeight: '95vh' }}>
@@ -90,7 +108,7 @@ export default function VideographerPage() {
               Video<br />grapher<br /><span style={{ color: 'rgba(206,200,192,0.18)' }}>&amp; {t('Editor', 'Editor')}</span>
             </h1>
             <p className="text-[15px] leading-relaxed max-w-sm" style={{ color: '#6a6460' }}>
-              {t('From concept to final cut — crafting cinematic narratives that move audiences through corporate, documentary & brand storytelling.', 'Dari konsep hingga hasil akhir — merancang narasi sinematik yang menggerakkan audiens melalui penceritaan korporat, dokumenter & brand.')}
+              {t('From concept to final cut — crafting cinematic narratives that move audiences through corporate, documentary & brand storytelling.', 'Dari concept sampai final cut - ngebangun narasi sinematik yang bikin audiens kerasa connect, lewat corporate, documentary, dan brand storytelling.')}
             </p>
           </motion.div>
 
@@ -255,14 +273,14 @@ export default function VideographerPage() {
       <section className="px-8 lg:px-16 py-20" style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-8">
           <div>
-            <h2 className="font-['Cormorant_Garamond',serif] text-3xl lg:text-4xl font-bold mb-2" style={{ color: '#cec8c0' }}>{t('Ready to collaborate?', 'Siap berkolaborasi?')}</h2>
-            <p className="text-[14px]" style={{ color: '#3a3530' }}>{t("Let's create something cinematic together.", "Mari buat sesuatu yang sinematik bersama.")}</p>
+            <h2 className="font-['Cormorant_Garamond',serif] text-3xl lg:text-4xl font-bold mb-2" style={{ color: '#cec8c0' }}>{t('Ready to collaborate?', 'Siap collab?')}</h2>
+            <p className="text-[14px]" style={{ color: '#3a3530' }}>{t("Let's create something cinematic together.", "Yuk bikin sesuatu yang cinematic bareng.")}</p>
           </div>
           <Magnetic strength={0.2}>
             <a href="mailto:cahyoprasetyo507@gmail.com"
               className="px-7 py-3.5 font-medium rounded-full text-[13px] tracking-wide whitespace-nowrap transition-all hover:opacity-90"
               style={{ background: '#cec8c0', color: '#0c0b0a' }}>
-              {t('Hire Me as Videographer', 'Rekrut Saya sebagai Videografer')}
+              {t('Hire Me as Videographer', 'Hire Me as Videographer')}
             </a>
           </Magnetic>
         </div>
@@ -272,7 +290,7 @@ export default function VideographerPage() {
       <div className="px-8 py-5 flex justify-between" style={{ borderTop: '1px solid rgba(255,255,255,0.03)' }}>
         <span className="text-[11px] font-medium" style={{ color: '#2a2520' }}>01 / {t('Videographer', 'Videografer')}</span>
         <Link href="/developer" className="text-[11px] flex items-center gap-2 transition-colors" style={{ color: '#3a3530' }}>
-          {t('Next', 'Sel')}: {t('Developer', 'Developer')}
+          {t('Next', 'Selanjutnya')}: {t('Developer', 'Developer')}
           <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>

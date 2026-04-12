@@ -11,6 +11,7 @@ import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
 export default function Home() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const { setActivePanel } = useActivePanel();
   const { lang, t } = useLanguage();
 
@@ -31,6 +32,7 @@ export default function Home() {
   function handleActivate(i: number) {
     setActive(i);
     setPaused(true);
+    setMenuOpen(false);
   }
 
   function handleMouseLeave() {
@@ -45,14 +47,14 @@ export default function Home() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="fixed top-0 left-0 right-0 z-50 px-8 py-5 flex justify-between items-center"
+        className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-4 sm:py-5 flex justify-between items-center"
         style={{ background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(16px)', borderBottom: '1px solid rgba(255,255,255,0.04)' }}
       >
-        <span className="text-[11px] tracking-[0.3em] uppercase font-['Cormorant_Garamond',serif] font-bold italic"
+        <span className="text-[10px] sm:text-[11px] tracking-[0.22em] sm:tracking-[0.3em] uppercase font-['Cormorant_Garamond',serif] font-bold italic"
           style={{ color: 'rgba(255,255,255,0.3)' }}>
           Agung Cahyo Prasetyo
         </span>
-        <nav className="flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-8">
           {panels.map((p, i) => (
             <button
               key={p.id}
@@ -68,7 +70,37 @@ export default function Home() {
           <div className="w-px h-3 bg-white/10 ml-2" />
           <LanguageSwitcher />
         </nav>
+        <div className="md:hidden flex items-center gap-2">
+          <LanguageSwitcher />
+          <button
+            onClick={() => setMenuOpen((v) => !v)}
+            className="p-2 rounded-md border border-white/10"
+            aria-label="Toggle menu"
+          >
+            <svg className="w-4 h-4 text-white/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d={menuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'} />
+            </svg>
+          </button>
+        </div>
       </motion.header>
+      {menuOpen && (
+        <div className="fixed top-[58px] left-0 right-0 z-40 md:hidden px-4 py-3 border-b border-white/10 bg-black/90 backdrop-blur-xl">
+          <div className="flex flex-col gap-2">
+            {panels.map((p, i) => (
+              <button
+                key={p.id}
+                onClick={() => handleActivate(i)}
+                className="text-left px-3 py-2 rounded-md text-[11px] tracking-[0.16em] uppercase"
+                style={{ color: active === i ? 'rgba(255,255,255,0.8)' : 'rgba(255,255,255,0.45)', background: active === i ? 'rgba(255,255,255,0.08)' : 'transparent' }}
+              >
+                {p.id === 'beverage' ? t('Beverage', 'Beverage') :
+                 p.id === 'developer' ? t('Developer', 'Developer') :
+                 t('Videographer', 'Videografer')}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Watermark */}
       <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0 select-none overflow-hidden">
@@ -89,7 +121,7 @@ export default function Home() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         className="flex flex-col lg:flex-row"
-        style={{ marginTop: '60px', height: 'calc(100vh - 60px)' }}
+        style={{ marginTop: menuOpen ? '172px' : '60px', height: menuOpen ? 'calc(100vh - 172px)' : 'calc(100vh - 60px)' }}
         onMouseLeave={handleMouseLeave}
       >
         {panels.map((panel, i) => (
@@ -128,7 +160,7 @@ export default function Home() {
           Jakarta, Indonesia
         </span>
         <span className="font-mono text-[9px] tracking-[0.2em] uppercase" style={{ color: 'rgba(255,255,255,0.15)' }}>
-          {t('Open for collaboration', 'Terbuka untuk kolaborasi')}
+          {t('Open for collaboration', 'Open buat kolaborasi')}
         </span>
       </div>
 

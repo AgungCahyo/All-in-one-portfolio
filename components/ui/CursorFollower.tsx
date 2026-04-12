@@ -315,7 +315,7 @@ export function CursorFollower() {
 
   useEffect(() => {
     function lerp(a: number, b: number, t: number) { return a + (b - a) * t; }
-    const speed = role === 'artisan' ? 0.07 : role === 'cinema' ? 0.11 : 0.17;
+    const speed = role === 'artisan' ? 0.17 : role === 'cinema' ? 0.11 : 0.17;
 
     function loop() {
       frameRef.current++;

@@ -10,7 +10,7 @@ import { SectionLabel } from '@/components/ui/SectionLabel';
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
 import { useLanguage } from '@/lib/languageContext';
 import { useActivePanel } from '@/lib/activePanelContext';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
   creations,
   journey,
@@ -25,6 +25,7 @@ import {
 export default function BeveragePage() {
   const { lang, t } = useLanguage();
   const { setActivePanel } = useActivePanel();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     setActivePanel('beverage');
@@ -34,7 +35,7 @@ export default function BeveragePage() {
     <main className="min-h-screen text-amber-50 font-['DM_Sans',sans-serif]" style={{ background: '#0c0906' }}>
 
       {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-8 py-5 flex justify-between items-center"
+      <nav className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-4 sm:py-5 flex justify-between items-center"
         style={{ background: 'rgba(12,9,6,0.85)', backdropFilter: 'blur(16px)', borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
         <Magnetic strength={0.3}>
           <Link href="/" className="flex items-center gap-3 group">
@@ -44,7 +45,7 @@ export default function BeveragePage() {
             <span className="text-[10px] tracking-[0.25em] uppercase" style={{ color: '#3a2a1a' }}>{t('Portfolio', 'Portofolio')}</span>
           </Link>
         </Magnetic>
-        <div className="flex items-center gap-7">
+        <div className="hidden md:flex items-center gap-7">
           <Magnetic strength={0.2}><Link href="/videographer" className="text-[10px] tracking-[0.2em] uppercase transition-colors" style={{ color: '#3a2a1a' }}>{t('Videographer', 'Videografer')}</Link></Magnetic>
           <Magnetic strength={0.2}><Link href="/developer" className="text-[10px] tracking-[0.2em] uppercase transition-colors" style={{ color: '#3a2a1a' }}>{t('Developer', 'Developer')}</Link></Magnetic>
           <span className="text-[10px] tracking-[0.2em] uppercase font-medium" style={{ color: '#b89878' }}>{t('Beverage', 'Peracik')}</span>
@@ -52,7 +53,24 @@ export default function BeveragePage() {
             <LanguageSwitcher />
           </div>
         </div>
+        <div className="md:hidden flex items-center gap-2">
+          <LanguageSwitcher />
+          <button onClick={() => setMenuOpen((v) => !v)} className="p-2 rounded-md border border-amber-200/10" aria-label="Toggle menu">
+            <svg className="w-4 h-4 text-amber-100/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d={menuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'} />
+            </svg>
+          </button>
+        </div>
       </nav>
+      {menuOpen && (
+        <div className="fixed top-[58px] left-0 right-0 z-40 md:hidden px-4 py-3 border-b border-amber-200/10 bg-[#0c0906]/95 backdrop-blur-xl">
+          <div className="flex flex-col gap-2 text-[11px] tracking-[0.16em] uppercase">
+            <Link href="/videographer" className="px-3 py-2 rounded-md text-amber-100/60" onClick={() => setMenuOpen(false)}>{t('Videographer', 'Videografer')}</Link>
+            <Link href="/developer" className="px-3 py-2 rounded-md text-amber-100/60" onClick={() => setMenuOpen(false)}>{t('Developer', 'Developer')}</Link>
+            <Link href="/beverage" className="px-3 py-2 rounded-md bg-amber-100/10 text-amber-100">{t('Beverage', 'Beverage')}</Link>
+          </div>
+        </div>
+      )}
 
       {/* Hero */}
       <section className="relative overflow-hidden" style={{ borderBottom: '1px solid rgba(180,130,80,0.08)' }}>
@@ -82,7 +100,7 @@ export default function BeveragePage() {
               <p className="text-[15px] leading-relaxed max-w-xs" style={{ color: '#6a5a48' }}>
                 {t(
                   'Where precision meets creativity. The same obsession with craft that defines my work in code and cinema began here.',
-                  'Di mana presisi bertemu kreativitas. Obsesi yang sama terhadap karya yang mendefinisikan pekerjaan saya di bidang kode dan sinema dimulai di sini.'
+                  'Di sini presisi ketemu kreativitas. Obsession ke craft yang kebawa ke dunia code dan cinema, semua start dari sini.'
                 )}
               </p>
 
@@ -146,7 +164,7 @@ export default function BeveragePage() {
             <p className="text-[14px] leading-relaxed" style={{ color: '#5a4a38' }}>
               {t(
                 'My journey started here — in the fast-paced environment of the beverage and hospitality industry. Creating the perfect drink requires exact measurements, timing, and an obsession with customer experience. This same mindset carried into software engineering and filmmaking.',
-                'Perjalanan saya dimulai di sini — di lingkungan industri minuman dan perhotelan yang serba cepat. Membuat minuman yang sempurna membutuhkan pengukuran, waktu, dan obsesi terhadap pengalaman pelanggan yang tepat. Pola pikir yang sama ini terbawa ke pengembangan perangkat lunak dan pembuatan film.'
+                'Journey gue mulai dari sini - dunia beverage dan hospitality yang serba cepet. Bikin minuman yang proper itu butuh ukuran presisi, timing, dan fokus ke customer experience. Mindset ini yang kebawa juga ke software engineering sama filmmaking.'
               )}
             </p>
           </div>
@@ -364,14 +382,14 @@ export default function BeveragePage() {
       <section className="px-8 lg:px-16 py-20" style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-8">
           <div>
-            <h2 className="font-['Cormorant_Garamond',serif] text-3xl lg:text-4xl font-bold mb-2" style={{ color: '#d0c0b0' }}>{t("Let's craft something together.", "Mari berkarya bersama.")}</h2>
-            <p className="text-[14px]" style={{ color: '#3a2a1a' }}>{t("Whether it's a drink menu or a digital product.", "Seni minuman atau produk digital.")}</p>
+            <h2 className="font-['Cormorant_Garamond',serif] text-3xl lg:text-4xl font-bold mb-2" style={{ color: '#d0c0b0' }}>{t("Let's craft something together.", "Yuk craft sesuatu bareng.")}</h2>
+            <p className="text-[14px]" style={{ color: '#3a2a1a' }}>{t("Whether it's a drink menu or a digital product.", "Mau itu menu minuman atau digital product.")}</p>
           </div>
           <Magnetic strength={0.2}>
             <a href="mailto:cahyoprasetyo507@gmail.com"
               className="px-7 py-3.5 font-medium rounded-full text-[13px] tracking-wide whitespace-nowrap transition-all hover:opacity-90"
               style={{ background: '#d0c0b0', color: '#0c0906' }}>
-              {t('Get in Touch', 'Hubungi Saya')}
+              {t('Get in Touch', 'Get in Touch')}
             </a>
           </Magnetic>
         </div>
@@ -385,7 +403,7 @@ export default function BeveragePage() {
           </svg>
           {t('Prev: Developer', 'Sebelumnya: Developer')}
         </Link>
-        <span className="text-[11px] font-medium" style={{ color: '#2a1a0a' }}>03 / {t('Beverage', 'Minuman')}</span>
+        <span className="text-[11px] font-medium" style={{ color: '#2a1a0a' }}>03 / {t('Beverage', 'Beverage')}</span>
         <Link href="/" className="text-[11px] flex items-center gap-2 transition-colors" style={{ color: '#2a1a0a' }}>
           {t('Back to Home', 'Kembali ke Beranda')}
           <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
