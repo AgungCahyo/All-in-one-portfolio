@@ -74,6 +74,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-black text-white font-['DM_Sans',sans-serif] overflow-hidden">
+      <h1 className="sr-only">Agung Cahyo Prasetyo - Videographer, Full-Stack Developer, dan Beverage Crafter di Kudus</h1>
       <AnimatePresence>
         {!isRevealed && (
           <motion.section
