@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useLayoutEffect, useCallback } from 'react';
 import { Panel } from '@/components/sections/Panel';
 import { panels, ROTATE_INTERVAL } from '@/data/panels';
 import { useActivePanel } from '@/lib/activePanelContext';
@@ -14,10 +14,7 @@ export default function Home() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isRevealed, setIsRevealed] = useState(() => {
-    if (typeof window === 'undefined') return false;
-    return sessionStorage.getItem('home-revealed') === 'true';
-  });
+  const [isRevealed, setIsRevealed] = useState(false);
   const [isBooting, setIsBooting] = useState(false);
   const [typedChars, setTypedChars] = useState(0);
   const [bootProgress, setBootProgress] = useState(0);
@@ -30,6 +27,12 @@ export default function Home() {
     '> applying cinematic transitions...',
     '> boot complete. rendering homepage',
   ].join('\n');
+
+  useLayoutEffect(() => {
+    const alreadyRevealed = sessionStorage.getItem('home-revealed') === 'true';
+    if (!alreadyRevealed) return;
+    setIsRevealed(true);
+  }, []);
 
   useEffect(() => {
     if (!isRevealed) return;

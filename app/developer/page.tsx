@@ -7,7 +7,8 @@ import { Magnetic } from '@/components/ui/Magnetic';
 import { SkillBars } from '@/components/ui/SkillBars';
 import { JourneyTimeline } from '@/components/ui/JourneyTimeline';
 import { SectionLabel } from '@/components/ui/SectionLabel';
-import { projects, techStack, devJourney, devSkills, heroStats, statusColors } from '@/data/developer';
+import { SkillsUniverse } from '@/components/ui/SkillsUniverse';
+import { projects, techStack, devJourney, devSkills, heroStats, statusColors, quickOverview, teamCollaboration, engineeringJudgement } from '@/data/developer';
 import { useLanguage } from '@/lib/languageContext';
 import { useActivePanel } from '@/lib/activePanelContext';
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
@@ -101,24 +102,91 @@ export default function DeveloperPage() {
         </div>
       </section>
 
+      {/* Quick Overview */}
+      <section className="px-8 lg:px-16 py-12" style={{ borderTop: '1px solid rgba(100,130,200,0.07)' }}>
+        <div className="max-w-6xl mx-auto">
+          <SectionLabel color="#2a3040" isMono>{t('Quick Overview (30 sec)', 'Quick Overview (30 detik)')}</SectionLabel>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {quickOverview.map((item) => (
+              <div key={item.label.en} className="p-4 rounded-lg" style={{ border: '1px solid rgba(100,130,200,0.12)', background: 'rgba(100,130,200,0.03)' }}>
+                <p className="text-[10px] tracking-[0.2em] uppercase mb-2" style={{ color: '#2a3040' }}>
+                  {item.label[lang]}
+                </p>
+                <p className="text-[13px] leading-relaxed" style={{ color: '#6a7a90' }}>
+                  {item.value[lang]}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Collaboration & Engineering Judgement */}
+      <section className="px-8 lg:px-16 py-12" style={{ borderTop: '1px solid rgba(100,130,200,0.07)' }}>
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8">
+          <div>
+            <SectionLabel color="#2a3040" isMono>{t('Team Collaboration', 'Kolaborasi Tim')}</SectionLabel>
+            <div className="space-y-4">
+              {teamCollaboration.map((item) => (
+                <div key={item.title.en} className="p-5 rounded-lg" style={{ border: '1px solid rgba(100,130,200,0.1)', background: 'rgba(255,255,255,0.01)' }}>
+                  <h4 className="font-medium mb-2" style={{ color: '#b8c8e0' }}>{item.title[lang]}</h4>
+                  <p className="text-[13px] leading-relaxed" style={{ color: '#6a7a90' }}>{item.body[lang]}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <SectionLabel color="#2a3040" isMono>{t('Engineering Judgement', 'Engineering Judgement')}</SectionLabel>
+            <div className="space-y-4">
+              {engineeringJudgement.map((item) => (
+                <div key={item.title.en} className="p-5 rounded-lg" style={{ border: '1px solid rgba(100,130,200,0.1)', background: 'rgba(255,255,255,0.01)' }}>
+                  <h4 className="font-medium mb-2" style={{ color: '#b8c8e0' }}>{item.title[lang]}</h4>
+                  <p className="text-[13px] leading-relaxed" style={{ color: '#6a7a90' }}>{item.body[lang]}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Tech Stack */}
       <section className="px-8 lg:px-16 py-14" style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
         <div className="max-w-6xl mx-auto">
-          <SectionLabel color="#2a3040" isMono>Tech Stack</SectionLabel>
-          <div className="grid md:grid-cols-3 gap-8">
-            {Object.entries(techStack).map(([category, items]) => (
-              <div key={category}>
-                <p className="text-[10px] uppercase tracking-widest mb-4 font-medium" style={{ color: '#2a3040' }}>{category}</p>
-                <div className="flex flex-wrap gap-2">
-                  {items.map((item) => (
-                    <span key={item} className="px-3 py-1.5 rounded-lg text-[12px] transition-colors"
-                      style={{ border: '1px solid rgba(255,255,255,0.05)', color: '#6a7a90', background: 'rgba(255,255,255,0.01)' }}>
-                      {item}
-                    </span>
-                  ))}
-                </div>
+          <SectionLabel color="#2a3040" isMono>{t('Tech Stack Universe', 'Tech Stack Universe')}</SectionLabel>
+          <div className="grid lg:grid-cols-12 gap-8 items-start">
+            <div className="lg:col-span-8">
+              <SkillsUniverse />
+            </div>
+            <div className="lg:col-span-4 space-y-4">
+              <div className="p-4 rounded-lg" style={{ border: '1px solid rgba(100,130,200,0.12)', background: 'rgba(100,130,200,0.03)' }}>
+                <p className="font-mono text-[10px] tracking-[0.2em] uppercase mb-2" style={{ color: '#2a3040' }}>
+                  {t('How to read', 'Cara baca')}
+                </p>
+                <p className="text-[13px] leading-relaxed" style={{ color: '#6a7a90' }}>
+                  {t(
+                    'Drag the globe to inspect stack depth. Click any node to open short experience notes.',
+                    'Drag globe untuk lihat kedalaman stack. Klik node untuk buka ringkasan pengalaman singkat.'
+                  )}
+                </p>
               </div>
-            ))}
+              {Object.entries(techStack).map(([category, items]) => (
+                <div key={category} className="p-4 rounded-lg"
+                  style={{ border: '1px solid rgba(100,130,200,0.1)', background: 'rgba(255,255,255,0.01)' }}>
+                  <div className="flex items-center justify-between mb-3">
+                    <p className="text-[10px] uppercase tracking-widest font-medium" style={{ color: '#2a3040' }}>{category}</p>
+                    <span className="font-mono text-[10px]" style={{ color: '#4a5870' }}>{items.length}</span>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {items.map((item) => (
+                      <span key={item} className="px-2.5 py-1 rounded-md text-[11px]"
+                        style={{ border: '1px solid rgba(255,255,255,0.05)', color: '#6a7a90', background: 'rgba(255,255,255,0.01)' }}>
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

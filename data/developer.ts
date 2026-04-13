@@ -12,6 +12,11 @@ export interface DevProject {
   highlights: string[] | BilingualString[];
 }
 
+export interface DevInsightItem {
+  title: BilingualString;
+  body: BilingualString;
+}
+
 export const statusColors: Record<string, { bg: string; text: string; border: string }> = {
   Production: { bg: 'rgba(16,185,129,0.07)', text: '#34d399', border: 'rgba(16,185,129,0.2)' },
   Live: { bg: 'rgba(16,185,129,0.07)', text: '#34d399', border: 'rgba(16,185,129,0.2)' },
@@ -32,8 +37,8 @@ export const projects: DevProject[] = [
     year: '2026',
     status: 'Algo Trading',   // ← badge khusus amber
     description: {
-      en: 'Production-grade Solana trading bot with real-time Pump.fun WebSocket radar, 4-tier trailing stop system, and adaptive risk management. Features a multi-factor signal scorer across velocity, buy pressure, and wallet concentration — with copy trading, DCA & grid strategies, and a full Telegram command interface.',
-      id: 'Bot trading Solana siap produksi dengan radar WebSocket Pump.fun real-time, sistem trailing stop 4 tahap, dan manajemen risiko adaptif. Dilengkapi signal scorer multi-faktor (velocity, buy pressure, konsentrasi wallet), copy trading, strategi DCA & grid, dan antarmuka perintah lengkap via Telegram.'
+      en: 'Built to solve one core problem: high-volatility memecoin entries were too slow and emotional. This bot automates signal detection and execution in real time, then protects downside with layered trailing stops and adaptive risk controls.',
+      id: 'Dibangun untuk menyelesaikan satu masalah utama: entry memecoin yang super volatil sering telat dan emosional. Bot ini mengotomatiskan deteksi sinyal dan eksekusi real-time, lalu melindungi risiko lewat trailing stop bertingkat dan risk control adaptif.'
     },
     tags: [
       'Node.js', 'Solana Web3.js', '@pump-fun/pump-sdk',
@@ -43,10 +48,10 @@ export const projects: DevProject[] = [
       { label: 'Telegram Demo', href: 'https://t.me/your_bot' }
     ],
     highlights: [
-      { en: 'Real-time Pump.fun WebSocket radar', id: 'Radar WebSocket Pump.fun real-time' },
-      { en: 'Multi-factor signal scorer (score/100)', id: 'Signal scorer multi-faktor (skor/100)' },
-      { en: '4-tier trailing stop + adaptive SL', id: 'Trailing stop 4 tahap + SL adaptif' },
-      { en: 'DCA, grid & copy trading strategies', id: 'Strategi DCA, grid & copy trading' }
+      { en: 'Cuts response time from manual monitoring to instant event-based execution', id: 'Memangkas waktu respons dari pantau manual jadi eksekusi berbasis event secara instan' },
+      { en: 'Reduces emotional entries with score-based signal validation', id: 'Mengurangi entry emosional dengan validasi sinyal berbasis skor' },
+      { en: 'Protects capital using adaptive stop logic in fast-changing markets', id: 'Melindungi modal lewat stop logic adaptif di market yang berubah cepat' },
+      { en: 'Runs unattended through Telegram command and monitoring flow', id: 'Bisa jalan semi-autonomous lewat command dan monitoring flow di Telegram' }
     ],
   },
   {
@@ -56,16 +61,16 @@ export const projects: DevProject[] = [
     year: '2025',
     status: 'Production',
     description: {
-      en: 'Production-ready AI script generator built from scratch. Features a 4-Agent AI workflow (Strategist → Director → Writer → Reviewer), Brand Voice system, OpenAI TTS, Teleprompter mode, and Midtrans payment integration. Engineered with 84 automated tests and 90%+ coverage.',
-      id: 'Generator skrip AI siap produksi yang dibangun dari nol. Dilengkapi alur kerja 4 Agen AI (Strategist → Director → Writer → Reviewer), sistem Brand Voice, OpenAI TTS, mode Teleprompter, dan integrasi pembayaran Midtrans. Dibangun dengan 84 automated test dan cakupan 90%+.'
+      en: 'Designed for creators who were stuck between inconsistent script quality and slow turnaround. SkripIn turns rough ideas into ready-to-shoot scripts fast, while preserving each brand voice through a structured multi-agent workflow.',
+      id: 'Dirancang untuk creator yang terjebak antara kualitas skrip yang nggak konsisten dan proses yang lambat. SkripIn mengubah ide mentah jadi skrip siap produksi lebih cepat, sambil tetap menjaga brand voice lewat workflow multi-agent yang terstruktur.'
     },
     tags: ['Next.js 16', 'React 19', 'TypeScript', 'Google Gemini', 'OpenAI TTS', 'Jest', 'PostgreSQL', 'Firebase', 'Midtrans'],
     links: [{ label: 'Live App', href: 'https://skripin.vercel.app' }],
     highlights: [
-      { en: '84 automated tests', id: '84 automated test' },
-      { en: '90%+ test coverage', id: 'Cakupan tes 90%+' },
-      { en: '4-Agent AI workflow', id: 'Alur 4 Agen AI' },
-      { en: 'TTS + Teleprompter', id: 'TTS + Teleprompter' }
+      { en: 'Improves script consistency with a role-based AI pipeline', id: 'Meningkatkan konsistensi skrip lewat pipeline AI berbasis peran' },
+      { en: 'Shortens production prep using TTS and teleprompter-ready output', id: 'Mempercepat persiapan produksi lewat output TTS dan teleprompter-ready' },
+      { en: 'Keeps monetization simple with integrated payment flow', id: 'Membuat monetisasi tetap sederhana lewat payment flow terintegrasi' },
+      { en: 'Maintains reliability through targeted automated testing', id: 'Menjaga reliability lewat automated testing yang terarah' }
     ],
   },
   {
@@ -75,16 +80,16 @@ export const projects: DevProject[] = [
     year: '2025',
     status: 'Live',
     description: {
-      en: 'Multi-dimensional MBTI compatibility analyzer with AI-generated relationship insights. Features freemium model with Midtrans payment, WhatsApp result delivery via n8n automation, and dual-person test flow. Sophisticated scoring algorithm across communication styles, conflict resolution, and love languages.',
-      id: 'Penganalisis kecocokan MBTI multi-dimensi dengan insight hubungan yang dihasilkan AI. Mengusung model freemium dengan pembayaran Midtrans, pengiriman hasil via WhatsApp lewat otomasi n8n, dan alur tes untuk dua orang. Algoritma penilaian yang mencakup gaya komunikasi, penyelesaian konflik, dan bahasa cinta.'
+      en: 'Built to solve drop-off in relationship quiz products: users wanted deeper insight, not generic scores. This app delivers richer, personalized analysis and converts better with an automated WhatsApp delivery and freemium upsell flow.',
+      id: 'Dibangun untuk mengatasi drop-off pada produk kuis hubungan: user butuh insight yang lebih dalam, bukan skor generik. Aplikasi ini memberi analisis personal yang lebih kaya dan membantu konversi lewat pengiriman otomatis via WhatsApp serta freemium upsell flow.'
     },
     tags: ['Next.js 16', 'React 19', 'TypeScript', 'Prisma ORM', 'PostgreSQL', 'Zustand', 'Redis', 'Midtrans', 'n8n'],
     links: [{ label: 'Live Site', href: 'https://tes-kecocokan.vercel.app/' }],
     highlights: [
-      { en: '16 MBTI types', id: '16 tipe MBTI' },
-      { en: 'Freemium monetization', id: 'Model freemium' },
-      { en: 'WhatsApp delivery', id: 'Kirim hasil via WhatsApp' },
-      { en: 'AI-generated insights', id: 'Insight dari AI' }
+      { en: 'Increases perceived value with multi-dimensional compatibility output', id: 'Meningkatkan perceived value lewat output kompatibilitas multi-dimensi' },
+      { en: 'Improves conversion with freemium + seamless payment journey', id: 'Meningkatkan konversi lewat freemium + payment journey yang mulus' },
+      { en: 'Boosts completion with instant result delivery via WhatsApp', id: 'Meningkatkan completion lewat pengiriman hasil instan via WhatsApp' },
+      { en: 'Creates stickier experience through AI-personalized insight', id: 'Membuat experience lebih sticky lewat insight personal dari AI' }
     ],
   },
   {
@@ -94,16 +99,16 @@ export const projects: DevProject[] = [
     year: '2024',
     status: 'Live',
     description: {
-      en: 'Production-ready WhatsApp AI chatbot with advanced speech-to-text for voice notes, Google Gemini AI agent with custom personality, and per-user chat memory. Includes rate limiting, user tracking via Google Sheets, and multi-format message handling via n8n workflow automation.',
-      id: 'Chatbot AI WhatsApp siap produksi dengan kemampuan speech-to-text untuk pesan suara, agen AI Google Gemini berkepribadian kustom, dan memori percakapan per pengguna. Dilengkapi rate limiting, pelacakan pengguna via Google Sheets, dan penanganan berbagai format pesan lewat otomasi n8n.'
+      en: 'Created to reduce repetitive customer support workload on WhatsApp. The bot handles common questions, voice notes, and follow-up context automatically so response time stays fast even with high incoming volume.',
+      id: 'Dibuat untuk mengurangi beban support yang repetitif di WhatsApp. Bot ini menangani pertanyaan umum, voice note, dan konteks lanjutan secara otomatis supaya response time tetap cepat saat volume chat tinggi.'
     },
     tags: ['n8n', 'Google Gemini', 'WhatsApp Business API', 'Google STT', 'Google TTS', 'LangChain', 'Google Sheets API'],
     links: [{ label: 'Coba Demo', href: 'https://wa.me/6281392290571' }],
     highlights: [
-      { en: '20+ n8n nodes', id: '20+ node n8n' },
-      { en: 'Voice note STT', id: 'STT untuk pesan suara' },
-      { en: 'Per-user memory', id: 'Memori per pengguna' },
-      { en: 'Rate limiting', id: 'Rate limiting' }
+      { en: 'Cuts repetitive support replies through automated triage', id: 'Mengurangi balasan support yang repetitif lewat triage otomatis' },
+      { en: 'Supports voice-heavy users with built-in STT pipeline', id: 'Mendukung user yang dominan voice note lewat pipeline STT bawaan' },
+      { en: 'Improves conversation continuity with per-user memory', id: 'Meningkatkan kesinambungan percakapan dengan memori per-user' },
+      { en: 'Keeps system stable with abuse and rate-limit controls', id: 'Menjaga sistem stabil dengan kontrol abuse dan rate limit' }
     ],
   },
   {
@@ -113,8 +118,8 @@ export const projects: DevProject[] = [
     year: '2023',
     status: 'Shipped',
     description: {
-      en: 'Native mobile app for F&B entrepreneurs to calculate Harga Pokok Produksi (HPP). Users manage ingredient inventory, build recipes, and get automatic cost calculations with selling price recommendations, markup, and profit margin analysis. Offline-first with Firebase sync.',
-      id: 'Aplikasi mobile native untuk pelaku usaha F&B dalam menghitung Harga Pokok Produksi (HPP). Pengguna bisa mengelola inventaris bahan, menyusun resep, dan mendapat kalkulasi biaya otomatis lengkap dengan rekomendasi harga jual, markup, dan analisis margin keuntungan. Bisa dipakai offline dengan sinkronisasi Firebase.'
+      en: 'Built for F&B owners who priced products by guesswork and lost margin. The app standardizes HPP calculation, gives recommended selling prices, and keeps costing available even when internet is unstable.',
+      id: 'Dibangun untuk owner F&B yang sering menentukan harga pakai perkiraan dan akhirnya kehilangan margin. Aplikasi ini menstandarkan kalkulasi HPP, memberi rekomendasi harga jual, dan tetap bisa dipakai meski internet tidak stabil.'
     },
     tags: ['React Native', 'Firebase Auth', 'Firestore', 'Firebase Storage'],
     links: [
@@ -124,10 +129,10 @@ export const projects: DevProject[] = [
       },
     ],
     highlights: [
-      { en: 'Offline-first', id: 'Bisa dipakai offline' },
-      { en: 'Auto HPP calculation', id: 'Kalkulasi HPP otomatis' },
-      { en: 'Margin analysis', id: 'Analisis margin' },
-      { en: 'F&B industry', id: 'Khusus industri F&B' }
+      { en: 'Reduces pricing guesswork with recipe-level cost visibility', id: 'Mengurangi pricing guesswork dengan visibilitas biaya per resep' },
+      { en: 'Improves margin control through automatic HPP and markup analysis', id: 'Meningkatkan kontrol margin lewat analisis HPP dan markup otomatis' },
+      { en: 'Works reliably during service with offline-first architecture', id: 'Tetap andal saat jam operasional lewat arsitektur offline-first' },
+      { en: 'Designed specifically for real-world F&B workflow', id: 'Dirancang spesifik untuk workflow F&B di lapangan' }
     ],
   },
 ];
@@ -203,4 +208,45 @@ export const heroStats = [
   { n: '90%+', l: { en: 'Coverage', id: 'Cakupan' }, key: 'cov' },
   { n: '4+', l: { en: 'Apps Shipped', id: 'Aplikasi Rilis' }, key: 'apps' },
   { n: '3+', l: { en: 'AI Integrations', id: 'Integrasi AI' }, key: 'ai' },
+];
+
+export const quickOverview = [
+  { label: { en: 'Core Strength', id: 'Kekuatan Utama' }, value: { en: 'Shipping useful products fast', id: 'Nge-ship produk yang kepake cepat' } },
+  { label: { en: 'Main Focus', id: 'Fokus Utama' }, value: { en: 'Problem → Build → Validate', id: 'Problem → Build → Validate' } },
+  { label: { en: 'Work Style', id: 'Cara Kerja' }, value: { en: 'Pragmatic quality, not vanity engineering', id: 'Quality pragmatis, bukan engineering vanity' } },
+  { label: { en: 'Best Fit', id: 'Paling Cocok' }, value: { en: '0→1 products, automation-heavy workflows', id: 'Produk 0→1, workflow dengan otomasi tinggi' } },
+];
+
+export const teamCollaboration: DevInsightItem[] = [
+  {
+    title: { en: 'Async-First Communication', id: 'Komunikasi Async-First' },
+    body: {
+      en: 'I break features into clear scopes, share progress in short written updates, and keep decisions documented so designers, PMs, and engineers stay aligned.',
+      id: 'Saya membagi fitur jadi scope yang jelas, update progres secara ringkas, dan dokumentasikan keputusan supaya desainer, PM, dan engineer tetap sinkron.'
+    }
+  },
+  {
+    title: { en: 'Review-Ready Delivery', id: 'Delivery Siap Review' },
+    body: {
+      en: 'I aim for small, reviewable increments with explicit trade-offs and risk notes, making code review faster and team collaboration less friction-heavy.',
+      id: 'Saya mengutamakan increment kecil yang gampang direview, lengkap dengan trade-off dan catatan risiko, supaya code review lebih cepat dan kolaborasi tim lebih minim friksi.'
+    }
+  },
+];
+
+export const engineeringJudgement: DevInsightItem[] = [
+  {
+    title: { en: 'When To Go Deep', id: 'Kapan Harus Dalam' },
+    body: {
+      en: 'I invest heavier testing on payment flow, auth, and automation logic where regression is expensive.',
+      id: 'Saya investasi testing lebih dalam untuk payment flow, auth, dan logika otomasi yang biaya regresinya mahal.'
+    }
+  },
+  {
+    title: { en: 'When To Move Fast', id: 'Kapan Harus Cepat' },
+    body: {
+      en: 'For low-risk UI and exploratory features, I optimize for learning speed first, then harden after usage signals are clear.',
+      id: 'Untuk UI berisiko rendah dan fitur eksploratif, saya prioritaskan kecepatan belajar dulu, lalu hardening setelah sinyal penggunaan sudah jelas.'
+    }
+  },
 ];
