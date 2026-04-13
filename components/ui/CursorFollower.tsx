@@ -277,6 +277,8 @@ function AboutCursor({ x, y, tail, frame }: { x: number; y: number; tail: TailPo
 export function CursorFollower() {
   const pathname = usePathname();
   const { activePanel } = useActivePanel();
+  const [homeRevealed, setHomeRevealed] = useState(false);
+  const isHomeRoute = !pathname || pathname === '/';
   const role = pathname === '/'
     ? getRoleFromPanel(activePanel)
     : getRoleFromPath(pathname ?? '/');
@@ -293,7 +295,39 @@ export function CursorFollower() {
   const frameRef = useRef(0);
 
   useEffect(() => {
+    if (!isHomeRoute) {
+      setHomeRevealed(true);
+      return;
+    }
+
+    // Always start locked on home cover until explicit reveal event arrives.
+    setHomeRevealed(false);
+    const onHomeRevealState = (event: Event) => {
+      const detail = (event as CustomEvent<{ revealed?: boolean }>).detail;
+      setHomeRevealed(Boolean(detail?.revealed));
+    };
+
+    window.addEventListener('home-reveal-state', onHomeRevealState as EventListener);
+    return () => window.removeEventListener('home-reveal-state', onHomeRevealState as EventListener);
+  }, [isHomeRoute]);
+
+  useEffect(() => {
+    const shouldUseNative =
+      (isHomeRoute && !homeRevealed) || !visible || smoothPos.x < 0;
+    document.documentElement.style.cursor = shouldUseNative ? 'auto' : 'none';
+    document.body.style.cursor = shouldUseNative ? 'auto' : 'none';
+    return () => {
+      document.documentElement.style.cursor = 'auto';
+      document.body.style.cursor = 'auto';
+    };
+  }, [isHomeRoute, homeRevealed, visible, smoothPos.x]);
+
+  useEffect(() => {
     const onMove = (e: MouseEvent) => {
+      if (isHomeRoute && !homeRevealed) {
+        setVisible(false);
+        return;
+      }
       rawPos.current = { x: e.clientX, y: e.clientY };
       setVisible(true);
     };
@@ -304,7 +338,7 @@ export function CursorFollower() {
       window.removeEventListener('mousemove', onMove);
       document.documentElement.removeEventListener('mouseleave', onLeave);
     };
-  }, []);
+  }, [isHomeRoute, homeRevealed]);
 
   useEffect(() => {
     function lerp(a: number, b: number, t: number) { return a + (b - a) * t; }
@@ -338,7 +372,7 @@ export function CursorFollower() {
 
   useEffect(() => { setTail([]); setRotation(0); }, [role]);
 
-  if (!visible || smoothPos.x < 0) return null;
+  if ((isHomeRoute && !homeRevealed) || !visible || smoothPos.x < 0) return null;
   const { x, y } = smoothPos;
 
   return (

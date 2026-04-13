@@ -1,9 +1,5 @@
 @import "tailwindcss";
 
-html, body, * {
-  cursor: none !important;
-}
-
 :root {
   --theme-accent: #cec8c0;
   --theme-bg: #0d0c0b;

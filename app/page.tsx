@@ -14,7 +14,10 @@ export default function Home() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isRevealed, setIsRevealed] = useState(false);
+  const [isRevealed, setIsRevealed] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return sessionStorage.getItem('home-revealed') === 'true';
+  });
   const [isBooting, setIsBooting] = useState(false);
   const [typedChars, setTypedChars] = useState(0);
   const [bootProgress, setBootProgress] = useState(0);
@@ -27,6 +30,13 @@ export default function Home() {
     '> applying cinematic transitions...',
     '> boot complete. rendering homepage',
   ].join('\n');
+
+  useEffect(() => {
+    if (!isRevealed) return;
+    setIsBooting(false);
+    setTypedChars(bootScript.length);
+    setBootProgress(100);
+  }, [isRevealed, bootScript.length]);
 
   const next = useCallback(() => {
     setActive((prev) => (prev + 1) % panels.length);
@@ -58,9 +68,17 @@ export default function Home() {
   useEffect(() => {
     if (!isBooting) return;
     if (typedChars < bootScript.length) return;
-    const revealTimer = window.setTimeout(() => setIsRevealed(true), 260);
+    const revealTimer = window.setTimeout(() => {
+      setIsRevealed(true);
+      sessionStorage.setItem('home-revealed', 'true');
+    }, 260);
     return () => window.clearTimeout(revealTimer);
   }, [isBooting, typedChars, bootScript.length]);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-home-revealed', isRevealed ? 'true' : 'false');
+    window.dispatchEvent(new CustomEvent('home-reveal-state', { detail: { revealed: isRevealed } }));
+  }, [isRevealed]);
 
   function handleActivate(i: number) {
     setActive(i);

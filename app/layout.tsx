@@ -31,6 +31,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  manifest: '/manifest.webmanifest',
   robots: {
     index: true,
     follow: true,
@@ -56,8 +57,11 @@ export const metadata: Metadata = {
     description: 'Videographer · Developer · Beverage Crafter',
   },
   icons: {
-    icon: '/favicon.png',
-    apple: '/favicon.png',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon.png', type: 'image/png', sizes: '32x32' },
+    ],
+    apple: [{ url: '/favicon.png', sizes: '180x180', type: 'image/png' }],
   },
 }
 
@@ -108,7 +112,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" style={{ cursor: 'none' }}>
+    <html lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -125,7 +129,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
       </head>
-      <body className="bg-black text-white antialiased" style={{ cursor: 'none' }}>
+      <body className="bg-black text-white antialiased">
         <LanguageProvider>
           <ActivePanelProvider>
             <ThemeColor />
