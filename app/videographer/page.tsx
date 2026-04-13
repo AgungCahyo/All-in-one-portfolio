@@ -16,56 +16,22 @@ import {
 } from '@/data/videographer';
 import { useLanguage } from '@/lib/languageContext';
 import { useActivePanel } from '@/lib/activePanelContext';
-import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
-import { useEffect, useState } from 'react';
+import { LayoutHeader } from '@/components/ui/LayoutHeader';
+import { useEffect } from 'react';
 
 export default function VideographerPage() {
   const { lang, t } = useLanguage();
   const { setActivePanel } = useActivePanel();
-  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     setActivePanel('videographer');
   }, [setActivePanel]);
+
   return (
     <main className="min-h-screen text-stone-100 font-['DM_Sans',sans-serif]" style={{ background: '#0c0b0a' }}>
 
-      {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-4 sm:py-5 flex justify-between items-center"
-        style={{ background: 'rgba(12,11,10,0.85)', backdropFilter: 'blur(16px)', borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
-        <Magnetic strength={0.3}>
-          <Link href="/" className="flex items-center gap-3 group">
-            <svg className="w-3.5 h-3.5 transition-colors" style={{ color: '#4a4540' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 12H5M5 12l7-7M5 12l7 7" />
-            </svg>
-            <span className="text-[10px] tracking-[0.25em] uppercase transition-colors" style={{ color: '#4a4540' }}>{t('Portfolio', 'Portofolio')}</span>
-          </Link>
-        </Magnetic>
-        <div className="hidden md:flex items-center gap-7">
-          <span className="text-[10px] tracking-[0.2em] uppercase font-medium" style={{ color: '#a09890' }}>{t('Videographer', 'Videografer')}</span>
-          <Magnetic strength={0.2}><Link href="/developer" className="text-[10px] tracking-[0.2em] uppercase transition-colors" style={{ color: '#3a3530' }}>{t('Developer', 'Developer')}</Link></Magnetic>
-          <Magnetic strength={0.2}><Link href="/beverage" className="text-[10px] tracking-[0.2em] uppercase transition-colors" style={{ color: '#3a3530' }}>{t('Beverage', 'Peracik')}</Link></Magnetic>
-          <div className="w-px h-3 bg-stone-900/15 ml-2" />
-          <LanguageSwitcher />
-        </div>
-        <div className="md:hidden flex items-center gap-2">
-          <LanguageSwitcher />
-          <button onClick={() => setMenuOpen((v) => !v)} className="p-2 rounded-md border border-white/10" aria-label="Toggle menu">
-            <svg className="w-4 h-4 text-white/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d={menuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'} />
-            </svg>
-          </button>
-        </div>
-      </nav>
-      {menuOpen && (
-        <div className="fixed top-[58px] left-0 right-0 z-40 md:hidden px-4 py-3 border-b border-white/10 bg-[#0c0b0a]/95 backdrop-blur-xl">
-          <div className="flex flex-col gap-2 text-[11px] tracking-[0.16em] uppercase">
-            <Link href="/videographer" className="px-3 py-2 rounded-md bg-white/10 text-stone-200">{t('Videographer', 'Videografer')}</Link>
-            <Link href="/developer" className="px-3 py-2 rounded-md text-stone-400" onClick={() => setMenuOpen(false)}>{t('Developer', 'Developer')}</Link>
-            <Link href="/beverage" className="px-3 py-2 rounded-md text-stone-400" onClick={() => setMenuOpen(false)}>{t('Beverage', 'Beverage')}</Link>
-          </div>
-        </div>
-      )}
+      <LayoutHeader activeRole="videographer" theme="cinema" />
+
 
       {/* Hero — Cinematic Full-Bleed */}
       <section className="relative overflow-hidden" style={{ minHeight: '95vh' }}>

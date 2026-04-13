@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, ReactNode } from 'react';
 
-type PanelId = 'beverage' | 'developer' | 'videographer';
+type PanelId = 'beverage' | 'developer' | 'videographer' | 'about';
 
 interface ActivePanelContextType {
   activePanel: PanelId;

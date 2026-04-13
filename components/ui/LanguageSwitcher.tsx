@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '@/lib/languageContext';
 import { usePathname } from 'next/navigation';
 import { useActivePanel } from '@/lib/activePanelContext';
+import { Magnetic } from './Magnetic';
+import Link from 'next/link';
 
 /**
  * Resolves theme colors based on current route or active panel on landing
@@ -11,6 +13,7 @@ import { useActivePanel } from '@/lib/activePanelContext';
 function getThemeColors(pathname: string, activePanel: string) {
   const isTerminal = pathname.startsWith('/developer') || (pathname === '/' && activePanel === 'developer');
   const isArtisan = pathname.startsWith('/beverage') || (pathname === '/' && activePanel === 'beverage');
+  const isBrutalist = pathname.startsWith('/about') || (pathname === '/' && activePanel === 'about');
 
   if (isTerminal) {
     return {
@@ -31,6 +34,17 @@ function getThemeColors(pathname: string, activePanel: string) {
       inactive: 'rgba(180,130,80,0.3)',
       dot: '#b89878',
       dotGlow: 'rgba(184,152,120,0.3)',
+    };
+  }
+
+  if (isBrutalist) {
+    return {
+      border: 'rgba(255, 255, 255, 0.1)',
+      bg: 'rgba(255, 255, 255, 0.03)',
+      active: '#e8e4e0',
+      inactive: 'rgba(255, 255, 255, 0.3)',
+      dot: '#e8e4e0',
+      dotGlow: 'rgba(232, 228, 224, 0.3)',
     };
   }
 

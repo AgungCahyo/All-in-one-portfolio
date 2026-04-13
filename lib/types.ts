@@ -4,6 +4,32 @@ export interface BilingualString {
     id: string;
 }
 
+export type RoleType = 'videographer' | 'developer' | 'beverage' | 'about';
+export type ThemeVariant = 'cinema' | 'terminal' | 'artisan' | 'brutalist';
+
+export interface AboutTimeline {
+    year: string;
+    code: string;
+    title: string | BilingualString;
+    body: string | BilingualString;
+    tag: string | BilingualString;
+}
+
+export interface AboutValue {
+    num: string;
+    title: string | BilingualString;
+    body: string | BilingualString;
+}
+
+export interface AboutOffwork {
+    label: string | BilingualString;
+}
+
+export interface AboutAvailability {
+    role: string | BilingualString;
+    status: string | BilingualString;
+    open: boolean;
+}
 
 export interface JourneyItem {
     year: string;

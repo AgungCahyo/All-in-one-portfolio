@@ -4,13 +4,14 @@ import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { useActivePanel } from '@/lib/activePanelContext';
 
-type Role = 'cinema' | 'dev' | 'artisan';
+type Role = 'cinema' | 'dev' | 'artisan' | 'about';
 
 interface TailPoint { x: number; y: number; }
 
 function getRoleFromPath(path: string): Role {
   if (path.startsWith('/developer')) return 'dev';
   if (path.startsWith('/beverage')) return 'artisan';
+  if (path.startsWith('/about')) return 'about';
   return 'cinema';
 }
 
@@ -38,7 +39,6 @@ function CinemaCursor({ x, y, tail, frame }: { x: number; y: number; tail: TailP
 
   return (
     <svg className="pointer-events-none fixed inset-0 w-full h-full overflow-visible" style={{ zIndex: 9999 }}>
-      {/* Film ribbon tail */}
       {tail.map((p, i) => {
         if (i === 0 || i >= tail.length - 1) return null;
         const prev = tail[i - 1];
@@ -61,14 +61,8 @@ function CinemaCursor({ x, y, tail, frame }: { x: number; y: number; tail: TailP
           </g>
         );
       })}
-
-      {/* Dashed outer ring */}
       <circle cx={x} cy={y} r={R + 10} stroke="rgba(206,200,192,0.12)" strokeWidth={0.5} strokeDasharray="3 6" fill="none" />
-
-      {/* Main ring */}
       <circle cx={x} cy={y} r={R} stroke="rgba(206,200,192,0.5)" strokeWidth={1} fill="none" />
-
-      {/* Tick marks */}
       {ticks.map(({ a, inner }, i) => (
         <line key={i}
           x1={x + Math.cos(a) * inner} y1={y + Math.sin(a) * inner}
@@ -76,25 +70,15 @@ function CinemaCursor({ x, y, tail, frame }: { x: number; y: number; tail: TailP
           stroke="rgba(206,200,192,0.4)" strokeWidth={i % 3 === 0 ? 0.8 : 0.5}
         />
       ))}
-
-      {/* Scanning wedge */}
       <path
         d={`M ${x} ${y} L ${x + Math.cos(scanAngle) * (R - 2)} ${y + Math.sin(scanAngle) * (R - 2)} A ${R - 2} ${R - 2} 0 0 1 ${x + Math.cos(scanAngle + 0.8) * (R - 2)} ${y + Math.sin(scanAngle + 0.8) * (R - 2)} Z`}
         fill="rgba(206,200,192,0.07)"
       />
-
-      {/* Cross lines */}
       <line x1={x - R - 18} y1={y} x2={x + R + 18} y2={y} stroke="rgba(206,200,192,0.2)" strokeWidth={0.5} />
       <line x1={x} y1={y - R - 18} x2={x} y2={y + R + 18} stroke="rgba(206,200,192,0.2)" strokeWidth={0.5} />
-
-      {/* Center dot */}
       <circle cx={x} cy={y} r={2.5} fill="rgba(206,200,192,0.9)" />
-
-      {/* REC label */}
       <text x={x + 34} y={y + 4} fontSize={9} fontFamily="monospace" letterSpacing="0.18em" fill={blink ? 'rgba(206,200,192,0.55)' : 'rgba(206,200,192,0.15)'}>REC</text>
       <circle cx={x + 57} cy={y + 1} r={2} fill={blink ? 'rgba(220,60,60,0.7)' : 'rgba(220,60,60,0.2)'} />
-
-      {/* Frame counter */}
       <text x={x + 34} y={y + 16} fontSize={9} fontFamily="monospace" fill="rgba(206,200,192,0.25)">{count}</text>
     </svg>
   );
@@ -106,12 +90,10 @@ function DevCursor({ x, y, tail, frame }: { x: number; y: number; tail: TailPoin
   const pulse = 1 + Math.sin(frame * 0.09) * 0.03;
   const bw = 40 * pulse, bh = 40 * pulse;
   const scanY = y + Math.sin(frame * 0.06) * 30;
-  const scanX = x + Math.cos(frame * 0.05) * 30;
   const counterStr = String(frame % 999).padStart(3, '0');
 
   return (
     <svg className="pointer-events-none fixed inset-0 w-full h-full overflow-visible" style={{ zIndex: 9999 }}>
-      {/* Binary stream tail */}
       {tail.map((p, i) => {
         if (i === 0 || i >= tail.length - 1) return null;
         const prev = tail[i - 1];
@@ -133,20 +115,12 @@ function DevCursor({ x, y, tail, frame }: { x: number; y: number; tail: TailPoin
           </g>
         );
       })}
-
-      {/* Vertical scan */}
       <line x1={x} y1={y - 80} x2={x} y2={y + 80} stroke="rgba(100,140,220,0.2)" strokeWidth={1} />
-
-      {/* Horizontal scan line (animated) */}
       <line x1={x - 60} y1={scanY} x2={x + 60} y2={scanY} stroke="rgba(100,140,220,0.15)" strokeWidth={0.5} />
-
-      {/* Selection box */}
       <rect x={x - bw / 2} y={y - bh / 2} width={bw} height={bh}
         stroke="rgba(100,140,220,0.55)" strokeWidth={1} fill="rgba(100,140,220,0.03)" rx={2}
       />
-
-      {/* Corner brackets */}
-      {[[-1, -1], [1, -1], [1, 1], [-1, 1] as const].map(([cx, cy], idx) => {
+      {([[-1, -1], [1, -1], [1, 1], [-1, 1]] as const).map(([cx, cy], idx) => {
         const ox = x + cx * bw / 2, oy = y + cy * bh / 2;
         return (
           <path key={idx}
@@ -155,14 +129,8 @@ function DevCursor({ x, y, tail, frame }: { x: number; y: number; tail: TailPoin
           />
         );
       })}
-
-      {/* Glowing center ring */}
       <circle cx={x} cy={y} r={8 + Math.sin(frame * 0.12) * 2} stroke="rgba(52,212,153,0.15)" strokeWidth={2} fill="none" />
-
-      {/* Center pip */}
       <circle cx={x} cy={y} r={2.5} fill="rgba(52,212,153,0.9)" />
-
-      {/* Coords */}
       <text x={x + 24} y={y + 28} fontSize={9} fontFamily="monospace" fill="rgba(52,212,153,0.6)">
         x:{Math.round(x)} y:{Math.round(y)}
       </text>
@@ -180,7 +148,6 @@ function ArtisanCursor({ x, y, tail, rotation }: { x: number; y: number; tail: T
 
   return (
     <svg className="pointer-events-none fixed inset-0 w-full h-full overflow-visible" style={{ zIndex: 9999 }}>
-      {/* Vine tail with leaves */}
       {tail.map((p, i) => {
         if (i === 0 || i >= tail.length - 1) return null;
         const prev = tail[i - 1];
@@ -190,24 +157,19 @@ function ArtisanCursor({ x, y, tail, rotation }: { x: number; y: number; tail: T
         const len = Math.hypot(dx, dy) || 1;
         const nx = -dy / len, ny = dx / len;
         const angle = Math.atan2(dy, dx);
-
         return (
           <g key={i}>
             <line x1={prev.x} y1={prev.y} x2={p.x} y2={p.y}
-              stroke={`rgba(180,130,80,${alpha * 0.6})`}
-              strokeWidth={(1 - progress) * 2}
-            />
+              stroke={`rgba(180,130,80,${alpha * 0.6})`} strokeWidth={(1 - progress) * 2} />
             {i % 6 === 0 && progress < 0.75 && (
               <>
                 <ellipse cx={(p.x + prev.x) / 2 + nx * 5} cy={(p.y + prev.y) / 2 + ny * 5}
                   rx={4} ry={2} transform={`rotate(${(angle * 180) / Math.PI}, ${(p.x + prev.x) / 2 + nx * 5}, ${(p.y + prev.y) / 2 + ny * 5})`}
-                  fill={`rgba(180,130,80,${alpha * 0.4})`} stroke={`rgba(180,130,80,${alpha})`} strokeWidth={0.5}
-                />
+                  fill={`rgba(180,130,80,${alpha * 0.4})`} stroke={`rgba(180,130,80,${alpha})`} strokeWidth={0.5} />
                 {i % 12 === 0 && (
                   <ellipse cx={(p.x + prev.x) / 2 - nx * 5} cy={(p.y + prev.y) / 2 - ny * 5}
                     rx={3} ry={1.5} transform={`rotate(${(angle * 180) / Math.PI}, ${(p.x + prev.x) / 2 - nx * 5}, ${(p.y + prev.y) / 2 - ny * 5})`}
-                    fill={`rgba(210,170,110,${alpha * 0.35})`} stroke="none"
-                  />
+                    fill={`rgba(210,170,110,${alpha * 0.35})`} stroke="none" />
                 )}
               </>
             )}
@@ -217,11 +179,7 @@ function ArtisanCursor({ x, y, tail, rotation }: { x: number; y: number; tail: T
           </g>
         );
       })}
-
-      {/* Outer ring */}
       <circle cx={x} cy={y} r={30} stroke="rgba(180,130,80,0.25)" strokeWidth={0.5} fill="none" />
-
-      {/* Rotating spokes */}
       {petals.map(i => {
         const angle = (i / 8) * Math.PI * 2 + rotation;
         const isPrimary = i % 2 === 0;
@@ -229,25 +187,17 @@ function ArtisanCursor({ x, y, tail, rotation }: { x: number; y: number; tail: T
         const tx = x + Math.cos(angle) * length;
         const ty = y + Math.sin(angle) * length;
         const diamondAngle = (angle + Math.PI / 4) * (180 / Math.PI);
-
         return (
           <g key={i}>
             <line x1={x} y1={y} x2={tx} y2={ty}
-              stroke={`rgba(180,130,80,${isPrimary ? 0.35 : 0.18})`}
-              strokeWidth={isPrimary ? 0.8 : 0.5}
-            />
+              stroke={`rgba(180,130,80,${isPrimary ? 0.35 : 0.18})`} strokeWidth={isPrimary ? 0.8 : 0.5} />
             {isPrimary && (
-              <rect
-                x={tx - 2} y={ty - 2} width={4} height={4}
-                fill="rgba(210,170,110,0.55)"
-                transform={`rotate(${diamondAngle}, ${tx}, ${ty})`}
-              />
+              <rect x={tx - 2} y={ty - 2} width={4} height={4} fill="rgba(210,170,110,0.55)"
+                transform={`rotate(${diamondAngle}, ${tx}, ${ty})`} />
             )}
           </g>
         );
       })}
-
-      {/* Counter-rotating fronds */}
       {fronds.map(i => {
         const angle = (i / 4) * Math.PI * 2 - rotation * 0.5;
         const r1 = 14, r2 = 22;
@@ -256,27 +206,68 @@ function ArtisanCursor({ x, y, tail, rotation }: { x: number; y: number; tail: T
         const ex = x + Math.cos(angle + 0.5) * r2, ey = y + Math.sin(angle + 0.5) * r2;
         const cpx = x + Math.cos(cpAngle) * (r1 + r2) / 2 * 1.4;
         const cpy = y + Math.sin(cpAngle) * (r1 + r2) / 2 * 1.4;
-
         return (
-          <path key={i}
-            d={`M ${sx2} ${sy2} Q ${cpx} ${cpy} ${ex} ${ey}`}
-            stroke="rgba(210,170,110,0.2)" strokeWidth={0.8} fill="none"
-          />
+          <path key={i} d={`M ${sx2} ${sy2} Q ${cpx} ${cpy} ${ex} ${ey}`}
+            stroke="rgba(210,170,110,0.2)" strokeWidth={0.8} fill="none" />
         );
       })}
-
-      {/* Inner ring */}
       <circle cx={x} cy={y} r={10} stroke="rgba(210,170,110,0.6)" strokeWidth={1} fill="rgba(180,130,80,0.08)" />
-
-      {/* Center drop */}
       <circle cx={x} cy={y} r={2.5} fill="rgba(210,170,110,0.9)" />
+      <text x={x + 36} y={y + 4} fontSize={10} fontFamily="Georgia, serif" fontStyle="italic" fill="rgba(180,130,80,0.4)">☽</text>
+      <text x={x + 14} y={y + 34} fontSize={9} fontFamily="Georgia, serif" fontStyle="italic" fill="rgba(210,170,110,0.3)">⚗ distillate</text>
+    </svg>
+  );
+}
 
-      {/* Alchemical symbol */}
-      <text x={x + 36} y={y + 4} fontSize={10} fontFamily="Georgia, serif" fontStyle="italic" fill="rgba(180,130,80,0.4)">
-        ☽
-      </text>
-      <text x={x + 14} y={y + 34} fontSize={9} fontFamily="Georgia, serif" fontStyle="italic" fill="rgba(210,170,110,0.3)">
-        ⚗ distillate
+/* ─── About cursor — triad prism + adaptive lens tag ─── */
+function AboutCursor({ x, y, tail, frame }: { x: number; y: number; tail: TailPoint[]; frame: number }) {
+  const labels = ['craft', 'code', 'cinema'] as const;
+  const active = labels[Math.floor(frame / 90) % labels.length];
+  const accent =
+    active === 'craft' ? 'rgba(213,176,138,0.75)' :
+    active === 'code' ? 'rgba(157,183,230,0.75)' :
+    'rgba(200,194,186,0.75)';
+  const spin = frame * 0.02;
+  const size = 24 + Math.sin(frame * 0.05) * 2;
+
+  const a = { x: x + Math.cos(spin - Math.PI / 2) * size, y: y + Math.sin(spin - Math.PI / 2) * size };
+  const b = { x: x + Math.cos(spin + Math.PI / 6) * size, y: y + Math.sin(spin + Math.PI / 6) * size };
+  const c = { x: x + Math.cos(spin + (5 * Math.PI) / 6) * size, y: y + Math.sin(spin + (5 * Math.PI) / 6) * size };
+
+  return (
+    <svg className="pointer-events-none fixed inset-0 w-full h-full overflow-visible" style={{ zIndex: 9999 }}>
+      {tail.map((p, i) => {
+        if (i === 0 || i >= tail.length - 1) return null;
+        const prev = tail[i - 1];
+        const progress = i / tail.length;
+        const alpha = (1 - progress) * 0.45;
+        const col =
+          i % 3 === 0 ? 'rgba(213,176,138,' :
+          i % 3 === 1 ? 'rgba(157,183,230,' :
+          'rgba(200,194,186,';
+        return (
+          <g key={i}>
+            <line
+              x1={prev.x} y1={prev.y}
+              x2={p.x} y2={p.y}
+              stroke={`${col}${(alpha * 0.55).toFixed(2)})`}
+              strokeWidth={(1 - progress) * 1.8}
+            />
+            {i % 5 === 0 && <circle cx={p.x} cy={p.y} r={(1 - progress) * 2.4} fill={`${col}${alpha.toFixed(2)})`} />}
+          </g>
+        );
+      })}
+      <circle cx={x} cy={y} r={34} fill="none" stroke="rgba(255,255,255,0.1)" strokeDasharray="4 8" />
+      <polygon points={`${a.x},${a.y} ${b.x},${b.y} ${c.x},${c.y}`} fill="rgba(255,255,255,0.05)" stroke={accent} strokeWidth={1.2} />
+      <line x1={a.x} y1={a.y} x2={x} y2={y} stroke={accent} strokeWidth={0.8} opacity={0.75} />
+      <line x1={b.x} y1={b.y} x2={x} y2={y} stroke={accent} strokeWidth={0.8} opacity={0.75} />
+      <line x1={c.x} y1={c.y} x2={x} y2={y} stroke={accent} strokeWidth={0.8} opacity={0.75} />
+      <circle cx={a.x} cy={a.y} r={2.4} fill="rgba(213,176,138,0.95)" />
+      <circle cx={b.x} cy={b.y} r={2.4} fill="rgba(157,183,230,0.95)" />
+      <circle cx={c.x} cy={c.y} r={2.4} fill="rgba(200,194,186,0.95)" />
+      <circle cx={x} cy={y} r={3.2} fill="rgba(255,255,255,0.9)" />
+      <text x={x + 38} y={y + 4} fontSize={10} fontFamily="monospace" letterSpacing="0.16em" fill={accent}>
+        {active.toUpperCase()}
       </text>
     </svg>
   );
@@ -286,7 +277,9 @@ function ArtisanCursor({ x, y, tail, rotation }: { x: number; y: number; tail: T
 export function CursorFollower() {
   const pathname = usePathname();
   const { activePanel } = useActivePanel();
-  const role = pathname === '/' ? getRoleFromPanel(activePanel) : getRoleFromPath(pathname ?? '/');
+  const role = pathname === '/'
+    ? getRoleFromPanel(activePanel)
+    : getRoleFromPath(pathname ?? '/');
 
   const [smoothPos, setSmoothPos] = useState({ x: -999, y: -999 });
   const [tail, setTail] = useState<TailPoint[]>([]);
@@ -315,15 +308,20 @@ export function CursorFollower() {
 
   useEffect(() => {
     function lerp(a: number, b: number, t: number) { return a + (b - a) * t; }
-    const speed = role === 'artisan' ? 0.17 : role === 'cinema' ? 0.11 : 0.17;
+    const speed = role === 'artisan' ? 0.17 : role === 'cinema' ? 0.11 : role === 'about' ? 0.13 : 0.17;
 
     function loop() {
       frameRef.current++;
       if (rawPos.current.x > 0) {
-        smoothRef.current.x = lerp(smoothRef.current.x === -999 ? rawPos.current.x : smoothRef.current.x, rawPos.current.x, speed);
-        smoothRef.current.y = lerp(smoothRef.current.y === -999 ? rawPos.current.y : smoothRef.current.y, rawPos.current.y, speed);
+        smoothRef.current.x = lerp(
+          smoothRef.current.x === -999 ? rawPos.current.x : smoothRef.current.x,
+          rawPos.current.x, speed
+        );
+        smoothRef.current.y = lerp(
+          smoothRef.current.y === -999 ? rawPos.current.y : smoothRef.current.y,
+          rawPos.current.y, speed
+        );
         setSmoothPos({ ...smoothRef.current });
-
         setTail(prev => {
           const next = [{ x: smoothRef.current.x, y: smoothRef.current.y }, ...prev];
           return next.slice(0, TAIL_LEN);
@@ -338,7 +336,6 @@ export function CursorFollower() {
     return () => cancelAnimationFrame(rafRef.current);
   }, [role]);
 
-
   useEffect(() => { setTail([]); setRotation(0); }, [role]);
 
   if (!visible || smoothPos.x < 0) return null;
@@ -346,9 +343,10 @@ export function CursorFollower() {
 
   return (
     <>
-      {role === 'cinema' && <CinemaCursor x={x} y={y} tail={tail} frame={frame} />}
-      {role === 'dev'     && <DevCursor    x={x} y={y} tail={tail} frame={frame} />}
-      {role === 'artisan' && <ArtisanCursor x={x} y={y} tail={tail} rotation={rotation} />}
+      {role === 'cinema'        && <CinemaCursor       x={x} y={y} tail={tail} frame={frame} />}
+      {role === 'dev'           && <DevCursor          x={x} y={y} tail={tail} frame={frame} />}
+      {role === 'artisan'       && <ArtisanCursor      x={x} y={y} tail={tail} rotation={rotation} />}
+      {role === 'about'         && <AboutCursor x={x} y={y} tail={tail} frame={frame} />}
     </>
   );
 }

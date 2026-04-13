@@ -7,10 +7,10 @@ import { Magnetic } from '@/components/ui/Magnetic';
 import { SkillBars } from '@/components/ui/SkillBars';
 import { JourneyTimeline } from '@/components/ui/JourneyTimeline';
 import { SectionLabel } from '@/components/ui/SectionLabel';
-import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
+import { LayoutHeader } from '@/components/ui/LayoutHeader';
 import { useLanguage } from '@/lib/languageContext';
 import { useActivePanel } from '@/lib/activePanelContext';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import {
   creations,
   journey,
@@ -25,7 +25,6 @@ import {
 export default function BeveragePage() {
   const { lang, t } = useLanguage();
   const { setActivePanel } = useActivePanel();
-  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     setActivePanel('beverage');
@@ -34,43 +33,8 @@ export default function BeveragePage() {
   return (
     <main className="min-h-screen text-amber-50 font-['DM_Sans',sans-serif]" style={{ background: '#0c0906' }}>
 
-      {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-4 sm:py-5 flex justify-between items-center"
-        style={{ background: 'rgba(12,9,6,0.85)', backdropFilter: 'blur(16px)', borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
-        <Magnetic strength={0.3}>
-          <Link href="/" className="flex items-center gap-3 group">
-            <svg className="w-3.5 h-3.5" style={{ color: '#3a2a1a' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 12H5M5 12l7-7M5 12l7 7" />
-            </svg>
-            <span className="text-[10px] tracking-[0.25em] uppercase" style={{ color: '#3a2a1a' }}>{t('Portfolio', 'Portofolio')}</span>
-          </Link>
-        </Magnetic>
-        <div className="hidden md:flex items-center gap-7">
-          <Magnetic strength={0.2}><Link href="/videographer" className="text-[10px] tracking-[0.2em] uppercase transition-colors" style={{ color: '#3a2a1a' }}>{t('Videographer', 'Videografer')}</Link></Magnetic>
-          <Magnetic strength={0.2}><Link href="/developer" className="text-[10px] tracking-[0.2em] uppercase transition-colors" style={{ color: '#3a2a1a' }}>{t('Developer', 'Developer')}</Link></Magnetic>
-          <span className="text-[10px] tracking-[0.2em] uppercase font-medium" style={{ color: '#b89878' }}>{t('Beverage', 'Peracik')}</span>
-          <div className="ml-2">
-            <LanguageSwitcher />
-          </div>
-        </div>
-        <div className="md:hidden flex items-center gap-2">
-          <LanguageSwitcher />
-          <button onClick={() => setMenuOpen((v) => !v)} className="p-2 rounded-md border border-amber-200/10" aria-label="Toggle menu">
-            <svg className="w-4 h-4 text-amber-100/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d={menuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'} />
-            </svg>
-          </button>
-        </div>
-      </nav>
-      {menuOpen && (
-        <div className="fixed top-[58px] left-0 right-0 z-40 md:hidden px-4 py-3 border-b border-amber-200/10 bg-[#0c0906]/95 backdrop-blur-xl">
-          <div className="flex flex-col gap-2 text-[11px] tracking-[0.16em] uppercase">
-            <Link href="/videographer" className="px-3 py-2 rounded-md text-amber-100/60" onClick={() => setMenuOpen(false)}>{t('Videographer', 'Videografer')}</Link>
-            <Link href="/developer" className="px-3 py-2 rounded-md text-amber-100/60" onClick={() => setMenuOpen(false)}>{t('Developer', 'Developer')}</Link>
-            <Link href="/beverage" className="px-3 py-2 rounded-md bg-amber-100/10 text-amber-100">{t('Beverage', 'Beverage')}</Link>
-          </div>
-        </div>
-      )}
+      <LayoutHeader activeRole="beverage" theme="artisan" />
+
 
       {/* Hero */}
       <section className="relative overflow-hidden" style={{ borderBottom: '1px solid rgba(180,130,80,0.08)' }}>
