@@ -7,7 +7,18 @@ import { Magnetic } from '@/components/ui/Magnetic';
 import { SkillBars } from '@/components/ui/SkillBars';
 import { JourneyTimeline } from '@/components/ui/JourneyTimeline';
 import { SectionLabel } from '@/components/ui/SectionLabel';
-import { SkillsUniverse } from '@/components/ui/SkillsUniverse';
+import dynamic from 'next/dynamic';
+const SkillsUniverse = dynamic(
+  () => import('@/components/ui/SkillsUniverse').then((mod) => mod.SkillsUniverse),
+  { 
+    ssr: false,
+    loading: () => (
+      <div className="w-full aspect-square flex items-center justify-center font-mono text-[10px]" style={{ color: '#3a4860', border: '1px solid rgba(100,130,200,0.05)', borderRadius: '50%' }}>
+        [INITIALIZING_UNIVERSE...]
+      </div>
+    )
+  }
+);
 import { projects, techStack, devJourney, devSkills, heroStats, statusColors, quickOverview, teamCollaboration, engineeringJudgement } from '@/data/developer';
 import { useLanguage } from '@/lib/languageContext';
 import { useActivePanel } from '@/lib/activePanelContext';
@@ -317,7 +328,7 @@ export default function DeveloperPage() {
                 style={{ border: '1px solid rgba(255,255,255,0.08)', color: '#4a5870' }}>GitHub</a>
             </Magnetic>
             <Magnetic strength={0.2}>
-              <Link href="/work-with-me"
+              <Link href="/developer/work-with-me"
                 className="px-7 py-3 font-medium rounded-full text-[13px] tracking-wide transition-all hover:opacity-90"
                 style={{ background: '#b8c8e0', color: '#090c10' }}>{t('Start a Project', 'Mulai Project')}</Link>
             </Magnetic>

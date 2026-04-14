@@ -5,7 +5,6 @@ import { useLanguage } from '@/lib/languageContext';
 import { usePathname } from 'next/navigation';
 import { useActivePanel } from '@/lib/activePanelContext';
 import { Magnetic } from './Magnetic';
-import Link from 'next/link';
 
 /**
  * Resolves theme colors based on current route or active panel on landing
@@ -14,8 +13,9 @@ function getThemeColors(pathname: string, activePanel: string) {
   const isTerminal = pathname.startsWith('/developer') || (pathname === '/' && activePanel === 'developer');
   const isArtisan = pathname.startsWith('/beverage') || (pathname === '/' && activePanel === 'beverage');
   const isBrutalist = pathname.startsWith('/about') || (pathname === '/' && activePanel === 'about');
+  const isWorkWithMe = pathname.startsWith('/work-with-me') || (pathname === '/' && activePanel === 'work-with-me');
 
-  if (isTerminal) {
+  if (isTerminal || isWorkWithMe) {
     return {
       border: 'rgba(100,130,200,0.15)',
       bg: 'rgba(100,130,200,0.03)',

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { useActivePanel } from '@/lib/activePanelContext';
@@ -8,10 +8,12 @@ import { grainUrl } from '@/data/panels';
 
 type Theme = 'cinema' | 'terminal' | 'artisan';
 
-function getThemeFromPath(path: string): Theme {
+function getThemeFromPath(path: string): Theme | null {
   if (path.startsWith('/developer')) return 'terminal';
-  if (path.startsWith('/beverage')) return 'artisan';
-  return 'cinema';
+  if (path.startsWith('/beverage'))  return 'artisan';
+  if (path.startsWith('/videographer')) return 'cinema';
+  if (path === '/about') return null;
+  return null;
 }
 
 function getThemeFromPanel(panel: string): Theme {
@@ -26,6 +28,18 @@ export function TextureOverlays() {
   const [isMounted, setIsMounted] = useState(false);
   
   const theme = pathname === '/' ? getThemeFromPanel(activePanel) : getThemeFromPath(pathname ?? '/');
+
+  // Pre-generate stable particle positions to avoid hydration mismatch
+  const particles = useMemo(() =>
+    Array.from({ length: 15 }, (_, i) => ({
+      id: i,
+      left: ((i * 73 + 17) % 100),
+      top: ((i * 47 + 31) % 100),
+      animX: ((i * 61 + 13) % 120) - 60,
+      animY: ((i * 83 + 29) % 120) - 60,
+      duration: 4 + (i * 37 % 60) / 10,
+    })),
+  []);
 
   useEffect(() => {
     setIsMounted(true);
@@ -178,22 +192,22 @@ export function TextureOverlays() {
             )}
 
             <div className="absolute inset-0 opacity-[0.45]">
-              {isMounted && [...Array(15)].map((_, i) => (
+              {isMounted && particles.map((p) => (
                 <motion.div
-                  key={i}
+                  key={p.id}
                   className="absolute w-2.5 h-2.5 bg-amber-200/50 rounded-full blur-[2px] shadow-[0_0_8px_rgba(252,211,77,0.3)]"
                   style={{
-                    left: `${Math.random() * 100}%`,
-                    top: `${Math.random() * 100}%`,
+                    left: `${p.left}%`,
+                    top: `${p.top}%`,
                   }}
                   animate={{
-                    x: [0, Math.random() * 120 - 60, 0],
-                    y: [0, Math.random() * 120 - 60, 0],
+                    x: [0, p.animX, 0],
+                    y: [0, p.animY, 0],
                     opacity: [0.2, 0.8, 0.2],
                     scale: [1, 1.2, 1],
                   }}
                   transition={{
-                    duration: 4 + Math.random() * 6,
+                    duration: p.duration,
                     repeat: Infinity,
                     ease: 'easeInOut',
                   }}

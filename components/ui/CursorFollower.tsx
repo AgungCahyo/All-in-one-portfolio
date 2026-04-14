@@ -11,6 +11,7 @@ interface TailPoint { x: number; y: number; }
 function getRoleFromPath(path: string): Role {
   if (path.startsWith('/developer')) return 'dev';
   if (path.startsWith('/beverage')) return 'artisan';
+  if (path.startsWith('/work-with-me')) return 'dev'
   return 'cinema';
 }
 
@@ -298,8 +299,15 @@ export function CursorFollower() {
   const smoothRef = useRef({ x: -999, y: -999 });
   const rafRef = useRef<number>(0);
   const frameRef = useRef(0);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
+    // Detect touch devices to disable heavy cursor follower on mobile
+    if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) {
+      setIsTouchDevice(true);
+      return;
+    }
+
     const onMove = (e: MouseEvent) => {
       rawPos.current = { x: e.clientX, y: e.clientY };
       setVisible(true);
@@ -314,6 +322,8 @@ export function CursorFollower() {
   }, []);
 
   useEffect(() => {
+    if (isTouchDevice) return;
+
     function lerp(a: number, b: number, t: number) { return a + (b - a) * t; }
     const speed = role === 'artisan' ? 0.07 : role === 'cinema' ? 0.11 : 0.17;
 
@@ -336,12 +346,12 @@ export function CursorFollower() {
 
     rafRef.current = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(rafRef.current);
-  }, [role]);
+  }, [role, isTouchDevice]);
 
 
   useEffect(() => { setTail([]); setRotation(0); }, [role]);
 
-  if (!visible || smoothPos.x < 0) return null;
+  if (isTouchDevice || !visible || smoothPos.x < 0) return null;
   const { x, y } = smoothPos;
 
   return (

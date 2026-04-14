@@ -5,7 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRef, useState, useEffect } from 'react';
 import { Magnetic } from '@/components/ui/Magnetic';
-import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
 import { LayoutHeader } from '@/components/ui/LayoutHeader';
 import { useLanguage } from '@/lib/languageContext';
 import { useActivePanel } from '@/lib/activePanelContext';

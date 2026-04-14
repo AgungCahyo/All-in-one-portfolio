@@ -10,7 +10,7 @@ import { useLanguage } from '@/lib/languageContext';
 import { RoleType, ThemeVariant } from '@/lib/types';
 
 interface HeaderProps {
-  activeRole: RoleType;
+  activeRole?: RoleType;
   theme?: ThemeVariant;
 }
 
@@ -114,7 +114,7 @@ export function LayoutHeader({ activeRole, theme = 'cinema' }: HeaderProps) {
           <div className="w-px h-3 ml-2" style={{ background: styles.border }} />
           <Magnetic strength={0.2}>
             <Link
-              href="/work-with-me"
+              href="/developer/work-with-me"
               className="px-3.5 py-2 rounded-full text-[10px] tracking-[0.18em] uppercase transition-colors"
               style={{ border: `1px solid ${styles.border}`, color: styles.accent }}
             >
@@ -167,7 +167,7 @@ export function LayoutHeader({ activeRole, theme = 'cinema' }: HeaderProps) {
                 </Link>
               ))}
               <Link
-                href="/work-with-me"
+                href="/developer/work-with-me"
                 className="px-3 py-2 rounded-md transition-colors font-bold"
                 style={{
                   background: 'rgba(255,255,255,0.06)',

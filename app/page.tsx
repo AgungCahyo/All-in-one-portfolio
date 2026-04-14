@@ -180,7 +180,7 @@ export default function Home() {
           ))}
           <div className="w-px h-3 bg-white/10 ml-2" />
           <Magnetic strength={0.2}>
-            <Link href="/work-with-me" className="text-[10px] tracking-[0.2em] uppercase transition-colors duration-300"
+          <Link href="/developer/work-with-me" className="text-[10px] tracking-[0.2em] uppercase transition-colors duration-300"
               style={{ color: 'rgba(255,255,255,0.45)' }}>
               {t('Start Project', 'Mulai Project')}
             </Link>
@@ -225,7 +225,7 @@ export default function Home() {
               style={{ color: 'rgba(255,255,255,0.45)' }}>
               {t('About', 'Tentang')}
             </Link>
-            <Link href="/work-with-me" className="text-left px-3 py-2 rounded-md text-[11px] tracking-[0.16em] uppercase"
+            <Link href="/developer/work-with-me" className="text-left px-3 py-2 rounded-md text-[11px] tracking-[0.16em] uppercase"
               style={{ color: 'rgba(255,255,255,0.75)', background: 'rgba(255,255,255,0.08)' }}>
               {t('Start Project', 'Mulai Project')}
             </Link>
@@ -294,7 +294,7 @@ export default function Home() {
           <span className="font-mono text-[9px] tracking-[0.2em] uppercase" style={{ color: 'rgba(255,255,255,0.15)' }}>
             {t('Open for developer projects', 'Open untuk project developer')}
           </span>
-          <Link href="/work-with-me" className="font-mono text-[9px] tracking-[0.2em] uppercase"
+          <Link href="/developer/work-with-me" className="font-mono text-[9px] tracking-[0.2em] uppercase"
             style={{ color: 'rgba(255,255,255,0.45)' }}>
             {t('Start Project', 'Mulai Project')}
           </Link>
