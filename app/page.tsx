@@ -21,9 +21,9 @@ export default function Home() {
   const { setActivePanel } = useActivePanel();
   const { lang, t } = useLanguage();
   const bootScript = [
-    '$ init portfolio.home --mode immersive',
-    '> loading identity panels...',
-    '> syncing craft / code / cinema...',
+    '$ init portfolio.home --mode developer-first',
+    '> loading engineering showcase...',
+    '> syncing code / cinema / craft...',
     '> applying cinematic transitions...',
     '> boot complete. rendering homepage',
   ].join('\n');
@@ -95,7 +95,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-black text-white font-['DM_Sans',sans-serif] overflow-hidden">
-      <h1 className="sr-only">Agung Cahyo Prasetyo - Videographer, Full-Stack Developer, dan Beverage Crafter di Kudus</h1>
+      <h1 className="sr-only">Agung Cahyo Prasetyo - Full-Stack Developer portfolio based in Kudus</h1>
       <AnimatePresence>
         {!isRevealed && (
           <motion.section
@@ -103,18 +103,21 @@ export default function Home() {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-[120] flex items-center justify-center bg-black"
+            className="fixed inset-0 z-120 flex items-center justify-center bg-black"
           >
             {!isBooting ? (
               <div className="text-center px-6">
-                <p className="text-sm mb-6 tracking-[0.18em] uppercase text-white/65">
+                <p className="text-sm mb-3 tracking-[0.18em] uppercase text-white/65">
                   Agung Cahyo Prasetyo
+                </p>
+                <p className="text-[11px] mb-6 tracking-[0.14em] uppercase text-white/45">
+                  {t('Developer services first', 'Fokus utama: jasa developer')}
                 </p>
                 <button
                   onClick={() => setIsBooting(true)}
                   className="px-8 py-3 border border-white/40 text-sm tracking-[0.22em] uppercase text-white hover:bg-white hover:text-black transition-all duration-500"
                 >
-                  {t('Hire Me', 'Hire Me')}
+                  {t('Enter Portfolio', 'Masuk Portfolio')}
                 </button>
               </div>
             ) : (
@@ -177,6 +180,12 @@ export default function Home() {
           ))}
           <div className="w-px h-3 bg-white/10 ml-2" />
           <Magnetic strength={0.2}>
+            <Link href="/work-with-me" className="text-[10px] tracking-[0.2em] uppercase transition-colors duration-300"
+              style={{ color: 'rgba(255,255,255,0.45)' }}>
+              {t('Start Project', 'Mulai Project')}
+            </Link>
+          </Magnetic>
+          <Magnetic strength={0.2}>
             <Link href="/about" className="text-[10px] tracking-[0.2em] uppercase transition-colors duration-300"
               style={{ color: 'rgba(255,255,255,0.2)' }}>
               {t('About', 'Tentang')}
@@ -216,6 +225,10 @@ export default function Home() {
               style={{ color: 'rgba(255,255,255,0.45)' }}>
               {t('About', 'Tentang')}
             </Link>
+            <Link href="/work-with-me" className="text-left px-3 py-2 rounded-md text-[11px] tracking-[0.16em] uppercase"
+              style={{ color: 'rgba(255,255,255,0.75)', background: 'rgba(255,255,255,0.08)' }}>
+              {t('Start Project', 'Mulai Project')}
+            </Link>
           </div>
         </div>
       )}
@@ -229,7 +242,7 @@ export default function Home() {
           className="font-['Cormorant_Garamond',serif] font-bold whitespace-nowrap tracking-[-0.04em]"
           style={{ fontSize: '10vw', color: 'white' }}
         >
-          {t('CODE · CINEMA · CRAFT', 'KODE · SINEMA · KARYA')}
+          {t('CODE · CINEMA · CRAFT', 'KODE · SINEMA · RACIK')}
         </motion.p>
       </div>
 
@@ -277,9 +290,15 @@ export default function Home() {
         <span className="font-mono text-[9px] tracking-[0.2em] uppercase" style={{ color: 'rgba(255,255,255,0.15)' }}>
           Kudus, Indonesia
         </span>
-        <span className="font-mono text-[9px] tracking-[0.2em] uppercase" style={{ color: 'rgba(255,255,255,0.15)' }}>
-          {t('Open for collaboration', 'Open buat kolaborasi')}
-        </span>
+        <div className="flex items-center gap-4">
+          <span className="font-mono text-[9px] tracking-[0.2em] uppercase" style={{ color: 'rgba(255,255,255,0.15)' }}>
+            {t('Open for developer projects', 'Open untuk project developer')}
+          </span>
+          <Link href="/work-with-me" className="font-mono text-[9px] tracking-[0.2em] uppercase"
+            style={{ color: 'rgba(255,255,255,0.45)' }}>
+            {t('Start Project', 'Mulai Project')}
+          </Link>
+        </div>
       </div>
       </motion.div>
 

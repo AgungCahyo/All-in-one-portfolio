@@ -12,20 +12,19 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://example.com'
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Agung Cahyo Prasetyo — Code · Cinema · Craft',
+    default: 'Agung Cahyo Prasetyo — Full-Stack Developer',
     template: '%s | Agung Cahyo Prasetyo',
   },
-  description: 'Videographer, Full-Stack Developer, and Beverage Crafter based in Kudus. Intentionality in every detail.',
+  description: 'Full-Stack Developer based in Kudus. Building production-ready web apps, AI integrations, and automation systems.',
   keywords: [
     'Agung Cahyo Prasetyo',
     'Kudus',
     'Portfolio Kudus',
-    'Videographer Kudus',
     'Full-Stack Developer Kudus',
-    'Jasa Videographer Kudus',
-    'Videographer Indonesia',
+    'Jasa Developer Kudus',
+    'Web Developer Indonesia',
     'Full-Stack Developer Indonesia',
-    'Beverage Crafter',
+    'AI Automation Developer',
     'Portfolio',
   ],
   alternates: {
@@ -44,8 +43,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Agung Cahyo Prasetyo — Code · Cinema · Craft',
-    description: 'Videographer · Developer · Beverage Crafter',
+    title: 'Agung Cahyo Prasetyo — Full-Stack Developer',
+    description: 'Developer portfolio focused on web apps, AI integration, and automation.',
     type: 'website',
     url: '/',
     siteName: 'Agung Cahyo Prasetyo Portfolio',
@@ -53,8 +52,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Agung Cahyo Prasetyo — Code · Cinema · Craft',
-    description: 'Videographer · Developer · Beverage Crafter',
+    title: 'Agung Cahyo Prasetyo — Full-Stack Developer',
+    description: 'Developer portfolio focused on web apps, AI integration, and automation.',
   },
   icons: {
     icon: [
@@ -70,8 +69,8 @@ const personJsonLd = {
   '@type': 'Person',
   name: 'Agung Cahyo Prasetyo',
   url: siteUrl,
-  jobTitle: 'Videographer, Full-Stack Developer, Beverage Crafter',
-  description: 'Multidisciplinary creator based in Kudus, working across code, cinema, and craft.',
+  jobTitle: 'Full-Stack Developer',
+  description: 'Full-Stack Developer based in Kudus, building reliable web products and AI-powered automation.',
   email: 'mailto:cahyoprasetyo507@gmail.com',
   address: {
     '@type': 'PostalAddress',
@@ -84,11 +83,10 @@ const personJsonLd = {
     name: 'Kudus, Indonesia',
   },
   knowsAbout: [
-    'Videography',
-    'Video Editing',
     'Full-Stack Development',
     'AI Automation',
-    'Beverage Craft',
+    'Web Application Development',
+    'System Integration',
   ],
   sameAs: [
     'https://github.com/agungcahyo',
@@ -103,7 +101,7 @@ const websiteJsonLd = {
   name: 'Agung Cahyo Prasetyo Portfolio',
   url: siteUrl,
   inLanguage: 'en',
-  description: 'Portfolio showcasing developer, videography, and beverage craft work.',
+  description: 'Portfolio showcasing full-stack development, AI automation, and software engineering work.',
 }
 
 export default function RootLayout({

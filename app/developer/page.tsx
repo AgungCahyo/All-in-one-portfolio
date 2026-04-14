@@ -84,7 +84,7 @@ export default function DeveloperPage() {
 
             {/* Photo side */}
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.2 }}
-              className="relative flex-shrink-0 w-full lg:w-[280px] h-[300px] lg:h-[380px] order-1 lg:order-2">
+              className="relative shrink-0 w-full lg:w-[280px] h-[300px] lg:h-[380px] order-1 lg:order-2">
               <div className="absolute top-0 left-0 right-0 z-10 flex items-center gap-1.5 px-3"
                 style={{ height: '28px', background: 'rgba(16,24,36,0.95)', borderRadius: '4px 4px 0 0', border: '1px solid rgba(100,130,200,0.12)', borderBottom: 'none' }}>
                 <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#ff5f57' }} />
@@ -308,7 +308,7 @@ export default function DeveloperPage() {
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-8">
           <div>
             <h2 className="font-['Cormorant_Garamond',serif] text-3xl lg:text-4xl font-bold mb-2" style={{ color: '#b8c8e0' }}>{t('Need a developer?', 'Lagi cari developer?')}</h2>
-            <p className="text-[14px]" style={{ color: '#2a3040' }}>{t("Let's build something robust and elegant.", "Yuk build sesuatu yang robust dan elegant.")}</p>
+            <p className="text-[14px]" style={{ color: '#2a3040' }}>{t("Share the scope first. I'll turn it into a practical build plan.", "Kirim dulu scope project-nya. Nanti aku ubah jadi build plan yang praktis.")}</p>
           </div>
           <div className="flex gap-3">
             <Magnetic strength={0.2}>
@@ -317,9 +317,9 @@ export default function DeveloperPage() {
                 style={{ border: '1px solid rgba(255,255,255,0.08)', color: '#4a5870' }}>GitHub</a>
             </Magnetic>
             <Magnetic strength={0.2}>
-              <a href="mailto:cahyoprasetyo507@gmail.com"
+              <Link href="/work-with-me"
                 className="px-7 py-3 font-medium rounded-full text-[13px] tracking-wide transition-all hover:opacity-90"
-                style={{ background: '#b8c8e0', color: '#090c10' }}>{t('Hire Me as Developer', 'Hire Me as Developer')}</a>
+                style={{ background: '#b8c8e0', color: '#090c10' }}>{t('Start a Project', 'Mulai Project')}</Link>
             </Magnetic>
           </div>
         </div>

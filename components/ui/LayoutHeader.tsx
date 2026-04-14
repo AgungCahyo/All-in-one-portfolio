@@ -112,6 +112,15 @@ export function LayoutHeader({ activeRole, theme = 'cinema' }: HeaderProps) {
             </Magnetic>
           ))}
           <div className="w-px h-3 ml-2" style={{ background: styles.border }} />
+          <Magnetic strength={0.2}>
+            <Link
+              href="/work-with-me"
+              className="px-3.5 py-2 rounded-full text-[10px] tracking-[0.18em] uppercase transition-colors"
+              style={{ border: `1px solid ${styles.border}`, color: styles.accent }}
+            >
+              {t('Start Project', 'Mulai Project')}
+            </Link>
+          </Magnetic>
           <LanguageSwitcher />
         </div>
 
@@ -157,6 +166,17 @@ export function LayoutHeader({ activeRole, theme = 'cinema' }: HeaderProps) {
                   {t(link.labelEn, link.labelId)}
                 </Link>
               ))}
+              <Link
+                href="/work-with-me"
+                className="px-3 py-2 rounded-md transition-colors font-bold"
+                style={{
+                  background: 'rgba(255,255,255,0.06)',
+                  color: styles.textPrimary,
+                }}
+                onClick={() => setMenuOpen(false)}
+              >
+                {t('Start Project', 'Mulai Project')}
+              </Link>
             </div>
           </motion.div>
         )}

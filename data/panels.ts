@@ -8,26 +8,9 @@ export const paperUrl = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org
 
 export const panels: Panel[] = [
     {
-        id: 'beverage',
-        href: '/beverage',
-        num: '01',
-        title: { en: 'Beverage\nCrafter', id: 'Beverage\nCrafter' },
-        titleShort: 'Bev',
-        subtitle: { en: '5+ years crafting drinks — taste, aroma & precision in every pour', id: '5+ tahun ngeracik minuman - rasa, aroma, dan presisi di tiap pour' },
-        tag: { en: 'Mocktails · Cold Infusion · Menu Engineering', id: 'Mocktail · Cold Infusion · Rekayasa Menu' },
-        cta: { en: 'View Craft Work', id: 'Lihat Craft Work' },
-        accent: '#d0c0b0',
-        dim: '#7a6458',
-        bg: '#100c08',
-        photo: '/profile.png',
-        photoFlip: false,
-        PhotoFilter: 'grayscale(30%) sepia(60%) hue-rotate(180deg)',
-        theme: 'artisan'
-    },
-    {
         id: 'developer',
         href: '/developer',
-        num: '02',
+        num: '01',
         title: { en: 'Full-stack\nDeveloper', id: 'Full-stack\nDeveloper' },
         titleShort: 'Dev',
         subtitle: { en: '3+ years shipping production apps — SaaS, AI & mobile', id: '3+ tahun shipping production apps - SaaS, AI, dan mobile' },
@@ -44,7 +27,7 @@ export const panels: Panel[] = [
     {
         id: 'videographer',
         href: '/videographer',
-        num: '03',
+        num: '02',
         title: { en: 'Videographer\n& Editor', id: 'Videographer\n& Editor' },
         titleShort: 'Video',
         subtitle: { en: 'Cinematic storytelling — corporate, documentary & brand film', id: 'Cinematic storytelling - corporate, documentary, dan brand film' },
@@ -57,5 +40,22 @@ export const panels: Panel[] = [
         photoFlip: true,
         PhotoFilter: 'grayscale(40%)',
         theme: 'cinema'
+    },
+    {
+        id: 'beverage',
+        href: '/beverage',
+        num: '03',
+        title: { en: 'Beverage\nCrafter', id: 'Beverage\nCrafter' },
+        titleShort: 'Bev',
+        subtitle: { en: '5+ years crafting drinks — taste, aroma & precision in every pour', id: '5+ tahun ngeracik minuman - rasa, aroma, dan presisi di tiap pour' },
+        tag: { en: 'Mocktails · Cold Infusion · Menu Engineering', id: 'Mocktail · Cold Infusion · Rekayasa Menu' },
+        cta: { en: 'View Craft Work', id: 'Lihat Craft Work' },
+        accent: '#d0c0b0',
+        dim: '#7a6458',
+        bg: '#100c08',
+        photo: '/profile.png',
+        photoFlip: false,
+        PhotoFilter: 'grayscale(30%) sepia(60%) hue-rotate(180deg)',
+        theme: 'artisan'
     },
 ];

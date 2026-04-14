@@ -22,6 +22,7 @@ import {
   heroStats,
 } from '@/data/beverage';
 
+
 export default function BeveragePage() {
   const { lang, t } = useLanguage();
   const { setActivePanel } = useActivePanel();
@@ -92,11 +93,11 @@ export default function BeveragePage() {
             </motion.div>
 
             {/* Divider line */}
-            <div className="hidden lg:block flex-shrink-0" style={{ width: '1px', background: 'linear-gradient(to bottom, transparent, rgba(180,130,80,0.15) 30%, rgba(180,130,80,0.15) 70%, transparent)' }} />
+            <div className="hidden lg:block shrink-0" style={{ width: '1px', background: 'linear-gradient(to bottom, transparent, rgba(180,130,80,0.15) 30%, rgba(180,130,80,0.15) 70%, transparent)' }} />
 
             {/* Right: Photo panel */}
             <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1, delay: 0.2 }}
-              className="relative flex-shrink-0 w-full lg:w-[340px] h-[360px] lg:h-auto order-1 lg:order-2 lg:pl-16" style={{ minHeight: '400px' }}>
+              className="relative shrink-0 w-full lg:w-[340px] h-[360px] lg:h-auto order-1 lg:order-2 lg:pl-16" style={{ minHeight: '400px' }}>
               <div className="relative w-full h-full" style={{ minHeight: '400px' }}>
                 <div className="absolute top-0 left-0 w-6 h-6 z-10" style={{ borderTop: '1px solid rgba(180,130,80,0.3)', borderLeft: '1px solid rgba(180,130,80,0.3)' }} />
                 <div className="absolute top-0 right-0 w-6 h-6 z-10" style={{ borderTop: '1px solid rgba(180,130,80,0.3)', borderRight: '1px solid rgba(180,130,80,0.3)' }} />
@@ -227,7 +228,18 @@ export default function BeveragePage() {
           </motion.div>
         </div>
       </section>
-
+{/* Flavor Molecule Interactive */}
+<section className="px-8 lg:px-16 py-16" style={{ borderTop: '1px solid rgba(180,130,80,0.08)' }}>
+  <div className="max-w-6xl mx-auto">
+    <SectionLabel color="#3a2a1a">{t('Flavor Molecule', 'Molekul Rasa')}</SectionLabel>
+    <p className="text-[14px] leading-relaxed mb-8 max-w-2xl" style={{ color: '#5a4a38' }}>
+      {t(
+        'Explore the molecular composition of our signature drink. Each atom represents a key flavor dimension. Drag to rotate, hover to inspect, and click to learn more about each flavor component.',
+        'Jelajahi komposisi molekuler minuman signature kami. Setiap atom mewakili dimensi rasa kunci. Drag untuk rotate, hover untuk inspeksi, dan klik untuk pelajari lebih lanjut tentang setiap komponen rasa.'
+      )}
+    </p>
+  </div>
+</section>
       {/* Journey Timeline */}
       <section className="px-8 lg:px-16 py-16" style={{ borderTop: '1px solid rgba(180,130,80,0.08)' }}>
         <div className="max-w-6xl mx-auto">
