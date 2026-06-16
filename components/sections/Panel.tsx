@@ -57,11 +57,8 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
           }}
           priority
         />
-        <div className="absolute inset-0" style={{ background: gradientOverlay }} />
         <div className="absolute inset-0" style={{ background: bottomGradient }} />
       </div>
-
-      {/* Texture overlays removed - now handled by global TextureOverlays in layout */}
 
       {/* Cinema letterbox bars */}
       {isCinema && (

@@ -14,7 +14,7 @@ export interface VideoProject {
 
 export const projects: VideoProject[] = [
   {
-    title: { en: 'Cinematography & Editing Reel', id: 'Reel Sinematografi & Editing' },
+    title: { en: 'Picnic 2024', id: 'Piknik 2024' },
     type: { en: 'Showreel', id: 'Showreel' },
     year: '2024',
     description: {
@@ -22,8 +22,8 @@ export const projects: VideoProject[] = [
       id: 'Kumpulan karya terbaik saya dari berbagai genre — korporat, dokumenter, dan sinematik. Setiap karya menunjukkan framing yang disengaja, ritme editing yang bertujuan, dan color grading yang berpijak pada cerita.'
     },
     tags: ['Color Grading', 'Motion Graphics', 'Sound Design'],
-    videoId: null,
-    link: 'https://www.youtube.com/@agungcahyo',
+    videoId: 'ChtPLCgy_vo',
+    link: 'https://youtu.be/ChtPLCgy_vo',
     linkLabel: { en: 'Watch Full Reel', id: 'Tonton Reel Lengkap' },
     stats: [
       { value: '15+', label: { en: 'Projects', id: 'Proyek' } },
@@ -32,7 +32,7 @@ export const projects: VideoProject[] = [
     ],
   },
   {
-    title: { en: 'Brand Narrative Series', id: 'Seri Narasi Brand' },
+    title: { en: 'Family Time', id: 'Waktu dengan Keluarga' },
     type: { en: 'Commercial', id: 'Komersial' },
     year: '2024',
     description: {
@@ -40,13 +40,13 @@ export const projects: VideoProject[] = [
       id: 'Seri mikro-dokumenter 3 bagian tentang para pengrajin lokal. Saya pegang sendiri dari arah, kamera, hingga editing. DaVinci Resolve digunakan untuk pipeline warna berbasis emulasi film, menghadirkan kesan klasik dan organik.'
     },
     tags: ['Directing', 'Cinematography', 'Film Emulation'],
-    videoId: null,
+    videoId: 'IGgQigrSOGE',
     link: '#',
     linkLabel: { en: 'Coming Soon', id: 'Segera Hadir' },
     stats: null,
   },
   {
-    title: { en: 'Event Aftermovie', id: 'Aftermovie Acara' },
+    title: { en: 'Carnaval 17an bandung rejo 2024', id: 'Aftermovie Acara' },
     type: { en: 'Event Coverage', id: 'Liputan Acara' },
     year: '2023',
     description: {
@@ -54,13 +54,13 @@ export const projects: VideoProject[] = [
       id: 'Liputan berenergi tinggi dari konferensi teknologi selama 3 hari. Pengambilan gambar run-and-gun di berbagai kondisi cahaya, dilanjutkan editing cepat dengan speed ramp dinamis dan desain suara yang matang.'
     },
     tags: ['Run-and-gun', 'Speed Ramping', 'Rapid Delivery'],
-    videoId: null,
+    videoId: 'sNEY6BpiXko',
     link: '#',
     linkLabel: { en: 'Coming Soon', id: 'Segera Hadir' },
     stats: null,
   },
   {
-    title: { en: 'Product Launch Teaser', id: 'Teaser Peluncuran Produk' },
+    title: { en: 'Graduation SDN 2 Gajah', id: 'Teaser Peluncuran Produk' },
     type: { en: 'Short Form', id: 'Konten Pendek' },
     year: '2023',
     description: {
@@ -68,7 +68,7 @@ export const projects: VideoProject[] = [
       id: 'Teaser 30 detik bertenaga tinggi untuk media sosial. Fokus pada detail makro, pencahayaan bergaya, dan desain suara yang dimanipulasi untuk membangun ketegangan hingga puncaknya.'
     },
     tags: ['Macro Lighting', 'Sound Design', 'Social Optimization'],
-    videoId: null,
+    videoId: 'CJWyWw1W8CU',
     link: '#',
     linkLabel: { en: 'Coming Soon', id: 'Segera Hadir' },
     stats: null,
