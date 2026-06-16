@@ -74,7 +74,7 @@ export default function VideographerPage() {
               Video<br />grapher<br /><span style={{ color: 'rgba(206,200,192,0.18)' }}>&amp; {t('Editor', 'Editor')}</span>
             </h1>
             <p className="text-[15px] leading-relaxed max-w-sm" style={{ color: '#6a6460' }}>
-              {t('From concept to final cut — crafting cinematic narratives that move audiences through corporate, documentary & brand storytelling.', 'Dari concept sampai final cut - ngebangun narasi sinematik yang bikin audiens kerasa connect, lewat corporate, documentary, dan brand storytelling.')}
+              {t('Editing videos in my free time, turning everyday moments into something worth watching.', 'Edit video di waktu luang, ngubah momen sehari-hari jadi sesuatu yang enak ditonton.')}
             </p>
           </motion.div>
 

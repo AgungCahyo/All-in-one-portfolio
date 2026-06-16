@@ -36,7 +36,6 @@ export default function Home() {
 
   useEffect(() => {
     if (!isRevealed) return;
-    setIsBooting(false);
     setTypedChars(bootScript.length);
     setBootProgress(100);
   }, [isRevealed, bootScript.length]);
@@ -56,7 +55,6 @@ export default function Home() {
   }, [active, setActivePanel]);
 
   useEffect(() => {
-    if (!isBooting) return;
     const total = bootScript.length;
     const typeTimer = window.setInterval(() => {
       setTypedChars((prev) => {
@@ -66,17 +64,16 @@ export default function Home() {
       });
     }, 22);
     return () => window.clearInterval(typeTimer);
-  }, [isBooting, bootScript]);
+  }, [bootScript]);
 
   useEffect(() => {
-    if (!isBooting) return;
     if (typedChars < bootScript.length) return;
     const revealTimer = window.setTimeout(() => {
       setIsRevealed(true);
       sessionStorage.setItem('home-revealed', 'true');
     }, 260);
     return () => window.clearTimeout(revealTimer);
-  }, [isBooting, typedChars, bootScript.length]);
+  }, [typedChars, bootScript.length]);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-home-revealed', isRevealed ? 'true' : 'false');
@@ -96,7 +93,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-black text-white font-['DM_Sans',sans-serif] overflow-hidden">
       <h1 className="sr-only">Agung Cahyo Prasetyo - Full-Stack Developer portfolio based in Kudus</h1>
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {!isRevealed && (
           <motion.section
             key="home-plain-entry"
@@ -139,7 +136,7 @@ export default function Home() {
             )}
           </motion.section>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
 
       <motion.div
         initial={false}

@@ -75,48 +75,47 @@ export const videoJourney: JourneyItem[] = [
   {
     year: '2021',
     phase: { en: 'Foundation', id: 'Fondasi' },
-    title: { en: 'The Art of the Cut', id: 'Seni Memotong Gambar' },
+    title: { en: 'Starting Simple', id: 'Mulai dari yang Sederhana' },
     body: {
-      en: 'Started editing small projects and learning the fundamental psychology of pacing, rhythm, and continuity. Realized that editing is where the story is actually rewritten.',
-      id: 'Mulai mengedit proyek-proyek kecil dan mempelajari psikologi di balik tempo, ritme, dan kontinuitas. Satu kesadaran penting: editing adalah tempat di mana cerita sesungguhnya ditulis ulang.'
+      en: 'Started editing casual clips just for fun, learning the basics of cutting and timing with free mobile apps.',
+      id: 'Mulai mengedit klip-klip kasual untuk hobi, belajar dasar-dasar cutting dan timing pakai aplikasi gratis di HP.'
     }
   },
   {
     year: '2022',
-    phase: { en: 'Technical', id: 'Teknis' },
-    title: { en: 'Mastering the Aesthetic', id: 'Menguasai Estetika' },
+    phase: { en: 'Discovery', id: 'Penemuan' },
+    title: { en: 'Found My Tool: CapCut', id: 'Menemukan CapCut' },
     body: {
-      en: 'Transitioned heavily into DaVinci Resolve. Deep-dived into color theory, node-based grading, and film emulation techniques. Began treating color as an emotional tool, not just a technical correction.',
-      id: 'Beralih sepenuhnya ke DaVinci Resolve. Menyelami teori warna, grading berbasis node, dan teknik emulasi film secara mendalam. Dari sinilah saya mulai memandang warna bukan sekadar koreksi teknis, melainkan alat emosional yang kuat.'
+      en: 'Switched to CapCut and started exploring transitions, captions, and simple music syncing — making editing more fun and a lot easier.',
+      id: 'Beralih ke CapCut dan mulai eksplorasi transisi, caption, dan sinkronisasi musik sederhana — bikin editing jadi lebih seru dan jauh lebih mudah.'
     }
   },
   {
     year: '2023',
-    phase: { en: 'Execution', id: 'Eksekusi' },
-    title: { en: 'Run-and-Gun to Studio', id: 'Dari Jalanan ke Studio' },
+    phase: { en: 'Practice', id: 'Latihan' },
+    title: { en: 'Capturing Real Moments', id: 'Menangkap Momen Nyata' },
     body: {
-      en: 'Expanded into full production — shooting live events, corporate profiles, and short-form content. Learned how to manage dynamic lighting environments and multi-cam workflows under pressure.',
-      id: 'Berkembang ke produksi penuh — meliput acara langsung, profil korporat, dan konten pendek. Belajar mengelola pencahayaan yang terus berubah dan alur kerja multi-kamera di bawah tekanan waktu.'
+      en: 'Started editing aftermovies for real moments around me — a family gathering, a village carnival, a school graduation — turning raw clips into something worth rewatching.',
+      id: 'Mulai mengedit aftermovie dari momen-momen nyata di sekitar — kumpul keluarga, karnaval desa, hingga acara kelulusan sekolah — mengubah klip mentah jadi sesuatu yang enak ditonton ulang.'
     }
   },
   {
     year: '2024–Now',
-    phase: { en: 'Directing', id: 'Penyutradaraan' },
-    title: { en: 'Cinematic Storytelling', id: 'Bercerita Lewat Sinema' },
+    phase: { en: 'Present', id: 'Sekarang' },
+    title: { en: 'Still Just for Fun', id: 'Masih Sekadar Hobi' },
     body: {
-      en: "Currently focusing on high-end, narrative-driven work. Bringing a developer's systematic workflow (organized timelines, proxies, rendering pipelines) into the creative process of filmmaking.",
-      id: 'Saat ini fokus pada karya naratif kelas atas. Saya membawa kebiasaan sistematis ala developer — timeline terstruktur, proxy workflow, pipeline rendering — ke dalam proses kreatif pembuatan film.'
+      en: "Still treat this purely as a hobby, experimenting with pacing, captions, and music choices whenever there's free time between coding projects.",
+      id: 'Masih murni jadi hobi, eksperimen dengan tempo, caption, dan pilihan musik kalau ada waktu kosong di antara proyek coding.'
     }
   },
 ];
 
 export const videoTech: SkillBar[] = [
-  { name: 'Video Editing (Premiere/Resolve)', level: 90, cat: 'Post-Production' },
-  { name: 'Color Grading (DaVinci)', level: 88, cat: 'Post-Production' },
-  { name: 'Cinematography', level: 85, cat: 'Production' },
-  { name: 'Sound Design & Audio Mixing', level: 80, cat: 'Audio' },
-  { name: 'Motion Graphics (After Effects)', level: 75, cat: 'Post-Production' },
-  { name: 'Lighting & Framing', level: 82, cat: 'Production' },
+  { name: 'Video Cutting & Trimming (CapCut)', level: 85, cat: 'Editing' },
+  { name: 'Transitions & Effects', level: 70, cat: 'Editing' },
+  { name: 'Captions & Subtitles', level: 75, cat: 'Editing' },
+  { name: 'Basic Color Adjustment', level: 60, cat: 'Editing' },
+  { name: 'Background Music & Audio Sync', level: 65, cat: 'Audio' },
 ];
 
 export const philosophy: PhilosophyItem[] = [
