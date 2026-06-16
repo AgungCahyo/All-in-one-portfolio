@@ -15,59 +15,55 @@ export interface VideoProject {
 export const projects: VideoProject[] = [
   {
     title: { en: 'Picnic 2024', id: 'Piknik 2024' },
-    type: { en: 'Showreel', id: 'Showreel' },
+    type: { en: 'Personal Project', id: 'Proyek Pribadi' },
     year: '2024',
     description: {
-      en: 'A curated selection of my best work across corporate, documentary, and cinematic genres. Each piece demonstrates intentional framing, purposeful editing rhythm, and story-driven color grading.',
-      id: 'Kumpulan karya terbaik saya dari berbagai genre — korporat, dokumenter, dan sinematik. Setiap karya menunjukkan framing yang disengaja, ritme editing yang bertujuan, dan color grading yang berpijak pada cerita.'
+      en: 'A video capturing a picnic outing in 2024, made just for fun.',
+      id: 'Video yang menangkap momen piknik di tahun 2024, dibuat untuk hobi.'
     },
-    tags: ['Color Grading', 'Motion Graphics', 'Sound Design'],
+    tags: ['Color Grading', 'Sound Design'],
     videoId: 'ChtPLCgy_vo',
     link: 'https://youtu.be/ChtPLCgy_vo',
-    linkLabel: { en: 'Watch Full Reel', id: 'Tonton Reel Lengkap' },
-    stats: [
-      { value: '15+', label: { en: 'Projects', id: 'Proyek' } },
-      { value: '4K', label: { en: 'Resolution', id: 'Resolusi' } },
-      { value: '3', label: { en: 'Genres', id: 'Genre' } },
-    ],
+    linkLabel: { en: 'Watch Video', id: 'Tonton Video' },
+    stats: null,
   },
   {
-    title: { en: 'Family Time', id: 'Waktu dengan Keluarga' },
-    type: { en: 'Commercial', id: 'Komersial' },
+    title: { en: 'Family Time', id: 'Waktu Bersama Keluarga' },
+    type: { en: 'Personal Project', id: 'Proyek Pribadi' },
     year: '2024',
     description: {
-      en: 'A 3-part micro-documentary series focused on local artisans. Directed, shot, and edited the entire sequence. Utilized DaVinci Resolve for a film-emulation color pipeline to evoke a timeless, organic feel.',
-      id: 'Seri mikro-dokumenter 3 bagian tentang para pengrajin lokal. Saya pegang sendiri dari arah, kamera, hingga editing. DaVinci Resolve digunakan untuk pipeline warna berbasis emulasi film, menghadirkan kesan klasik dan organik.'
+      en: 'A short video made for fun, capturing simple, warm moments of quality time with family.',
+      id: 'Video singkat yang dibuat untuk hobi, menangkap momen-momen hangat dan sederhana saat menghabiskan waktu bersama keluarga.'
     },
-    tags: ['Directing', 'Cinematography', 'Film Emulation'],
+    tags: ['Directing', 'Color Grading', 'Family'],
     videoId: 'IGgQigrSOGE',
     link: '#',
     linkLabel: { en: 'Coming Soon', id: 'Segera Hadir' },
     stats: null,
   },
   {
-    title: { en: 'Carnaval 17an bandung rejo 2024', id: 'Aftermovie Acara' },
-    type: { en: 'Event Coverage', id: 'Liputan Acara' },
+    title: { en: 'Independence Day Carnival – Bandungrejo', id: 'Karnaval 17 Agustus – Bandungrejo' },
+    type: { en: 'Personal Project', id: 'Proyek Pribadi' },
     year: '2023',
     description: {
-      en: 'High-energy coverage of a 3-day tech conference. Required run-and-gun shooting in changing lighting conditions, followed by rapid-turnaround editing using dynamic speed ramps and specialized sound design.',
-      id: 'Liputan berenergi tinggi dari konferensi teknologi selama 3 hari. Pengambilan gambar run-and-gun di berbagai kondisi cahaya, dilanjutkan editing cepat dengan speed ramp dinamis dan desain suara yang matang.'
+      en: 'Footage from an Independence Day carnival parade in Bandungrejo village, shot just for fun to capture the lively atmosphere of the celebration.',
+      id: 'Rekaman dari pawai karnaval 17 Agustusan di Desa Bandungrejo, diambil untuk hobi guna menangkap suasana ramai perayaan tersebut.'
     },
-    tags: ['Run-and-gun', 'Speed Ramping', 'Rapid Delivery'],
+    tags: ['Event Coverage', 'Run-and-gun', 'Sound Design'],
     videoId: 'sNEY6BpiXko',
     link: '#',
     linkLabel: { en: 'Coming Soon', id: 'Segera Hadir' },
     stats: null,
   },
   {
-    title: { en: 'Graduation SDN 2 Gajah', id: 'Teaser Peluncuran Produk' },
-    type: { en: 'Short Form', id: 'Konten Pendek' },
+    title: { en: 'Graduation Day – SDN 2 Gajah', id: 'Hari Kelulusan – SDN 2 Gajah' },
+    type: { en: 'Personal Project', id: 'Proyek Pribadi' },
     year: '2023',
     description: {
-      en: 'A 30-second high-impact teaser designed for social media. Focused on macro details, stylized lighting, and heavily manipulated sound design to build tension leading to the drop.',
-      id: 'Teaser 30 detik bertenaga tinggi untuk media sosial. Fokus pada detail makro, pencahayaan bergaya, dan desain suara yang dimanipulasi untuk membangun ketegangan hingga puncaknya.'
+      en: 'An aftermovie made for fun, documenting the graduation ceremony at SDN 2 Gajah elementary school and the key moments of the day.',
+      id: 'Aftermovie yang dibuat untuk hobi, mendokumentasikan acara kelulusan di SDN 2 Gajah beserta momen-momen penting di hari itu.'
     },
-    tags: ['Macro Lighting', 'Sound Design', 'Social Optimization'],
+    tags: ['Documentary', 'Color Grading', 'School Event'],
     videoId: 'CJWyWw1W8CU',
     link: '#',
     linkLabel: { en: 'Coming Soon', id: 'Segera Hadir' },
@@ -151,5 +147,5 @@ export const heroStats = [
   { n: '2021', l: { en: 'Since', id: 'Sejak' } },
   { n: '15+', l: { en: 'Projects', id: 'Proyek' } },
   { n: '4K', l: { en: 'Resolution', id: 'Resolusi' } },
-  { n: '100%', l: { en: 'Satisfaction', id: 'Kepuasan Klien' } },
+  { n: '100%', l: { en: 'Self-Funded', id: 'Swadaya' } },
 ];

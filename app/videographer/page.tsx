@@ -199,14 +199,7 @@ export default function VideographerPage() {
                         {typeof p.title === 'string' ? p.title : p.title[lang]}
                       </h3>
                     </div>
-                    <a href={p.link} target="_blank" rel="noopener noreferrer"
-                      className="px-4 py-2 rounded-full text-[12px] transition-all flex items-center gap-2"
-                      style={{ border: '1px solid rgba(255,255,255,0.08)', color: '#7a7068' }}>
-                      {typeof p.linkLabel === 'string' ? p.linkLabel : p.linkLabel[lang]}
-                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
-                    </a>
+                   
                   </div>
                   <p className="text-[14px] leading-relaxed mb-5 max-w-2xl" style={{ color: '#5a5450' }}>
                     {typeof p.description === 'string' ? p.description : p.description[lang]}
