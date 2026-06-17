@@ -57,6 +57,7 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
           }}
           priority
         />
+        {/* <div className='absolute inset-0' style={{ background: gradientOverlay}} /> */}
         <div className="absolute inset-0" style={{ background: bottomGradient }} />
       </div>
 

@@ -21,7 +21,7 @@ export const panels: Panel[] = [
         bg: '#0a0d12',
         photo: '/profile.png',
         photoFlip: false,
-        PhotoFilter: 'grayscale(20%) sepia(60%) hue-rotate(330deg) brightness(0.8)',
+        PhotoFilter: 'grayscale(20%) sepia(60%) hue-rotate(180deg) brightness(0.8)',
         theme: 'terminal'
     },
     {
@@ -55,7 +55,7 @@ export const panels: Panel[] = [
         bg: '#100c08',
         photo: '/profile.png',
         photoFlip: false,
-        PhotoFilter: 'grayscale(30%) sepia(60%) hue-rotate(180deg)',
+        PhotoFilter: 'grayscale(30%) sepia(60%) hue-rotate(330deg)',
         theme: 'artisan'
     },
 ];

@@ -62,7 +62,7 @@ export function TextureOverlays() {
               style={{ 
                 backgroundImage: grainUrl, 
                 backgroundSize: '250px 250px',
-                animation: 'noise 0.2s steps(2) infinite',
+                animation: '0.2s steps(2) infinite',
                 mixBlendMode: 'soft-light'
               }} 
             />
