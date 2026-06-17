@@ -31,6 +31,9 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   manifest: '/manifest.webmanifest',
+  verification: {
+    google: 'exlKZqIbUzZZBQwknssoAQe4wg3zj58k2S46fcvUYno',
+  },
   robots: {
     index: true,
     follow: true,
