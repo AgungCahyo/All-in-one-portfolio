@@ -37,8 +37,8 @@ export const projects: VideoProject[] = [
     },
     tags: ['Directing', 'Color Grading', 'Family'],
     videoId: 'IGgQigrSOGE',
-    link: '#',
-    linkLabel: { en: 'Coming Soon', id: 'Segera Hadir' },
+    link: 'https://youtu.be/IGgQigrSOGE',
+    linkLabel: { en: 'Watch Video', id: 'Tonton Video' },
     stats: null,
   },
   {
@@ -51,8 +51,8 @@ export const projects: VideoProject[] = [
     },
     tags: ['Event Coverage', 'Run-and-gun', 'Sound Design'],
     videoId: 'sNEY6BpiXko',
-    link: '#',
-    linkLabel: { en: 'Coming Soon', id: 'Segera Hadir' },
+    link: 'https://youtu.be/sNEY6BpiXko',
+    linkLabel: { en: 'Watch Video', id: 'Tonton Video' },
     stats: null,
   },
   {
@@ -65,8 +65,8 @@ export const projects: VideoProject[] = [
     },
     tags: ['Documentary', 'Color Grading', 'School Event'],
     videoId: 'CJWyWw1W8CU',
-    link: '#',
-    linkLabel: { en: 'Coming Soon', id: 'Segera Hadir' },
+    link: 'https://youtu.be/CJWyWw1W8CU',
+    linkLabel: { en: 'Watch Video', id: 'Tonton Video' },
     stats: null,
   },
 ];

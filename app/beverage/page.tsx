@@ -372,12 +372,12 @@ export default function BeveragePage() {
       </section>
 
       {/* Footer breadcrumb */}
-      <div className="px-8 py-5 flex justify-between" style={{ borderTop: '1px solid rgba(255,255,255,0.03)' }}>
-        <Link href="/developer" className="text-[11px] flex items-center gap-2 transition-colors" style={{ color: '#2a1a0a' }}>
+      <div className="px-8 py-5 flex justify-between items-center" style={{ borderTop: '1px solid rgba(255,255,255,0.03)' }}>
+        <Link href="/videographer" className="text-[11px] flex items-center gap-2 transition-colors" style={{ color: '#2a1a0a' }}>
           <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
           </svg>
-          {t('Prev: Developer', 'Sebelumnya: Developer')}
+          {t('Prev: Videographer', 'Sebelumnya: Videografer')}
         </Link>
         <span className="text-[11px] font-medium" style={{ color: '#2a1a0a' }}>03 / {t('Beverage', 'Beverage')}</span>
         <Link href="/" className="text-[11px] flex items-center gap-2 transition-colors" style={{ color: '#2a1a0a' }}>

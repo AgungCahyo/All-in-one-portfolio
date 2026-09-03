@@ -63,8 +63,8 @@ export function LayoutHeader({ activeRole, theme = 'cinema' }: HeaderProps) {
   const styles = themeStyles[theme];
 
   const navLinks = [
-    { id: 'videographer', href: '/videographer', labelEn: 'Videographer', labelId: 'Videografer' },
     { id: 'developer', href: '/developer', labelEn: 'Developer', labelId: 'Developer' },
+    { id: 'videographer', href: '/videographer', labelEn: 'Videographer', labelId: 'Videografer' },
     { id: 'beverage', href: '/beverage', labelEn: 'Beverage', labelId: 'Peracik' },
     { id: 'about', href: '/about', labelEn: 'About', labelId: 'Tentang' },
   ];

@@ -110,7 +110,7 @@ export default function WorkWithMePage() {
         }}
       />
 
-      <LayoutHeader theme="terminal" />
+      <LayoutHeader activeRole="developer" theme="terminal" />
 
       {/* ── HERO ─────────────────────────────────────────────────── */}
       <section

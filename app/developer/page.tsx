@@ -337,16 +337,16 @@ export default function DeveloperPage() {
       </section>
 
       {/* Footer breadcrumb */}
-      <div className="px-8 py-5 flex justify-between" style={{ borderTop: '1px solid rgba(255,255,255,0.03)' }}>
-        <Link href="/videographer" className="text-[11px] flex items-center gap-2 transition-colors" style={{ color: '#1e2535' }}>
+      <div className="px-8 py-5 flex justify-between items-center" style={{ borderTop: '1px solid rgba(255,255,255,0.03)' }}>
+        <Link href="/" className="text-[11px] flex items-center gap-2 transition-colors" style={{ color: '#1e2535' }}>
           <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
           </svg>
-          {t('Prev', 'Sebelumnya')}: {t('Videographer', 'Videografer')}
+          {t('Home', 'Beranda')}
         </Link>
-        <span className="text-[11px] font-medium" style={{ color: '#1e2535' }}>02 / {t('Developer', 'Developer')}</span>
-        <Link href="/beverage" className="text-[11px] flex items-center gap-2 transition-colors" style={{ color: '#1e2535' }}>
-          {t('Next', 'Selanjutnya')}: {t('Beverage', 'Beverage')}
+        <span className="text-[11px] font-medium" style={{ color: '#1e2535' }}>01 / {t('Developer', 'Developer')}</span>
+        <Link href="/videographer" className="text-[11px] flex items-center gap-2 transition-colors" style={{ color: '#1e2535' }}>
+          {t('Next', 'Selanjutnya')}: {t('Videographer', 'Videografer')}
           <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>

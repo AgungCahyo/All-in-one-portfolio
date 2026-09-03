@@ -45,7 +45,7 @@ export const projects: DevProject[] = [
       'Telegraf', 'WebSocket', 'Jupiter API', 'PumpSwap AMM', 'Risk Management'
     ],
     links: [
-      { label: 'Telegram Demo', href: 'https://t.me/your_bot' }
+      { label: 'Contact for Demo', href: 'https://wa.me/6281392290571?text=Hi%2C%20I%27m%20interested%20in%20the%20Crypto%20Radar%20Trading%20Bot%20demo' }
     ],
     highlights: [
       { en: 'Cuts response time from manual monitoring to instant event-based execution', id: 'Memangkas waktu respons dari pantau manual jadi eksekusi berbasis event secara instan' },
@@ -65,7 +65,7 @@ export const projects: DevProject[] = [
       id: 'Dirancang untuk creator yang terjebak antara kualitas skrip yang nggak konsisten dan proses yang lambat. SkripIn mengubah ide mentah jadi skrip siap produksi lebih cepat, sambil tetap menjaga brand voice lewat workflow multi-agent yang terstruktur.'
     },
     tags: ['Next.js 16', 'React 19', 'TypeScript', 'Google Gemini', 'OpenAI TTS', 'Jest', 'PostgreSQL', 'Firebase', 'Midtrans'],
-    links: [{ label: 'Live App', href: 'https://skripin.vercel.app' }],
+    links: [{ label: 'Live App', href: 'https://skripin.my.id' }],
     highlights: [
       { en: 'Improves script consistency with a role-based AI pipeline', id: 'Meningkatkan konsistensi skrip lewat pipeline AI berbasis peran' },
       { en: 'Shortens production prep using TTS and teleprompter-ready output', id: 'Mempercepat persiapan produksi lewat output TTS dan teleprompter-ready' },
@@ -84,7 +84,7 @@ export const projects: DevProject[] = [
       id: 'Dibangun untuk mengatasi drop-off pada produk kuis hubungan: user butuh insight yang lebih dalam, bukan skor generik. Aplikasi ini memberi analisis personal yang lebih kaya dan membantu konversi lewat pengiriman otomatis via WhatsApp serta freemium upsell flow.'
     },
     tags: ['Next.js 16', 'React 19', 'TypeScript', 'Prisma ORM', 'PostgreSQL', 'Zustand', 'Redis', 'Midtrans', 'n8n'],
-    links: [{ label: 'Live Site', href: 'https://tes-kecocokan.vercel.app/' }],
+    links: [{ label: 'Live Site', href: 'https://tes-kecocokan.my.id/' }],
     highlights: [
       { en: 'Increases perceived value with multi-dimensional compatibility output', id: 'Meningkatkan perceived value lewat output kompatibilitas multi-dimensi' },
       { en: 'Improves conversion with freemium + seamless payment journey', id: 'Meningkatkan konversi lewat freemium + payment journey yang mulus' },

@@ -38,3 +38,12 @@ yarn-error.log*
 *.swp
 *.swo
 *~
+
+# n8n workflow export (contains credential references)
+node.json
+
+# OneDrive conflict duplicates
+*-DESKTOP-*
+
+# TypeScript build info
+tsconfig.tsbuildinfo

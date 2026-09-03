@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { projects } from '@/data/videographer'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://example.com'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://agungcahyo.my.id'
 
 export const metadata: Metadata = {
   title: 'Videographer',

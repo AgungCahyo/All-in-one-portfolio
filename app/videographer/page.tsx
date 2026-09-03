@@ -174,7 +174,12 @@ export default function VideographerPage() {
                 style={{ border: '1px solid rgba(255,255,255,0.05)', background: '#0f0e0d' }}>
                 <div className="relative w-full aspect-video flex items-center justify-center" style={{ background: '#0a0908' }}>
                   {p.videoId ? (
-                    <iframe src={`https://www.youtube.com/embed/${p.videoId}`} className="absolute inset-0 w-full h-full" allowFullScreen />
+                    <iframe
+                      src={`https://www.youtube.com/embed/${p.videoId}`}
+                      title={typeof p.title === 'string' ? p.title : p.title[lang]}
+                      className="absolute inset-0 w-full h-full"
+                      allowFullScreen
+                    />
                   ) : (
                     <div className="text-center">
                       <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3" style={{ border: '1px solid rgba(255,255,255,0.07)' }}>
@@ -199,7 +204,20 @@ export default function VideographerPage() {
                         {typeof p.title === 'string' ? p.title : p.title[lang]}
                       </h3>
                     </div>
-                   
+                    {p.link && p.link !== '#' && (
+                      <a
+                        href={p.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-4 py-2 text-[12px] font-medium rounded-full transition-colors"
+                        style={{ border: '1px solid rgba(206,200,192,0.2)', color: '#cec8c0', background: 'rgba(255,255,255,0.03)' }}
+                      >
+                        <span>{typeof p.linkLabel === 'string' ? p.linkLabel : p.linkLabel[lang]}</span>
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    )}
                   </div>
                   <p className="text-[14px] leading-relaxed mb-5 max-w-2xl" style={{ color: '#5a5450' }}>
                     {typeof p.description === 'string' ? p.description : p.description[lang]}
@@ -246,10 +264,16 @@ export default function VideographerPage() {
       </section>
 
       {/* Footer breadcrumb */}
-      <div className="px-8 py-5 flex justify-between" style={{ borderTop: '1px solid rgba(255,255,255,0.03)' }}>
-        <span className="text-[11px] font-medium" style={{ color: '#2a2520' }}>01 / {t('Videographer', 'Videografer')}</span>
+      <div className="px-8 py-5 flex justify-between items-center" style={{ borderTop: '1px solid rgba(255,255,255,0.03)' }}>
         <Link href="/developer" className="text-[11px] flex items-center gap-2 transition-colors" style={{ color: '#3a3530' }}>
-          {t('Next', 'Selanjutnya')}: {t('Developer', 'Developer')}
+          <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+          </svg>
+          {t('Prev', 'Sebelumnya')}: {t('Developer', 'Developer')}
+        </Link>
+        <span className="text-[11px] font-medium" style={{ color: '#2a2520' }}>02 / {t('Videographer', 'Videografer')}</span>
+        <Link href="/beverage" className="text-[11px] flex items-center gap-2 transition-colors" style={{ color: '#3a3530' }}>
+          {t('Next', 'Selanjutnya')}: {t('Beverage', 'Beverage')}
           <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>

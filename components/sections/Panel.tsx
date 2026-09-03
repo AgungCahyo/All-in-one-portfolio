@@ -68,7 +68,7 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
           <div className="absolute bottom-0 left-0 right-0 z-10" style={{ height: '36px', background: 'rgba(0,0,0,0.85)' }} />
           <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-3 font-mono"
             style={{ height: '36px', color: 'rgba(206,200,192,0.2)', fontSize: '8px', letterSpacing: '0.15em' }}>
-            <span>01 / CINEMA</span>
+            <span>{panel.num} / CINEMA</span>
             <span style={{ color: isActive ? 'rgba(206,200,192,0.4)' : 'rgba(206,200,192,0.1)', transition: 'color 700ms' }}>REC ●</span>
           </div>
         </>

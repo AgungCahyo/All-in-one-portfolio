@@ -213,7 +213,7 @@ export default function Home() {
                 className="text-left px-3 py-2 rounded-md text-[11px] tracking-[0.16em] uppercase"
                 style={{ color: active === i ? 'rgba(255,255,255,0.8)' : 'rgba(255,255,255,0.45)', background: active === i ? 'rgba(255,255,255,0.08)' : 'transparent' }}
               >
-                {p.id === 'beverage' ? t('Beverage', 'Beverage') :
+                {p.id === 'beverage' ? t('Beverage', 'Peracik') :
                  p.id === 'developer' ? t('Developer', 'Developer') :
                  t('Videographer', 'Videografer')}
               </button>
