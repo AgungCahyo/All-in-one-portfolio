@@ -157,11 +157,12 @@ export function TextureOverlays() {
             {/* Sensory Labels - ONLY ON HOME */}
             {pathname === '/' && (
               <div className="absolute inset-0 overflow-hidden hidden lg:block">
-                {['Earthy', 'Botanical', 'Intensity', 'Chemistry'].map((text, i) => (
+                {['Leadership', 'Coordination', 'Training', 'Operations'].map((text, i) => (
                   <motion.div
                     key={text}
-                    className="absolute font-['Cormorant_Garamond',serif] italic text-[14px] text-amber-100/10"
+                    className="absolute font-['Cormorant_Garamond',serif] italic text-[14px]"
                     style={{
+                      color: 'rgba(150,170,190,0.1)',
                       left: `${20 + i * 20}%`,
                       top: `${40 + (i % 2) * 20}%`,
                     }}
@@ -195,7 +196,7 @@ export function TextureOverlays() {
               {isMounted && particles.map((p) => (
                 <motion.div
                   key={p.id}
-                  className="absolute w-2.5 h-2.5 bg-amber-200/50 rounded-full blur-[2px] shadow-[0_0_8px_rgba(252,211,77,0.3)]"
+                  className="absolute w-2.5 h-2.5 bg-[rgba(150,170,190,0.2)] rounded-full blur-[2px] shadow-[0_0_8px_rgba(150,170,190,0.3)]"
                   style={{
                     left: `${p.left}%`,
                     top: `${p.top}%`,

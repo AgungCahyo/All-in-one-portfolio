@@ -92,3 +92,48 @@
     @apply inline-block px-6 py-3 border border-gray-700 text-white hover:border-white transition-colors rounded-lg;
   }
 }
+
+/* Leadership-specific animations */
+@keyframes leadershipGlow {
+  0% {
+    box-shadow: 0 0 0 rgba(197,208,218,0.4),
+                0 0 0 rgba(197,208,218,0.2);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(197,208,218,0.6),
+                0 0 30px rgba(197,208,218,0.4);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(197,208,218,0.8),
+                0 0 40px rgba(197,208,218,0.6);
+  }
+}
+
+@keyframes animate-pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Leadership-specific styles */
+.leadership-section-bg {
+  /* Subtle noise texture for leadership sections */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+}
+
+.leadership-divider {
+  /* Leadership-themed section divider */
+  border-top: 1px solid rgba(197,208,218,0.3) !important;
+}
+
+.leadership-thesis {
+  /* Enhanced thesis blockquote */
+  background: rgba(197,208,218,0.05);
+  border-left: 3px solid rgba(197,208,218,0.4);
+  padding-left: 16px;
+  border-radius: 0 4px 4px 0;
+}

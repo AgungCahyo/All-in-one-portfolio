@@ -4,7 +4,6 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRef, useState, useEffect } from 'react';
-import { Magnetic } from '@/components/ui/Magnetic';
 import { LayoutHeader } from '@/components/ui/LayoutHeader';
 import { useLanguage } from '@/lib/languageContext';
 import { useActivePanel } from '@/lib/activePanelContext';
@@ -258,7 +257,7 @@ export default function AboutPage() {
                 >
                   <div className="grid grid-cols-3 gap-0" style={{ maxWidth: '560px' }}>
                     {[
-                      { en: 'Beverage\nCrafter', id: 'Peracik\nMinuman',  num: '01' },
+                      { en: 'Team\nCoordinator', id: 'Koordinator\nTim',  num: '01' },
                       { en: 'Full-Stack\nDeveloper', id: 'Developer\nFull-Stack', num: '02' },
                       { en: 'Videographer\n& Editor', id: 'Videografer\n& Editor', num: '03' },
                     ].map((d, i) => (
@@ -708,19 +707,17 @@ export default function AboutPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </a>
-              <Magnetic strength={0.15}>
-                <a
-                  href="mailto:cahyoprasetyo507@gmail.com"
-                  className="inline-flex items-center gap-3 px-8 py-4 font-medium text-[12px] tracking-[0.15em] uppercase transition-opacity hover:opacity-80"
-                  style={{ background: '#e8e4e0', color: '#080808' }}
-                >
-                  {t('Send a Message', 'Kirim Pesan')}
-                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                      d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </a>
-              </Magnetic>
+              <a
+                href="mailto:cahyoprasetyo507@gmail.com"
+                className="inline-flex items-center gap-3 px-8 py-4 font-medium text-[12px] tracking-[0.15em] uppercase transition-opacity hover:opacity-80"
+                style={{ background: '#e8e4e0', color: '#080808' }}
+              >
+                {t('Send a Message', 'Kirim Pesan')}
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
             </div>
           </div>
         </div>

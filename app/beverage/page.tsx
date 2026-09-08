@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Magnetic } from '@/components/ui/Magnetic';
 import { SkillBars } from '@/components/ui/SkillBars';
 import { JourneyTimeline } from '@/components/ui/JourneyTimeline';
 import { SectionLabel } from '@/components/ui/SectionLabel';
@@ -17,9 +16,7 @@ import {
   techniques,
   skills,
   philosophy,
-  sensoryNotes,
-  signatureRecipe,
-  heroStats,
+  leadershipPractices,
 } from '@/data/beverage';
 
 
@@ -32,85 +29,77 @@ export default function BeveragePage() {
   }, [setActivePanel]);
 
   return (
-    <main className="min-h-screen text-amber-50 font-['DM_Sans',sans-serif]" style={{ background: '#0c0906' }}>
+    <main className="min-h-screen text-amber-50 font-['DM_Sans',sans-serif] leadership-page" style={{ 
+      background: '#0a0e12',
+      backgroundImage: `
+        radial-gradient(circle at 20% 30%, rgba(212,175,55,0.03) 0%, transparent 20%),
+        radial-gradient(circle at 80% 70%, rgba(212,175,55,0.02) 0%, transparent 20%),
+        repeating-linear-gradient(45deg, transparent 0%, transparent 2px, rgba(212,175,55,0.01) 2px, rgba(212,175,55,0.01) 4px)
+      `
+    }}>
 
-      <LayoutHeader activeRole="beverage" theme="artisan" />
+      <LayoutHeader activeRole="beverage" theme="leadership" />
 
-
-      {/* Hero */}
-      <section className="relative overflow-hidden" style={{ borderBottom: '1px solid rgba(180,130,80,0.08)' }}>
-        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 30% 50%, rgba(160,100,40,0.06) 0%, transparent 60%)' }} />
-
+      {/* Hero - Thesis + Context + Portrait */}
+      <section className="relative overflow-hidden leadership-section-bg" style={{ borderBottom: '1px solid rgba(150,170,190,0.14)' }}>
+        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 30% 50%, rgba(150,170,190,0.06) 0%, transparent 60%)' }} />
         <div className="relative max-w-6xl mx-auto px-8 lg:px-16" style={{ paddingTop: '120px', paddingBottom: '80px' }}>
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-0 items-stretch">
-
             {/* Left: Text panel */}
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1 }}
               className="flex-1 flex flex-col justify-center order-2 lg:order-1 lg:pr-16">
-              <div className="flex items-center gap-3 mb-10">
-                <div style={{ width: '28px', height: '1px', background: 'rgba(180,130,80,0.3)' }} />
-                <span className="text-[10px] tracking-[0.45em] uppercase" style={{ color: '#5a4030' }}>03 / {t('Beverage Craft', 'Seni Minuman')}</span>
-                <div style={{ width: '28px', height: '1px', background: 'rgba(180,130,80,0.3)' }} />
-              </div>
-              <div className="mb-6" style={{ color: 'rgba(180,130,80,0.15)', fontSize: '48px', lineHeight: 1 }}>⚗</div>
-              <h1 className="font-['Cormorant_Garamond',serif] font-bold leading-[0.88] tracking-tight mb-6"
-                style={{ fontSize: 'clamp(4rem, 9vw, 8rem)', color: '#d0c0b0', letterSpacing: '-0.02em' }}>
-                {t('Beverage', 'Peracik')}<br /><em style={{ color: 'rgba(208,192,176,0.2)', fontStyle: 'italic' }}>{t('Crafter', 'Minuman')}</em>
-              </h1>
-              <div className="flex items-center gap-4 mb-6">
-                <div style={{ height: '1px', flex: 1, maxWidth: '60px', background: 'rgba(180,130,80,0.2)' }} />
-                <span style={{ color: 'rgba(180,130,80,0.25)', fontSize: '16px' }}>✦</span>
-                <div style={{ height: '1px', flex: 1, maxWidth: '60px', background: 'rgba(180,130,80,0.2)' }} />
-              </div>
-              <p className="text-[15px] leading-relaxed max-w-xs" style={{ color: '#6a5a48' }}>
+              {/* Thesis statement */}
+              <motion.blockquote
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="m-0 font-['Cormorant_Garamond',serif] font-bold leadership-thesis"
+                style={{
+                  color: '#e6d3a8',
+                  fontSize: 'clamp(2.8rem, 5.5vw, 4.5rem)',
+                  lineHeight: 1.2,
+                  letterSpacing: '-0.02em',
+                  maxWidth: '28ch',
+                  textWrap: 'pretty',
+                  background: 'rgba(230,211,168,0.05)',
+                  borderLeft: '3px solid rgba(230,211,168,0.4)',
+                  paddingLeft: '16px',
+                  borderRadius: '0 4px 4px 0',
+                  position: 'relative'
+                }}
+              >
                 {t(
-                  'Where precision meets creativity. The same obsession with craft that defines my work in code and cinema began here.',
-                  'Di sini presisi ketemu kreativitas. Obsession ke craft yang kebawa ke dunia code dan cinema, semua start dari sini.'
+                  'Leadership is making the next person able to run the station without you standing over them.',
+                  'Leadership adalah membuat orang berikutnya bisa menjalankan station tanpa harus diawasi terus.',
+                )}
+                {/* Connection nodes */}
+                <div className="absolute left-[-12px] top-[50%] -translate-y-[50%] w-2 h-2 bg-d4af37/50 rounded-full border border-d4af37/50" />
+              </motion.blockquote>
+              {/* Context paragraph */}
+              <p className="text-[15px] leading-relaxed max-w-sm mt-6" style={{ color: '#6d7a88' }}>
+                {t(
+                  'Coordinating beverage teams, training new staff, and keeping operations moving when volume spikes. Craft is the context — leadership is the work.',
+                  'Mengkoordinasikan tim minuman, melatih staf baru, dan menjaga operasional tetap jalan saat volume naik. Craft adalah konteksnya — leadership adalah kerjanya.'
                 )}
               </p>
-
-              {/* Sensory notes */}
-              <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7, duration: 0.8 }}
-                className="flex flex-wrap gap-2 mt-6">
-                {sensoryNotes.map((s, idx) => (
-                  <span key={idx} className="flex items-center gap-1.5 px-3 py-1.5 text-[11px]"
-                    style={{ border: '1px solid rgba(180,130,80,0.15)', color: '#7a6448', borderRadius: '20px', background: 'rgba(180,130,80,0.04)' }}>
-                    <span>{s.icon}</span>{s.note[lang]}
-                  </span>
-                ))}
-              </motion.div>
-
-              {/* Stats */}
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 0.8 }}
-                className="mt-12 grid grid-cols-2 gap-3" style={{ maxWidth: '320px' }}>
-                {heroStats.map((s, idx) => (
-                  <div key={idx} className="px-4 py-3" style={{ border: '1px solid rgba(180,130,80,0.12)', background: 'rgba(180,130,80,0.03)', borderRadius: '2px' }}>
-                    <div className="font-['Cormorant_Garamond',serif] text-base font-bold" style={{ color: '#d0c0b0' }}>{s.n[lang]}</div>
-                    <div className="text-[9px] tracking-[0.2em] uppercase mt-0.5" style={{ color: '#3a2a1a' }}>{s.l[lang]}</div>
-                  </div>
-                ))}
-              </motion.div>
             </motion.div>
 
-            {/* Divider line */}
-            <div className="hidden lg:block shrink-0" style={{ width: '1px', background: 'linear-gradient(to bottom, transparent, rgba(180,130,80,0.15) 30%, rgba(180,130,80,0.15) 70%, transparent)' }} />
-
-            {/* Right: Photo panel */}
+            {/* Right: Portrait */}
             <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1, delay: 0.2 }}
               className="relative shrink-0 w-full lg:w-[340px] h-[360px] lg:h-auto order-1 lg:order-2 lg:pl-16" style={{ minHeight: '400px' }}>
               <div className="relative w-full h-full" style={{ minHeight: '400px' }}>
-                <div className="absolute top-0 left-0 w-6 h-6 z-10" style={{ borderTop: '1px solid rgba(180,130,80,0.3)', borderLeft: '1px solid rgba(180,130,80,0.3)' }} />
-                <div className="absolute top-0 right-0 w-6 h-6 z-10" style={{ borderTop: '1px solid rgba(180,130,80,0.3)', borderRight: '1px solid rgba(180,130,80,0.3)' }} />
-                <div className="absolute bottom-0 left-0 w-6 h-6 z-10" style={{ borderBottom: '1px solid rgba(180,130,80,0.3)', borderLeft: '1px solid rgba(180,130,80,0.3)' }} />
-                <div className="absolute bottom-0 right-0 w-6 h-6 z-10" style={{ borderBottom: '1px solid rgba(180,130,80,0.3)', borderRight: '1px solid rgba(180,130,80,0.3)' }} />
+                <div className="absolute top-0 left-0 w-6 h-6 z-10" style={{ borderTop: '1px solid rgba(150,170,190,0.3)', borderLeft: '1px solid rgba(150,170,190,0.3)' }} />
+                <div className="absolute top-0 right-0 w-6 h-6 z-10" style={{ borderTop: '1px solid rgba(150,170,190,0.3)', borderRight: '1px solid rgba(150,170,190,0.3)' }} />
+                <div className="absolute bottom-0 left-0 w-6 h-6 z-10" style={{ borderBottom: '1px solid rgba(150,170,190,0.3)', borderLeft: '1px solid rgba(150,170,190,0.3)' }} />
+                <div className="absolute bottom-0 right-0 w-6 h-6 z-10" style={{ borderBottom: '1px solid rgba(150,170,190,0.3)', borderRight: '1px solid rgba(150,170,190,0.3)' }} />
                 <div className="absolute inset-2 overflow-hidden">
                   <Image src="/profile.png" alt="Agung Cahyo Prasetyo" fill className="object-cover object-[50%_20%]"
                     style={{ filter: 'grayscale(15%) sepia(40%) hue-rotate(-5deg) brightness(0.78) contrast(1.05)' }} priority />
                   <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 40%, rgba(12,9,6,0.6) 100%)' }} />
-                  <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 55%, #0c0906 100%)' }} />
+                  <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 55%, #0b1016 100%)' }} />
                 </div>
                 <div className="absolute bottom-4 left-0 right-0 text-center z-10">
-                  <p className="text-[9px] tracking-[0.4em] uppercase" style={{ color: 'rgba(208,192,176,0.2)' }}>Agung Cahyo Prasetyo</p>
+                  <p className="text-[9px] tracking-[0.4em] uppercase" style={{ color: 'rgba(197,208,218,0.2)' }}>Agung Cahyo Prasetyo</p>
                 </div>
               </div>
             </motion.div>
@@ -118,269 +107,367 @@ export default function BeveragePage() {
         </div>
       </section>
 
-      {/* Philosophy */}
-      <section className="px-8 lg:px-16 py-14" style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
-          <div>
-            <SectionLabel color="#3a2a1a">{t('Philosophy', 'Filosofi')}</SectionLabel>
-            <blockquote className="font-['Cormorant_Garamond',serif] text-3xl lg:text-4xl font-bold leading-[1.15] mb-5" style={{ color: '#d0c0b0' }}>
-              "{t('Intentionality in every detail.', 'Setiap detail memiliki tujuan.')}"
-            </blockquote>
-            <p className="text-[14px] leading-relaxed" style={{ color: '#5a4a38' }}>
-              {t(
-                'My journey started here — in the fast-paced environment of the beverage and hospitality industry. Creating the perfect drink requires exact measurements, timing, and an obsession with customer experience. This same mindset carried into software engineering and filmmaking.',
-                'Journey gue mulai dari sini - dunia beverage dan hospitality yang serba cepet. Bikin minuman yang proper itu butuh ukuran presisi, timing, dan fokus ke customer experience. Mindset ini yang kebawa juga ke software engineering sama filmmaking.'
-              )}
-            </p>
+      {/* THE SYSTEM - PEOPLE → SYSTEMS → EXECUTION → OUTCOME */}
+      <section className="px-8 lg:px-16 py-14 leadership-divider" style={{ 
+        borderTop: '1px solid rgba(212,175,55,0.3)',
+        position: 'relative'
+      }}>
+  {/* Enhanced divider with leadership markers */}
+  <div className="absolute left-[-8px] top-[-8px] h-[calc(100%+16px)] w-[1px]"
+    style={{ 
+      background: 'repeating-linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(212,175,55,0.2) 40%, rgba(212,175,55,0.2) 60%, transparent 60%, transparent 100%)',
+      backgroundSize: '6px 12px'
+    }}
+  />
+        <div className="max-w-6xl mx-auto">
+          <SectionLabel color="#b8904c">
+        <span className="inline-flex items-center gap-2">
+          <span className="w-2 h-2 bg-d4af37/20 rounded-full" />
+          {t('The System', 'Sistem')}
+        </span>
+      </SectionLabel>
+          <div className="relative mt-6">
+            {/* Enhanced connector line with guidance nodes */}
+            <div className="absolute inset-y-0 left-[8px] w-[1px]" style={{ background: 'repeating-linear-gradient(to bottom, rgba(212,175,55,0.2) 0%, rgba(212,175,55,0.2) 2px, transparent 2px, transparent 8px)' }} />
+            <div className="absolute inset-y-0 left-[6px] w-[4px]" style={{ background: 'radial-gradient(circle at center, rgba(212,175,55,0.3) 0%, transparent 70%)', borderRadius: '50%' }} />
+            <div className="flex flex-col space-y-12 ps-8">
+              {philosophy.map((stage, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="flex items-start gap-4"
+                >
+                  <div className="relative z-10 flex-shrink-0">
+                    {/* Guidance line */}
+                    <div className="absolute left-[-4px] top-[50%] -translate-y-[50%] w-8 h-[1px] bg-d4af37/30" />
+                    <div className="flex h-10 w-10 items-center justify-center"
+                      style={{ color: '#e6d3a8', background: 'rgba(10,14,18,0.8)', border: '2px solid rgba(212,175,55,0.3)', borderRadius: '50%', position: 'relative' }}>
+                      {/* Rank indicator (epaulette-style) */}
+                      <div className="absolute -top-1 left-[50%] -translate-x-[50%] w-3 h-3 bg-d4af37/80 rounded-full" />
+                      {stage.icon}
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="mb-1 text-[18px] font-['Cormorant_Garamond',serif] font-bold"
+                      style={{ color: '#e6d3a8' }}>
+                      {(stage.title as any)[lang]}
+                    </h3>
+                    <p className="text-[14px] leading-relaxed"
+                      style={{ color: '#b8904c', maxWidth: '28ch' }}>
+                      {(stage.body as any)[lang]}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
-          <div className="space-y-3">
-            {philosophy.map((item, idx) => (
-              <div key={idx} className="p-5 rounded-xl" style={{ border: '1px solid rgba(255,255,255,0.05)', background: '#100b06' }}>
-                <div className="text-[16px] mb-2 font-mono" style={{ color: '#6a4a30' }}>{item.icon}</div>
-                <h4 className="font-medium mb-1 text-[14px]" style={{ color: '#d0c0b0' }}>
-                  {typeof item.title === 'string' ? item.title : item.title[lang]}
-                </h4>
-                <p className="text-[13px] leading-relaxed" style={{ color: '#5a4a38' }}>
-                  {typeof item.body === 'string' ? item.body : item.body[lang]}
-                </p>
-              </div>
+        </div>
+      </section>
+
+      {/* HOW I LEAD */}
+      <section className="px-8 lg:px-16 py-16 leadership-divider" style={{ 
+        borderTop: '1px solid rgba(212,175,55,0.3)',
+        position: 'relative'
+      }}>
+  {/* Enhanced divider with leadership markers */}
+  <div className="absolute left-[-8px] top-[-8px] h-[calc(100%+16px)] w-[1px]"
+    style={{ 
+      background: 'repeating-linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(212,175,55,0.2) 40%, rgba(212,175,55,0.2) 60%, transparent 60%, transparent 100%)',
+      backgroundSize: '6px 12px'
+    }}
+  />
+        <div className="max-w-6xl mx-auto">
+          <SectionLabel color="#b8904c">
+        <span className="inline-flex items-center gap-2">
+          <span className="w-2 h-2 bg-d4af37/20 rounded-full" />
+          {t('How I Lead', 'Cara Saya Memimpin')}
+        </span>
+      </SectionLabel>
+          <div className="grid md:grid-cols-3 gap-5">
+            {leadershipPractices.map((practice, idx) => (
+              <motion.div 
+                key={idx} 
+                initial={{ opacity: 0, y: 16, scale: 0.95 }} 
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.08, type: 'spring', stiffness: 300, damping: 20 }}
+                className="relative overflow-hidden group"
+                style={{
+                  border: '1px solid rgba(212,175,55,0.15)', 
+                  borderRadius: '4px', 
+                  background: '#0a0e12',
+                  transition: 'all 0.3s ease'
+                }}
+                _hover={{
+                  borderColor: 'rgba(212,175,55,0.3)',
+                  background: 'rgba(212,175,55,0.05)',
+                  transform: 'translateY(-2px)'
+                }}
+              >
+                {/* Animated connection path */}
+                <div className="absolute left-[-6px] top-[50%] -translate-y-[50%] w-2 h-[100%]"
+                   style={{ 
+                     background: 'repeating-linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(212,175,55,0.15) 40%, rgba(212,175,55,0.15) 60%, transparent 60%, transparent 100%)',
+                     backgroundSize: '6px 12px'
+                   }}
+                />
+                <p className="text-[10px] tracking-[0.3em] uppercase mb-4" style={{ color: '#b8904c' }}>0{idx + 1}</p>
+                <h3 className="font-['Cormorant_Garamond',serif] text-2xl font-bold mb-3 group-hover:text-e6d3a8 transition-colors"
+                  style={{ color: '#e6d3a8' }}>
+                  {practice.title[lang]}
+                </h3>
+                <p className="text-[13px] leading-relaxed group-hover:text-b8904c transition-colors" style={{ color: '#b8904c' }}>{practice.body[lang]}</p>
+                {/* Pulsing insight indicator */}
+                <motion.span
+                  whileHover={{ scale: [1, 1.1, 1] }}
+                  whileTap={{ scale: 0.95 }}
+                  className="absolute bottom-2 right-2 w-4 h-4 bg-d4af37/50 rounded-full"
+                />
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Signature Recipe Card */}
-      <section className="px-8 lg:px-16 py-16" style={{ borderTop: '1px solid rgba(180,130,80,0.08)' }}>
+      {/* PROOF - Selected Work (first creation as evidence) */}
+      <section className="px-8 lg:px-16 py-14 leadership-divider" style={{ 
+        borderTop: '1px solid rgba(212,175,55,0.3)',
+        position: 'relative'
+      }}>
+  {/* Enhanced divider with leadership markers */}
+  <div className="absolute left-[-8px] top-[-8px] h-[calc(100%+16px)] w-[1px]"
+    style={{ 
+      background: 'repeating-linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(212,175,55,0.2) 40%, rgba(212,175,55,0.2) 60%, transparent 60%, transparent 100%)',
+      backgroundSize: '6px 12px'
+    }}
+  />
         <div className="max-w-6xl mx-auto">
-          <SectionLabel color="#3a2a1a">{t('Signature Recipe', 'Resep Signature')}</SectionLabel>
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
-            className="grid lg:grid-cols-2 gap-8">
-            {/* Recipe card */}
-            <div className="p-8 lg:p-10" style={{ border: '1px solid rgba(180,130,80,0.15)', borderRadius: '4px', background: '#0e0a06' }}>
-              <div className="flex items-start justify-between mb-8">
-                <div>
-                  <div className="text-[9px] tracking-[0.4em] uppercase mb-2" style={{ color: '#3a2a1a' }}>{t('House Specialty', 'Spesialis Rumah')}</div>
-                  <h3 className="font-['Cormorant_Garamond',serif] text-3xl font-bold" style={{ color: '#d0c0b0' }}>{signatureRecipe.name[lang]}</h3>
-                  <p className="text-[12px] mt-1" style={{ color: '#5a4030' }}>{signatureRecipe.subtitle[lang]}</p>
+          <SectionLabel color="#b8904c">
+        <span className="inline-flex items-center gap-2">
+          <span className="w-2 h-2 bg-d4af37/20 rounded-full" />
+          {t('Proof', 'Bukti')}
+        </span>
+      </SectionLabel>
+          <div className="space-y-6">
+            {/* First creation as primary evidence */}
+            <motion.div key={0} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ duration: 0.6, delay: 0 }}
+              className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.05)', background: '#0b1016' }}>
+              <div className="p-7">
+                <h3 className="mb-3 text-[20px] font-['Cormorant_Garamond',serif] font-bold"
+                  style={{ color: '#c5d0da' }}>
+                  {creations[0].title[lang]}
+                </h3>
+                <p className="mb-2 text-[14px]" style={{ color: '#6d7a88' }}>
+                  {creations[0].subtitle[lang]}
+                </p>
+                <p className="text-[14px] leading-relaxed" style={{ color: '#6d7a88' }}>
+                  {creations[0].description[lang]}
+                </p>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {creations[0].tags.map((tag, ti) => (
+                    <span key={ti} className="px-3 py-1 text-[11px] rounded-full"
+                      style={{ border: '1px solid rgba(255,255,255,0.05)', color: '#6d7a88' }}>{tag}</span>
+                  ))}
                 </div>
-                <span style={{ color: 'rgba(180,130,80,0.2)', fontSize: '32px', lineHeight: 1 }}>⚗</span>
+                <div className="mt-4 p-3 rounded-xl" style={{ border: '1px solid rgba(255,255,255,0.04)', background: '#0b1016' }}>
+                  <p className="text-[13px] leading-relaxed italic" style={{ color: '#6d7a88' }}>
+                    <span className="font-medium not-italic" style={{ color: '#c5d0da' }}>{t('Insight: ', 'Insight: ')}</span>
+                    {creations[0].insight[lang]}
+                  </p>
+                </div>
               </div>
-              <div className="flex items-center gap-3 mb-6">
-                <div style={{ flex: 1, height: '1px', background: 'rgba(180,130,80,0.12)' }} />
-                <span style={{ color: 'rgba(180,130,80,0.2)', fontSize: '10px' }}>✦</span>
-                <div style={{ flex: 1, height: '1px', background: 'rgba(180,130,80,0.12)' }} />
-              </div>
-              <div className="space-y-2.5 mb-8">
-                {signatureRecipe.ingredients.map((ing, idx) => (
-                  <div key={idx} className="flex items-baseline justify-between">
-                    <span className="text-[13px]" style={{ color: '#6a5a48' }}>{ing.item[lang]}</span>
-                    <span className="text-[11px] font-mono" style={{ color: '#3a2a1a' }}>{ing.amount}</span>
+            </motion.div>
+            {/* Other creations (2-4) as supporting evidence */}
+            <div className="grid md:grid-cols-2 gap-5">
+              {creations.slice(1).map((c, i) => (
+                <motion.div key={i + 1} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }} transition={{ duration: 0.6, delay: (i + 1) * 0.08 }}
+                  className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.05)', background: '#0b1016' }}>
+                  <div className="p-5">
+                    <h3 className="mb-2 text-[18px] font-['Cormorant_Garamond',serif] font-bold"
+                      style={{ color: '#c5d0da' }}>
+                      {c.title[lang]}
+                    </h3>
+                    <p className="mb-1 text-[14px]" style={{ color: '#6d7a88' }}>
+                      {c.subtitle[lang]}
+                    </p>
+                    <p className="text-[13px] leading-relaxed" style={{ color: '#6d7a88' }}>
+                      {c.description[lang]}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mt-3">
+                      {c.tags.map((tag, ti) => (
+                        <span key={ti} className="px-3 py-1 text-[11px] rounded-full"
+                          style={{ border: '1px solid rgba(255,255,255,0.05)', color: '#6d7a88' }}>{tag}</span>
+                      ))}
+                    </div>
+                    <div className="mt-3 p-2 rounded-xl" style={{ border: '1px solid rgba(255,255,255,0.04)', background: '#0b1016' }}>
+                      <p className="text-[13px] leading-relaxed italic" style={{ color: '#6d7a88' }}>
+                        <span className="font-medium not-italic" style={{ color: '#c5d0da' }}>{t('Insight: ', 'Insight: ')}</span>
+                        {c.insight[lang]}
+                      </p>
+                    </div>
                   </div>
-                ))}
-              </div>
-              <div className="pt-5" style={{ borderTop: '1px solid rgba(180,130,80,0.08)' }}>
-                <p className="text-[10px] tracking-[0.2em] uppercase mb-1" style={{ color: '#3a2a1a' }}>{t('Method', 'Metode')}</p>
-                <p className="text-[12px] italic leading-relaxed" style={{ color: '#4a3a28' }}>{signatureRecipe.method[lang]}</p>
-              </div>
+                </motion.div>
+              ))}
             </div>
-
-            {/* Flavor profile */}
-            <div className="flex flex-col gap-6">
-              <div className="p-7" style={{ border: '1px solid rgba(180,130,80,0.1)', borderRadius: '4px', background: '#0e0a06' }}>
-                <p className="text-[10px] tracking-[0.3em] uppercase mb-5" style={{ color: '#3a2a1a' }}>{t('Tasting Notes', 'Catatan Rasa')}</p>
-                <div className="space-y-3">
-                  {[{ label: t('Aroma', 'Aroma'), value: signatureRecipe.aroma[lang] }, { label: t('Palate', 'Rasa'), value: signatureRecipe.taste[lang] }].map((note) => (
-                    <div key={note.label}>
-                      <div className="flex items-center gap-2 mb-1">
-                        <span style={{ color: 'rgba(180,130,80,0.4)', fontSize: '12px' }}>◈</span>
-                        <span className="text-[10px] tracking-[0.2em] uppercase" style={{ color: '#3a2a1a' }}>{note.label}</span>
-                      </div>
-                      <p className="text-[13px] leading-relaxed pl-5" style={{ color: '#6a5a48' }}>{note.value}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="p-7" style={{ border: '1px solid rgba(180,130,80,0.1)', borderRadius: '4px', background: '#0e0a06' }}>
-                <p className="text-[10px] tracking-[0.3em] uppercase mb-5" style={{ color: '#3a2a1a' }}>{t('Flavor Profile', 'Profil Rasa')}</p>
-                <div className="space-y-3">
-                  {Object.entries(signatureRecipe.profile).map(([key, value]) => (
-                    <div key={key}>
-                      <div className="flex justify-between mb-1">
-                        <span className="text-[10px] tracking-[0.15em] uppercase" style={{ color: '#4a3a28' }}>
-                          {t(key.charAt(0).toUpperCase() + key.slice(1), 
-                            key === 'sweetness' ? 'Manis' : 
-                            key === 'acidity' ? 'Asam' : 
-                            key === 'bitterness' ? 'Pahit' : 'Body'
-                          )}
-                        </span>
-                        <span className="text-[10px] font-mono" style={{ color: '#3a2a1a' }}>{value}%</span>
-                      </div>
-                      <div className="h-[3px] rounded-full overflow-hidden" style={{ background: 'rgba(180,130,80,0.08)' }}>
-                        <motion.div initial={{ width: 0 }} whileInView={{ width: `${value}%` }} viewport={{ once: true }}
-                          transition={{ duration: 1, delay: 0.1, ease: 'easeOut' }} className="h-full rounded-full"
-                          style={{ background: 'linear-gradient(to right, rgba(180,130,80,0.4), rgba(200,160,100,0.6))' }} />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.div>
+          </div>
         </div>
       </section>
-{/* Flavor Molecule Interactive */}
-<section className="px-8 lg:px-16 py-16" style={{ borderTop: '1px solid rgba(180,130,80,0.08)' }}>
-  <div className="max-w-6xl mx-auto">
-    <SectionLabel color="#3a2a1a">{t('Flavor Molecule', 'Molekul Rasa')}</SectionLabel>
-    <p className="text-[14px] leading-relaxed mb-8 max-w-2xl" style={{ color: '#5a4a38' }}>
-      {t(
-        'Explore the molecular composition of our signature drink. Each atom represents a key flavor dimension. Drag to rotate, hover to inspect, and click to learn more about each flavor component.',
-        'Jelajahi komposisi molekuler minuman signature kami. Setiap atom mewakili dimensi rasa kunci. Drag untuk rotate, hover untuk inspeksi, dan klik untuk pelajari lebih lanjut tentang setiap komponen rasa.'
-      )}
-    </p>
-  </div>
-</section>
-      {/* Journey Timeline */}
-      <section className="px-8 lg:px-16 py-16" style={{ borderTop: '1px solid rgba(180,130,80,0.08)' }}>
+
+      {/* JOURNEY */}
+      <section className="px-8 lg:px-16 py-16" style={{ borderTop: '1px solid rgba(212,175,55,0.08)' }}>
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center justify-between mb-10">
-            <SectionLabel color="#3a2a1a" className="mb-0">{t('5+ Years of Craft', '5+ Tahun Berkarya')}</SectionLabel>
-            <p className="text-[10px] tracking-[0.2em] uppercase" style={{ color: '#2a1a0a' }}>2019 — {t('Present', 'Sekarang')}</p>
+            <SectionLabel color="#8a7a5a" className="mb-0">
+        <span className="inline-flex items-center gap-2">
+          <span className="w-2 h-2 bg-d4af37/20 rounded-full" />
+          {t('From Floor to Coordinator', 'Dari Lantai ke Koordinator')}
+        </span>
+      </SectionLabel>
+            <p className="text-[10px] tracking-[0.2em] uppercase font-[Cormorant_Garamond]" style={{ 
+              color: '#c5d0da',
+              position: 'relative',
+              paddingLeft: '24px'
+            }}>
+              <span className="absolute left-0 top-[50%] -translate-y-[50%] w-4 h-4 bg-d4af37/20 rounded-full flex items-center justify-center"
+                style={{ fontSize: '10px', fontWeight: 'bold', color: '#d4af37' }}>03</span>
+              2019 — {t('Present', 'Sekarang')}
+            </p>
           </div>
           <JourneyTimeline
             items={journey}
-            lineColor="linear-gradient(to bottom, transparent, rgba(180,130,80,0.15) 10%, rgba(180,130,80,0.15) 90%, transparent)"
-            dotColor="rgba(180,130,80,0.35)"
-            dotGlowColor="rgba(180,130,80,0.08)"
-            yearColor="rgba(180,130,80,0.4)"
-            phaseColor="#3a2a1a"
-            titleColor="#d0c0b0"
-            bodyColor="#5a4a38"
-            dividerColor="rgba(180,130,80,0.06)"
+            lineColor="linear-gradient(to bottom, transparent, rgba(212,175,55,0.15) 10%, rgba(212,175,55,0.15) 90%, transparent)"
+            dotColor="rgba(212,175,55,0.35)"
+            dotGlowColor="rgba(212,175,55,0.08)"
+            yearColor="rgba(212,175,55,0.4)"
+            phaseColor="#8a7a5a"
+            titleColor="#e6d3a8"
+            bodyColor="#b8904c"
+            dividerColor="rgba(212,175,55,0.06)"
             yearWidth="72px"
           />
         </div>
       </section>
 
-      {/* Skills */}
-      <section className="px-8 lg:px-16 py-14" style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
-        <div className="max-w-6xl mx-auto">
-          <SectionLabel color="#3a2a1a">{t('Core Expertise', 'Keahlian Utama')}</SectionLabel>
-          <div className="grid md:grid-cols-3 gap-8">
-            {skills.map((skillGroup, idx) => (
-              <div key={idx}>
-                <p className="text-[10px] uppercase tracking-widest mb-4 font-medium" style={{ color: '#3a2a1a' }}>
-                  {typeof skillGroup.category === 'string' ? skillGroup.category : skillGroup.category[lang]}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {skillGroup.items.map((item, i) => (
-                    <span key={i} className="px-3 py-1.5 rounded-lg text-[12px]"
-                      style={{ border: '1px solid rgba(180,130,80,0.1)', color: '#6a5a48', background: 'rgba(180,130,80,0.03)' }}>
-                      {typeof item === 'string' ? item : item[lang]}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Technique Mastery */}
-      <section className="px-8 lg:px-16 py-14" style={{ borderTop: '1px solid rgba(180,130,80,0.06)' }}>
-        <div className="max-w-6xl mx-auto">
-          <SectionLabel color="#3a2a1a">{t('Technique Mastery', 'Penguasaan Teknik')}</SectionLabel>
-          <SkillBars
-            skills={techniques}
-            barColor="linear-gradient(to right, rgba(180,130,80,0.3), rgba(210,170,110,0.55))"
-            barBg="rgba(180,130,80,0.07)"
-            nameColor="#b0a090"
-            descColor="#3a2a1a"
-            percentColor="rgba(180,130,80,0.35)"
-            showDesc
-          />
-        </div>
-      </section>
-
-      {/* Selected Work */}
-      <section className="px-8 lg:px-16 py-14">
-        <div className="max-w-6xl mx-auto">
-          <SectionLabel color="#3a2a1a">{t('Selected Work', 'Karya Terpilih')}</SectionLabel>
-          <div className="space-y-5">
-            {creations.map((c, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.08 }}
-                className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.05)', background: '#100b06' }}>
-                <div className="w-full" style={{ background: '#0a0704', aspectRatio: '16/7', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <div className="text-center">
-                    <div style={{ color: 'rgba(180,130,80,0.1)', fontSize: '36px', marginBottom: '8px' }}>
-                      {c.type.en === 'Menu Development' ? '📋' : c.type.en === 'Recipe Development' ? '🧪' : c.type.en === 'Craft Technique' ? '⚗' : '📂'}
-                    </div>
-                    <p className="text-[10px] tracking-[0.3em] uppercase" style={{ color: '#2a1a0a' }}>
-                      {typeof c.type === 'string' ? c.type : c.type[lang]}
-                    </p>
-                  </div>
-                </div>
-                <div className="p-7 lg:p-9">
-                  <div className="mb-4">
-                    <span className="text-[10px] tracking-[0.25em] uppercase font-medium" style={{ color: '#3a2a1a' }}>
-                      {typeof c.type === 'string' ? c.type : c.type[lang]}
-                    </span>
-                    <h3 className="font-['Cormorant_Garamond',serif] text-2xl lg:text-3xl font-bold mt-2" style={{ color: '#d0c0b0' }}>
-                      {typeof c.title === 'string' ? c.title : c.title[lang]}
-                    </h3>
-                    <p className="text-[13px] mt-1" style={{ color: '#4a3a28' }}>
-                      {typeof c.subtitle === 'string' ? c.subtitle : c.subtitle[lang]}
-                    </p>
-                  </div>
-                  <p className="text-[14px] leading-relaxed mb-5 max-w-2xl" style={{ color: '#4a3a28' }}>
-                    {typeof c.description === 'string' ? c.description : c.description[lang]}
+      {/* CAPABILITY - Skills & Technique Mastery (compact) */}
+      <section className="px-8 lg:px-16 py-14" style={{ 
+  borderTop: '1px solid rgba(212,175,55,0.04)',
+  position: 'relative'
+}}>
+  {/* Enhanced divider with leadership markers */}
+  <div className="absolute left-[-8px] top-[-8px] h-[calc(100%+16px)] w-[1px]"
+    style={{ 
+      background: 'repeating-linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(212,175,55,0.1) 40%, rgba(212,175,55,0.1) 60%, transparent 60%, transparent 100%)',
+      backgroundSize: '6px 12px'
+    }}
+  />
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+          {/* Skills */}
+          <div>
+            <SectionLabel color="#8a7a5a">
+        <span className="inline-flex items-center gap-2">
+          <span className="w-2 h-2 bg-d4af37/20 rounded-full" />
+          {t('Core Expertise', 'Keahlian Utama')}
+        </span>
+      </SectionLabel>
+            <div className="grid md:grid-cols-3 gap-4">
+              {skills.map((skillGroup, idx) => (
+                <div key={idx}>
+                  <p className="text-[9px] uppercase tracking-widest mb-2 font-medium"
+                    style={{ color: '#8a7a5a' }}>
+                    {typeof skillGroup.category === 'string' ? skillGroup.category : skillGroup.category[lang]}
                   </p>
-                  <div className="flex flex-wrap gap-2 mb-5">
-                    {c.tags.map((t, ti) => (
-                      <span key={ti} className="px-3 py-1 text-[11px] rounded-full" style={{ border: '1px solid rgba(255,255,255,0.05)', color: '#4a3a28' }}>{t}</span>
+                  <div className="flex flex-wrap gap-1">
+                    {skillGroup.items.map((item, i) => (
+                      <span key={i} className="px-2 py-0.5 rounded text-[11px]"
+                        style={{ border: '1px solid rgba(212,175,55,0.1)', color: '#b8904c', background: 'rgba(212,175,55,0.03)' }}>
+                        {typeof item === 'string' ? item : item[lang]}
+                      </span>
                     ))}
                   </div>
-                  <div className="p-4 rounded-xl" style={{ border: '1px solid rgba(255,255,255,0.04)', background: '#0a0704' }}>
-                    <p className="text-[13px] leading-relaxed italic" style={{ color: '#4a3a28' }}>
-                      <span className="font-medium not-italic" style={{ color: '#d0c0b0' }}>{t('Insight: ', 'Insight: ')}</span>
-                      {typeof c.insight === 'string' ? c.insight : c.insight[lang]}
-                    </p>
-                  </div>
                 </div>
-              </motion.div>
-            ))}
+              ))}
+            </div>
+          </div>
+          {/* Technique Mastery */}
+          <div>
+            <SectionLabel color="#8a7a5a">
+        <span className="inline-flex items-center gap-2">
+          <span className="w-2 h-2 bg-d4af37/20 rounded-full" />
+          {t('Leadership Range', 'Rentang Leadership')}
+        </span>
+      </SectionLabel>
+            <SkillBars
+              skills={techniques}
+              barColor="linear-gradient(to right, rgba(212,175,55,0.3), rgba(230,211,168,0.55))"
+              barBg="rgba(212,175,55,0.07)"
+              nameColor="#e6d3a8"
+              descColor="#b8904c"
+              percentColor="rgba(212,175,55,0.35)"
+              showDesc
+            />
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="px-8 lg:px-16 py-20" style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
+      <section className="px-8 lg:px-16 py-20" style={{ 
+  borderTop: '1px solid rgba(212,175,55,0.04)',
+  position: 'relative'
+}}>
+  {/* Enhanced divider with leadership markers */}
+  <div className="absolute left-[-8px] top-[-8px] h-[calc(100%+16px)] w-[1px]"
+    style={{ 
+      background: 'repeating-linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(212,175,55,0.1) 40%, rgba(212,175,55,0.1) 60%, transparent 60%, transparent 100%)',
+      backgroundSize: '6px 12px'
+    }}
+  />
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-8">
           <div>
-            <h2 className="font-['Cormorant_Garamond',serif] text-3xl lg:text-4xl font-bold mb-2" style={{ color: '#d0c0b0' }}>{t("Let's craft something together.", "Yuk craft sesuatu bareng.")}</h2>
-            <p className="text-[14px]" style={{ color: '#3a2a1a' }}>{t("Whether it's a drink menu or a digital product.", "Mau itu menu minuman atau digital product.")}</p>
+            <h2 className="font-['Cormorant_Garamond',serif] text-3xl lg:text-4xl font-bold mb-2" style={{ 
+              color: '#e6d3a8',
+              position: 'relative'
+            }}>
+              <span className="absolute left-[-24px] top-[50%] -translate-y-[50%] w-6 h-6 bg-d4af37/20 rounded-full flex items-center justify-center"
+                style={{ fontSize: '14px', fontWeight: 'bold', color: '#d4af37' }}>03</span>
+              {t("Let's build a team that runs itself.", "Yuk bangun tim yang bisa jalan sendiri.")}
+            </h2>
+            <p className="text-[14px] leading-relaxed max-w-md" style={{ color: '#b8904c' }}>
+              {t("Training systems, operations, or a product that needs the same ownership.", "Sistem pelatihan, operasional, atau produk yang butuh ownership yang sama.")}
+            </p>
           </div>
-          <Magnetic strength={0.2}>
-            <a href="mailto:cahyoprasetyo507@gmail.com"
-              className="px-7 py-3.5 font-medium rounded-full text-[13px] tracking-wide whitespace-nowrap transition-all hover:opacity-90"
-              style={{ background: '#d0c0b0', color: '#0c0906' }}>
-              {t('Get in Touch', 'Get in Touch')}
-            </a>
-          </Magnetic>
+          <a href="mailto:cahyoprasetyo507@gmail.com"
+            className="px-7 py-3.5 font-medium rounded-full text-[13px] tracking-wide whitespace-nowrap transition-all hover:opacity-90 relative overflow-hidden group"
+            style={{
+              background: 'linear-gradient(135deg, rgba(212,175,55,0.1) 0%, rgba(212,175,55,0.2) 100%)',
+              color: '#e6d3a8',
+              border: '1px solid rgba(212,175,55,0.3)',
+              backdropFilter: 'blur(4px)'
+            }}
+            _hover={{
+              background: 'linear-gradient(135deg, rgba(212,175,55,0.2) 0%, rgba(212,175,55,0.3) 100%)',
+              transform: 'translateY(-2px)',
+              boxShadow: '0 4px 12px rgba(212,175,55,0.2)'
+            }}
+          >
+            <span className="absolute left-0 top-0 w-full h-full bg-d4af37/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            {t('Get in Touch', 'Get in Touch')}
+          </a>
         </div>
       </section>
 
-      {/* Footer breadcrumb */}
       <div className="px-8 py-5 flex justify-between items-center" style={{ borderTop: '1px solid rgba(255,255,255,0.03)' }}>
-        <Link href="/videographer" className="text-[11px] flex items-center gap-2 transition-colors" style={{ color: '#2a1a0a' }}>
+        <Link href="/videographer" className="text-[11px] flex items-center gap-2 transition-colors" style={{ color: '#c5d0da' }}>
           <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
           </svg>
           {t('Prev: Videographer', 'Sebelumnya: Videografer')}
         </Link>
-        <span className="text-[11px] font-medium" style={{ color: '#2a1a0a' }}>03 / {t('Beverage', 'Beverage')}</span>
-        <Link href="/" className="text-[11px] flex items-center gap-2 transition-colors" style={{ color: '#2a1a0a' }}>
+        <span className="text-[11px] font-medium" style={{ color: '#c5d0da' }}>03 / {t('Leadership', 'Leadership')}</span>
+        <Link href="/" className="text-[11px] flex items-center gap-2 transition-colors" style={{ color: '#c5d0da' }}>
           {t('Back to Home', 'Kembali ke Beranda')}
           <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />

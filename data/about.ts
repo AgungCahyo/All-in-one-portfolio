@@ -109,5 +109,5 @@ export const offwork: AboutOffwork[] = [
 export const availability: AboutAvailability[] = [
   { role: { en: 'Full-Stack Developer', id: 'Full-Stack Developer' }, status: { en: 'AVAILABLE', id: 'TERSEDIA' }, open: true },
   { role: { en: 'Videographer / Editor', id: 'Videografer / Editor' }, status: { en: 'AVAILABLE', id: 'TERSEDIA' }, open: true },
-  { role: { en: 'Beverage Consultant', id: 'Beverage Consultant' }, status: { en: 'BY REQUEST', id: 'SESUAI REQUEST' }, open: false },
+  { role: { en: 'Team Coordinator / Leadership', id: 'Koordinator Tim / Leadership' }, status: { en: 'BY REQUEST', id: 'SESUAI REQUEST' }, open: false },
 ];

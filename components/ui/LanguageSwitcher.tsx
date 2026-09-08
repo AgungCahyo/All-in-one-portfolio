@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '@/lib/languageContext';
 import { usePathname } from 'next/navigation';
 import { useActivePanel } from '@/lib/activePanelContext';
-import { Magnetic } from './Magnetic';
 
 /**
  * Resolves theme colors based on current route or active panel on landing
@@ -28,12 +27,12 @@ function getThemeColors(pathname: string, activePanel: string) {
 
   if (isArtisan) {
     return {
-      border: 'rgba(180,130,80,0.15)',
-      bg: 'rgba(180,130,80,0.03)',
-      active: '#b89878',
-      inactive: 'rgba(180,130,80,0.3)',
-      dot: '#b89878',
-      dotGlow: 'rgba(184,152,120,0.3)',
+      border: 'rgba(150,170,190,0.15)',
+      bg: 'rgba(150,170,190,0.03)',
+      active: '#c5d0da',
+      inactive: 'rgba(150,170,190,0.3)',
+      dot: '#c5d0da',
+      dotGlow: 'rgba(197,208,218,0.3)',
     };
   }
 

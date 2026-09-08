@@ -4,10 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ProgressBar } from './ProgressBar';
-import { Magnetic } from '@/components/ui/Magnetic';
-import { grainUrl, paperUrl, ROTATE_INTERVAL } from '@/data/panels';
+import { LeadPanelContent } from './LeadPanelContent';
+import { ROTATE_INTERVAL } from '@/data/panels';
 import type { Panel as PanelType } from '@/lib/types';
 import { useLanguage } from '@/lib/languageContext';
+import { useReducedMotion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 interface PanelProps {
   panel: PanelType;
@@ -17,21 +19,23 @@ interface PanelProps {
 
 export function Panel({ panel, isActive, onActivate }: PanelProps) {
   const { lang, t } = useLanguage();
+  const reduced = useReducedMotion();
   const isCinema = panel.theme === 'cinema';
   const isTerminal = panel.theme === 'terminal';
   const isArtisan = panel.theme === 'artisan';
-
-  const gradientOverlay = isCinema
-    ? 'linear-gradient(100deg, rgba(13,12,11,0.97) 0%, rgba(13,12,11,0.7) 50%, rgba(13,12,11,0.2) 100%)'
-    : isTerminal
-    ? 'linear-gradient(100deg, rgba(10,13,18,0.97) 0%, rgba(10,13,18,0.7) 50%, rgba(10,13,18,0.2) 100%)'
-    : 'linear-gradient(100deg, rgba(16,12,8,0.97) 0%, rgba(16,12,8,0.7) 50%, rgba(16,12,8,0.2) 100%)';
 
   const bottomGradient = isCinema
     ? 'linear-gradient(to top, #0d0c0b 0%, transparent 50%)'
     : isTerminal
     ? 'linear-gradient(to top, #0a0d12 0%, transparent 50%)'
-    : 'linear-gradient(to top, #100c08 0%, transparent 50%)';
+    : 'linear-gradient(to top, #0b1016 0%, transparent 50%)';
+
+  // Leadership-specific enhancements
+  const isLeadershipPanel = panel.id === 'beverage';
+  const leadershipPulse = isLeadershipPanel && isActive ?
+    `animate-pulse-slow` : '';
+  const leadershipBorderGlow = isLeadershipPanel && isActive ?
+    'border-[2px] border-[rgba(197,208,218,0.4)]' : '';
 
   return (
     <div
@@ -41,6 +45,17 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
     >
       {/* Base bg */}
       <div className="absolute inset-0" style={{ background: panel.bg }} />
+      {/* Leadership badge */}
+      {isLeadershipPanel && (
+        <div className={`absolute top-2 right-2 z-20 flex h-6 w-6 items-center justify-center rounded-full
+          ${isActive ? 'bg-[rgba(197,208,218,0.2)]' : 'bg-[rgba(197,208,218,0.1])'}
+          ${leadershipPulse}
+          backdrop-blur-sm
+          border border-[rgba(197,208,218,0.1)]
+          transition-all duration-300`}>
+          <span className="text-[8px] font-bold text-[rgba(197,208,218,0.8)">L</span>
+        </div>
+      )}
 
       {/* Photo background */}
       <div className="absolute inset-0">
@@ -50,15 +65,31 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
           fill
           className="object-cover object-[50%_20%]"
           style={{
-            filter: `${panel.PhotoFilter} brightness(${isActive ? 0.38 : 0.15})`,
+            filter: `${panel.PhotoFilter} brightness(${isArtisan ? (isActive ? 0.18 : 0.1) : isActive ? 0.38 : 0.15})`,
             transform: panel.photoFlip ? 'scaleX(-1)' : 'none',
             transition: 'filter 700ms ease, transform 700ms ease',
             objectPosition: '50% 20%',
           }}
           priority
         />
-        {/* <div className='absolute inset-0' style={{ background: gradientOverlay}} /> */}
+        {isArtisan && (
+          <div
+            className="absolute inset-0"
+            style={{ background: isActive ? 'rgba(11,16,22,0.55)' : 'rgba(11,16,22,0.7)' }}
+          />
+        )}
         <div className="absolute inset-0" style={{ background: bottomGradient }} />
+        {/* Leadership border glow */}
+        {isLeadershipPanel && isActive && (
+          <div className="absolute inset-0 -z-10"
+            style={{
+              border: '2px solid rgba(197,208,218,0.4)',
+              borderRadius: 'inherit',
+              pointerEvents: 'none',
+              animation: 'leadershipGlow 3s ease-in-out infinite alternate'
+            }}
+          />
+        )}
       </div>
 
       {/* Cinema letterbox bars */}
@@ -79,10 +110,22 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
         style={{ background: 'rgba(255,255,255,0.04)' }} />
 
       {/* Progress bar */}
-      <ProgressBar active={isActive} duration={ROTATE_INTERVAL} />
+      <ProgressBar active={isActive} duration={ROTATE_INTERVAL} isLeadership={isLeadershipPanel} />
 
       {/* Clickable content area */}
-      <Link href={panel.href} onClick={(e) => { if (!isActive) e.preventDefault(); }} className="block h-full">
+      <Link
+        href={panel.href}
+        aria-current={isActive ? 'true' : undefined}
+        onFocus={onActivate}
+        onClick={(e) => { if (!isActive) e.preventDefault(); }}
+        onKeyDown={(e) => {
+          if ((e.key === 'Enter' || e.key === ' ') && !isActive) {
+            e.preventDefault();
+            onActivate();
+          }
+        }}
+        className="block h-full outline-none focus-visible:shadow-[inset_0_0_0_2px_rgba(255,255,255,0.7)]"
+      >
         <div
           className="relative z-10 h-full flex flex-col justify-between"
           style={{
@@ -91,7 +134,7 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
             paddingLeft: isActive ? 'clamp(28px, 3.5vw, 52px)' : '20px',
             paddingRight: isActive ? 'clamp(28px, 3.5vw, 52px)' : '20px',
             transition: 'padding-left 700ms cubic-bezier(0.4,0,0.2,1), padding-right 700ms cubic-bezier(0.4,0,0.2,1)',
-            minHeight: 'calc(100vh - 60px)',
+            minHeight: isArtisan && isActive ? '100%' : 'calc(100vh - 60px)',
           }}
         >
           {/* Top: number */}
@@ -104,11 +147,23 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
             </span>
           </div>
 
+          {/* Role line */}
+          <div className="mb-2">
+            <span
+              className="text-[10px] tracking-[0.2em] uppercase"
+              style={{ color: isActive ? panel.dim : 'rgba(120,120,120,0.3)', transition: 'color 500ms' }}
+            >
+              {panel.id === 'developer' ? (lang === 'en' ? 'BUILD' : 'BANGUN') :
+               panel.id === 'videographer' ? (lang === 'en' ? 'CREATE' : 'CIPTA') :
+               panel.id === 'beverage' ? (lang === 'en' ? 'LEAD' : 'MEMPIMPIN') : ''}
+            </span>
+          </div>
+
           {/* Middle: title */}
-          <div className="flex-1 flex items-center overflow-hidden">
+          <div className={`flex-1 flex overflow-hidden ${isArtisan && isActive ? 'min-h-0 items-stretch' : 'items-center'}`}>
             <AnimatePresence mode="wait">
               {isActive ? (
-                <motion.div key="active" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.35 }}>
+                <motion.div key="active" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.35 }} className={isArtisan ? 'h-full min-h-0 w-full' : undefined}>
                   {isCinema && (
                     <h2 className="font-['Cormorant_Garamond',serif] font-bold leading-[0.88] whitespace-pre-line"
                       style={{ fontSize: 'clamp(2.2rem, 3.8vw, 4.2rem)', color: panel.accent, letterSpacing: '-0.02em' }}>
@@ -129,16 +184,7 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
                       </h2>
                     </div>
                   )}
-                  {isArtisan && (
-                    <div>
-                      <div className="mb-2" style={{ color: 'rgba(180,130,80,0.25)', fontSize: '28px', lineHeight: 1 }}>⚗</div>
-                      <h2 className="font-['Cormorant_Garamond',serif] font-bold leading-[0.88] whitespace-pre-line"
-                        style={{ fontSize: 'clamp(2.2rem, 3.5vw, 3.8rem)', color: panel.accent, letterSpacing: '-0.02em' }}>
-                        {t('Beverage', 'Peracik')}{'\n'}
-                        <em style={{ fontStyle: 'italic', color: 'rgba(208,192,176,0.2)' }}>{t('Crafter', 'Minuman')}</em>
-                      </h2>
-                    </div>
-                  )}
+                  {isArtisan && <LeadPanelContent panel={panel} reduced={reduced} />}
                 </motion.div>
               ) : (
                 <motion.h2
@@ -147,7 +193,7 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
                   className={`${isTerminal ? 'font-mono' : "font-['Cormorant_Garamond',serif]"} font-bold`}
                   style={{
                     fontSize: '0.85rem',
-                    color: isArtisan ? 'rgba(208,192,176,0.18)' : isTerminal ? 'rgba(184,200,224,0.18)' : 'rgba(206,200,192,0.18)',
+                    color: isArtisan ? 'rgba(197,208,218,0.18)' : isTerminal ? 'rgba(184,200,224,0.18)' : 'rgba(206,200,192,0.18)',
                     writingMode: 'vertical-rl',
                     letterSpacing: '0.1em',
                   }}
@@ -160,27 +206,25 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
 
           {/* Bottom: meta — only when active */}
           <AnimatePresence>
-            {isActive && (
+            {isActive && !isArtisan && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 4 }}
                 transition={{ duration: 0.4, delay: 0.2 }}
                 className="space-y-3"
               >
-                <p className="text-[12px] leading-relaxed" style={{ color: panel.dim, maxWidth: '200px' }}>
+                <p className="text-[12px] leading-relaxed" style={{ color: panel.dim, maxWidth: '220px' }}>
                   {typeof panel.subtitle === 'string' ? panel.subtitle : panel.subtitle[lang]}
                 </p>
                 <p className={`${isTerminal ? 'font-mono' : ''} text-[9px] tracking-[0.15em] uppercase`}
                   style={{ color: panel.dim, opacity: 0.4 }}>
                   {typeof panel.tag === 'string' ? panel.tag : panel.tag[lang]}
                 </p>
-                <Magnetic strength={0.2}>
-                  <div className="flex items-center gap-2 text-[11px] cursor-pointer" style={{ color: panel.accent }}>
-                    <span>{typeof panel.cta === 'string' ? panel.cta : panel.cta[lang]}</span>
-                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </div>
-                </Magnetic>
+                <div className="flex items-center gap-2 text-[11px] cursor-pointer" style={{ color: panel.accent }}>
+                  <span>{typeof panel.cta === 'string' ? panel.cta : panel.cta[lang]}</span>
+                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
               </motion.div>
             )}
           </AnimatePresence>

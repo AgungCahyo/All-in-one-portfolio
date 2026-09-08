@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LayoutHeader } from '@/components/ui/LayoutHeader';
-import { Magnetic } from '@/components/ui/Magnetic';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { TerminalWidget } from '@/components/ui/TerminalWidget';
 import { useLanguage } from '@/lib/languageContext';
@@ -487,29 +486,25 @@ export default function WorkWithMePage() {
             </div>
 
             <div className="flex flex-wrap gap-3 mt-7 pt-6" style={{ borderTop: '1px solid rgba(100,130,200,0.08)' }}>
-              <Magnetic strength={0.2}>
-                <a
-                  href={emailHref}
-                  className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-[13px] transition-opacity hover:opacity-90"
-                  style={{ background: '#b8c8e0', color: '#090c10' }}
-                >
-                  {t('Send by Email', 'Kirim via Email')}
-                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </a>
-              </Magnetic>
-              <Magnetic strength={0.2}>
-                <a
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-6 py-3 rounded-full text-[13px] transition-colors"
-                  style={{ border: '1px solid rgba(100,130,200,0.18)', color: '#7f93b2' }}
-                >
-                  {t('Send by WhatsApp', 'Kirim via WhatsApp')}
-                </a>
-              </Magnetic>
+              <a
+                href={emailHref}
+                className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-[13px] transition-opacity hover:opacity-90"
+                style={{ background: '#b8c8e0', color: '#090c10' }}
+              >
+                {t('Send by Email', 'Kirim via Email')}
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3 rounded-full text-[13px] transition-colors"
+                style={{ border: '1px solid rgba(100,130,200,0.18)', color: '#7f93b2' }}
+              >
+                {t('Send by WhatsApp', 'Kirim via WhatsApp')}
+              </a>
             </div>
           </div>
         </div>
@@ -596,26 +591,22 @@ export default function WorkWithMePage() {
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
-            <Magnetic strength={0.2}>
-              <a
-                href="https://github.com/agungcahyo"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-5 py-3 rounded-full text-[13px] transition-all"
-                style={{ border: '1px solid rgba(255,255,255,0.08)', color: '#4a5870' }}
-              >
-                GitHub
-              </a>
-            </Magnetic>
-            <Magnetic strength={0.2}>
-              <a
-                href="mailto:cahyoprasetyo507@gmail.com"
-                className="px-7 py-3 rounded-full font-medium text-[13px] transition-opacity hover:opacity-90"
-                style={{ background: '#b8c8e0', color: '#090c10' }}
-              >
-                {t('Email Me', 'Email Saya')}
-              </a>
-            </Magnetic>
+            <a
+              href="https://github.com/agungcahyo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-3 rounded-full text-[13px] transition-all"
+              style={{ border: '1px solid rgba(255,255,255,0.08)', color: '#4a5870' }}
+            >
+              GitHub
+            </a>
+            <a
+              href="mailto:cahyoprasetyo507@gmail.com"
+              className="px-7 py-3 rounded-full font-medium text-[13px] transition-opacity hover:opacity-90"
+              style={{ background: '#b8c8e0', color: '#090c10' }}
+            >
+              {t('Email Me', 'Email Saya')}
+            </a>
           </div>
         </div>
       </section>

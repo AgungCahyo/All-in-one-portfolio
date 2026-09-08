@@ -1,25 +1,23 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useState, useEffect, useLayoutEffect, useCallback } from 'react';
 import { Panel } from '@/components/sections/Panel';
 import { panels, ROTATE_INTERVAL } from '@/data/panels';
 import { useActivePanel } from '@/lib/activePanelContext';
 import { useLanguage } from '@/lib/languageContext';
-import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
+import { LayoutHeader } from '@/components/ui/LayoutHeader';
 import Link from 'next/link';
-import { Magnetic } from '@/components/ui/Magnetic';
 
 export default function Home() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
   const [isRevealed, setIsRevealed] = useState(false);
   const [isBooting, setIsBooting] = useState(false);
   const [typedChars, setTypedChars] = useState(0);
   const [bootProgress, setBootProgress] = useState(0);
   const { setActivePanel } = useActivePanel();
-  const { lang, t } = useLanguage();
+  const { t } = useLanguage();
   const bootScript = [
     '$ init portfolio.home --mode developer-first',
     '> loading engineering showcase...',
@@ -83,7 +81,11 @@ export default function Home() {
   function handleActivate(i: number) {
     setActive(i);
     setPaused(true);
-    setMenuOpen(false);
+  }
+
+  function handleActivateRole(id: 'developer' | 'videographer' | 'beverage') {
+    const i = panels.findIndex((p) => p.id === id);
+    if (i >= 0) handleActivate(i);
   }
 
   function handleMouseLeave() {
@@ -145,90 +147,12 @@ export default function Home() {
         style={{ pointerEvents: isRevealed ? 'auto' : 'none' }}
       >
 
-      {/* Header */}
-      <motion.header
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-4 sm:py-5 flex justify-between items-center"
-        style={{ background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(16px)', borderBottom: '1px solid rgba(255,255,255,0.04)' }}
-      >
-        <div className="flex items-center gap-3">
-          <svg className="w-3.5 h-3.5" style={{ color: 'rgba(255,255,255,0.28)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 12H5M5 12l7-7M5 12l7 7" />
-          </svg>
-          <span className="text-[10px] tracking-[0.25em] uppercase leading-none"
-            style={{ color: 'rgba(255,255,255,0.28)' }}>
-            {t('Portfolio', 'Portofolio')}
-          </span>
-        </div>
-        <nav className="hidden md:flex items-center gap-7">
-          {panels.map((p, i) => (
-            <button
-              key={p.id}
-              onClick={() => handleActivate(i)}
-              className="text-[10px] tracking-[0.2em] uppercase transition-colors duration-300 leading-none"
-              style={{ color: active === i ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.2)' }}
-            >
-              {p.id === 'beverage' ? t('Beverage', 'Peracik') : 
-               p.id === 'developer' ? t('Developer', 'Developer') : 
-               t('Videographer', 'Videografer')}
-            </button>
-          ))}
-          <div className="w-px h-3 bg-white/10 ml-2" />
-          <Magnetic strength={0.2}>
-          <Link href="/developer/work-with-me" className="text-[10px] tracking-[0.2em] uppercase transition-colors duration-300"
-              style={{ color: 'rgba(255,255,255,0.45)' }}>
-              {t('Start Project', 'Mulai Project')}
-            </Link>
-          </Magnetic>
-          <Magnetic strength={0.2}>
-            <Link href="/about" className="text-[10px] tracking-[0.2em] uppercase transition-colors duration-300"
-              style={{ color: 'rgba(255,255,255,0.2)' }}>
-              {t('About', 'Tentang')}
-            </Link>
-          </Magnetic>
-          <LanguageSwitcher />
-        </nav>
-        <div className="md:hidden flex items-center gap-2">
-          <LanguageSwitcher />
-          <button
-            onClick={() => setMenuOpen((v) => !v)}
-            className="p-2 rounded-md border border-white/10"
-            aria-label="Toggle menu"
-          >
-            <svg className="w-4 h-4 text-white/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d={menuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'} />
-            </svg>
-          </button>
-        </div>
-      </motion.header>
-      {menuOpen && (
-        <div className="fixed top-[58px] left-0 right-0 z-40 md:hidden px-4 py-3 border-b border-white/10 bg-black/90 backdrop-blur-xl">
-          <div className="flex flex-col gap-2">
-            {panels.map((p, i) => (
-              <button
-                key={p.id}
-                onClick={() => handleActivate(i)}
-                className="text-left px-3 py-2 rounded-md text-[11px] tracking-[0.16em] uppercase"
-                style={{ color: active === i ? 'rgba(255,255,255,0.8)' : 'rgba(255,255,255,0.45)', background: active === i ? 'rgba(255,255,255,0.08)' : 'transparent' }}
-              >
-                {p.id === 'beverage' ? t('Beverage', 'Peracik') :
-                 p.id === 'developer' ? t('Developer', 'Developer') :
-                 t('Videographer', 'Videografer')}
-              </button>
-            ))}
-            <Link href="/about" className="text-left px-3 py-2 rounded-md text-[11px] tracking-[0.16em] uppercase"
-              style={{ color: 'rgba(255,255,255,0.45)' }}>
-              {t('About', 'Tentang')}
-            </Link>
-            <Link href="/developer/work-with-me" className="text-left px-3 py-2 rounded-md text-[11px] tracking-[0.16em] uppercase"
-              style={{ color: 'rgba(255,255,255,0.75)', background: 'rgba(255,255,255,0.08)' }}>
-              {t('Start Project', 'Mulai Project')}
-            </Link>
-          </div>
-        </div>
-      )}
+      <LayoutHeader
+        homePanels={{
+          activeId: panels[active].id as 'developer' | 'videographer' | 'beverage',
+          onActivate: handleActivateRole,
+        }}
+      />
 
       {/* Watermark */}
       <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0 select-none overflow-hidden">
@@ -249,7 +173,7 @@ export default function Home() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         className="flex flex-col lg:flex-row"
-        style={{ marginTop: menuOpen ? '172px' : '60px', height: menuOpen ? 'calc(100vh - 172px)' : 'calc(100vh - 60px)' }}
+        style={{ marginTop: '60px', height: 'calc(100vh - 60px)' }}
         onMouseLeave={handleMouseLeave}
       >
         {panels.map((panel, i) => (

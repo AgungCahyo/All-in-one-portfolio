@@ -195,32 +195,32 @@ function ArtisanCursor({ x, y, tail, rotation }: { x: number; y: number; tail: T
         return (
           <g key={i}>
             <line x1={prev.x} y1={prev.y} x2={p.x} y2={p.y}
-              stroke={`rgba(180,130,80,${alpha * 0.6})`}
+              stroke={`rgba(150,170,190,${alpha * 0.6})`}
               strokeWidth={(1 - progress) * 2}
             />
             {i % 6 === 0 && progress < 0.75 && (
               <>
                 <ellipse cx={(p.x + prev.x) / 2 + nx * 5} cy={(p.y + prev.y) / 2 + ny * 5}
                   rx={4} ry={2} transform={`rotate(${(angle * 180) / Math.PI}, ${(p.x + prev.x) / 2 + nx * 5}, ${(p.y + prev.y) / 2 + ny * 5})`}
-                  fill={`rgba(180,130,80,${alpha * 0.4})`} stroke={`rgba(180,130,80,${alpha})`} strokeWidth={0.5}
+                  fill={`rgba(150,170,190,${alpha * 0.4})`} stroke={`rgba(150,170,190,${alpha})`} strokeWidth={0.5}
                 />
                 {i % 12 === 0 && (
                   <ellipse cx={(p.x + prev.x) / 2 - nx * 5} cy={(p.y + prev.y) / 2 - ny * 5}
                     rx={3} ry={1.5} transform={`rotate(${(angle * 180) / Math.PI}, ${(p.x + prev.x) / 2 - nx * 5}, ${(p.y + prev.y) / 2 - ny * 5})`}
-                    fill={`rgba(210,170,110,${alpha * 0.35})`} stroke="none"
+                    fill={`rgba(197,208,218,${alpha * 0.35})`} stroke="none"
                   />
                 )}
               </>
             )}
             {i > tail.length - 6 && (
-              <circle cx={p.x} cy={p.y} r={2} fill={`rgba(210,170,110,${(1 - progress) * 0.5})`} />
+              <circle cx={p.x} cy={p.y} r={2} fill={`rgba(197,208,218,${(1 - progress) * 0.5})`} />
             )}
           </g>
         );
       })}
 
       {/* Outer ring */}
-      <circle cx={x} cy={y} r={30} stroke="rgba(180,130,80,0.25)" strokeWidth={0.5} fill="none" />
+      <circle cx={x} cy={y} r={30} stroke="rgba(150,170,190,0.25)" strokeWidth={0.5} fill="none" />
 
       {/* Rotating spokes */}
       {petals.map(i => {
@@ -234,13 +234,13 @@ function ArtisanCursor({ x, y, tail, rotation }: { x: number; y: number; tail: T
         return (
           <g key={i}>
             <line x1={x} y1={y} x2={tx} y2={ty}
-              stroke={`rgba(180,130,80,${isPrimary ? 0.35 : 0.18})`}
+              stroke={`rgba(150,170,190,${isPrimary ? 0.35 : 0.18})`}
               strokeWidth={isPrimary ? 0.8 : 0.5}
             />
             {isPrimary && (
               <rect
                 x={tx - 2} y={ty - 2} width={4} height={4}
-                fill="rgba(210,170,110,0.55)"
+                fill="rgba(197,208,218,0.55)"
                 transform={`rotate(${diamondAngle}, ${tx}, ${ty})`}
               />
             )}
@@ -261,22 +261,22 @@ function ArtisanCursor({ x, y, tail, rotation }: { x: number; y: number; tail: T
         return (
           <path key={i}
             d={`M ${sx2} ${sy2} Q ${cpx} ${cpy} ${ex} ${ey}`}
-            stroke="rgba(210,170,110,0.2)" strokeWidth={0.8} fill="none"
+            stroke="rgba(197,208,218,0.2)" strokeWidth={0.8} fill="none"
           />
         );
       })}
 
       {/* Inner ring */}
-      <circle cx={x} cy={y} r={10} stroke="rgba(210,170,110,0.6)" strokeWidth={1} fill="rgba(180,130,80,0.08)" />
+      <circle cx={x} cy={y} r={10} stroke="rgba(197,208,218,0.6)" strokeWidth={1} fill="rgba(150,170,190,0.08)" />
 
       {/* Center drop */}
-      <circle cx={x} cy={y} r={2.5} fill="rgba(210,170,110,0.9)" />
+      <circle cx={x} cy={y} r={2.5} fill="rgba(197,208,218,0.9)" />
 
       {/* Alchemical symbol */}
-      <text x={x + 36} y={y + 4} fontSize={10} fontFamily="Georgia, serif" fontStyle="italic" fill="rgba(180,130,80,0.4)">
+      <text x={x + 36} y={y + 4} fontSize={10} fontFamily="Georgia, serif" fontStyle="italic" fill="rgba(150,170,190,0.4)">
         ☽
       </text>
-      <text x={x + 14} y={y + 34} fontSize={9} fontFamily="Georgia, serif" fontStyle="italic" fill="rgba(210,170,110,0.3)">
+      <text x={x + 14} y={y + 34} fontSize={9} fontFamily="Georgia, serif" fontStyle="italic" fill="rgba(197,208,218,0.3)">
         ⚗ distillate
       </text>
     </svg>

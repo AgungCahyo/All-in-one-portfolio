@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { Magnetic } from '@/components/ui/Magnetic';
 import { useLanguage } from '@/lib/languageContext';
 import { useActivePanel } from '@/lib/activePanelContext';
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
@@ -20,7 +19,7 @@ const navLinks = [
   { href: '/',             labelEn: '← Home',           labelId: '← Beranda'          },
   { href: '/developer',   labelEn: 'Developer',         labelId: 'Developer'           },
   { href: '/videographer', labelEn: 'Videographer',     labelId: 'Videografer'         },
-  { href: '/beverage',    labelEn: 'Beverage',          labelId: 'Peracik'             },
+  { href: '/beverage',    labelEn: 'Leadership',        labelId: 'Leadership'          },
   { href: '/about',       labelEn: 'About',             labelId: 'Tentang'             },
 ];
 
@@ -87,19 +86,17 @@ export default function NotFound() {
         className="relative z-10 flex justify-between items-center px-8 py-5"
         style={{ borderBottom: '1px solid rgba(100,130,200,0.06)' }}
       >
-        <Magnetic strength={0.25}>
-          <Link
-            href="/"
-            className="flex items-center gap-2.5 group"
-          >
-            <svg className="w-3.5 h-3.5" style={{ color: 'rgba(184,200,224,0.3)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 12H5M5 12l7-7M5 12l7 7" />
-            </svg>
-            <span className="text-[10px] tracking-[0.25em] uppercase" style={{ color: 'rgba(184,200,224,0.3)' }}>
-              {t('Portfolio', 'Portofolio')}
-            </span>
-          </Link>
-        </Magnetic>
+        <Link
+          href="/"
+          className="flex items-center gap-2.5 group"
+        >
+          <svg className="w-3.5 h-3.5" style={{ color: 'rgba(184,200,224,0.3)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 12H5M5 12l7-7M5 12l7 7" />
+          </svg>
+          <span className="text-[10px] tracking-[0.25em] uppercase" style={{ color: 'rgba(184,200,224,0.3)' }}>
+            {t('Portfolio', 'Portofolio')}
+          </span>
+        </Link>
         <LanguageSwitcher />
       </motion.header>
 
@@ -222,19 +219,18 @@ export default function NotFound() {
           className="flex flex-wrap justify-center gap-3"
         >
           {navLinks.map((link, i) => (
-            <Magnetic key={link.href} strength={0.2}>
-              <Link
-                href={link.href}
-                className="px-4 py-2 rounded-full font-mono text-[11px] tracking-[0.16em] uppercase transition-all hover:opacity-100"
-                style={{
-                  border: '1px solid rgba(100,130,200,0.12)',
-                  color: i === 0 ? '#b8c8e0' : '#4a5870',
-                  background: i === 0 ? 'rgba(100,130,200,0.06)' : 'transparent',
-                }}
-              >
-                {lang === 'en' ? link.labelEn : link.labelId}
-              </Link>
-            </Magnetic>
+            <Link
+              key={link.href}
+              href={link.href}
+              className="px-4 py-2 rounded-full font-mono text-[11px] tracking-[0.16em] uppercase transition-all hover:opacity-100"
+              style={{
+                border: '1px solid rgba(100,130,200,0.12)',
+                color: i === 0 ? '#b8c8e0' : '#4a5870',
+                background: i === 0 ? 'rgba(100,130,200,0.06)' : 'transparent',
+              }}
+            >
+              {lang === 'en' ? link.labelEn : link.labelId}
+            </Link>
           ))}
         </motion.div>
       </div>

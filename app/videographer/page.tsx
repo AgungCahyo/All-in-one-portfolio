@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Magnetic } from '@/components/ui/Magnetic';
 import { SkillBars } from '@/components/ui/SkillBars';
 import { JourneyTimeline } from '@/components/ui/JourneyTimeline';
 import { SectionLabel } from '@/components/ui/SectionLabel';
@@ -253,13 +252,11 @@ export default function VideographerPage() {
             <h2 className="font-['Cormorant_Garamond',serif] text-3xl lg:text-4xl font-bold mb-2" style={{ color: '#cec8c0' }}>{t('Ready to collaborate?', 'Siap collab?')}</h2>
             <p className="text-[14px]" style={{ color: '#3a3530' }}>{t("Let's create something cinematic together.", "Yuk bikin sesuatu yang cinematic bareng.")}</p>
           </div>
-          <Magnetic strength={0.2}>
-            <a href="mailto:cahyoprasetyo507@gmail.com"
-              className="px-7 py-3.5 font-medium rounded-full text-[13px] tracking-wide whitespace-nowrap transition-all hover:opacity-90"
-              style={{ background: '#cec8c0', color: '#0c0b0a' }}>
-              {t('Hire Me as Videographer', 'Hire Me as Videographer')}
-            </a>
-          </Magnetic>
+          <a href="mailto:cahyoprasetyo507@gmail.com"
+            className="px-7 py-3.5 font-medium rounded-full text-[13px] tracking-wide whitespace-nowrap transition-all hover:opacity-90"
+            style={{ background: '#cec8c0', color: '#0c0b0a' }}>
+            {t('Hire Me as Videographer', 'Hire Me as Videographer')}
+          </a>
         </div>
       </section>
 
@@ -273,7 +270,7 @@ export default function VideographerPage() {
         </Link>
         <span className="text-[11px] font-medium" style={{ color: '#2a2520' }}>02 / {t('Videographer', 'Videografer')}</span>
         <Link href="/beverage" className="text-[11px] flex items-center gap-2 transition-colors" style={{ color: '#3a3530' }}>
-          {t('Next', 'Selanjutnya')}: {t('Beverage', 'Beverage')}
+          {t('Next', 'Selanjutnya')}: {t('Leadership', 'Leadership')}
           <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>

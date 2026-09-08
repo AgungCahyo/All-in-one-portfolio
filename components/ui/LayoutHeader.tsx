@@ -2,19 +2,23 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { Magnetic } from './Magnetic';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { useLanguage } from '@/lib/languageContext';
 import { RoleType, ThemeVariant } from '@/lib/types';
 
+type PanelRoleId = 'developer' | 'videographer' | 'beverage';
+
 interface HeaderProps {
   activeRole?: RoleType;
   theme?: ThemeVariant;
+  homePanels?: {
+    activeId: PanelRoleId;
+    onActivate: (id: PanelRoleId) => void;
+  };
 }
 
-const themeStyles: Record<ThemeVariant, any> = {
+const themeStyles: Record<ThemeVariant, Record<string, string>> = {
   cinema: {
     bg: 'rgba(12,11,10,0.85)',
     border: 'rgba(255,255,255,0.04)',
@@ -36,14 +40,24 @@ const themeStyles: Record<ThemeVariant, any> = {
     mobileBg: '#090c10',
   },
   artisan: {
-    bg: 'rgba(12,9,6,0.85)',
-    border: 'rgba(255,255,255,0.04)',
-    textPrimary: '#d0c0b0',
-    textSecondary: '#3a2a1a',
-    textMuted: '#5a4a38',
-    active: '#b89878',
-    accent: '#d0c0b0',
-    mobileBg: '#0c0906',
+    bg: 'rgba(11,16,22,0.85)',
+    border: 'rgba(150,170,190,0.14)',
+    textPrimary: '#c5d0da',
+    textSecondary: '#6d7a88',
+    textMuted: '#6d7a88',
+    active: '#c5d0da',
+    accent: '#d4af37',
+    mobileBg: '#0b1016',
+  },
+  leadership: {
+    bg: 'rgba(10,14,18,0.85)',
+    border: 'rgba(212,175,55,0.14)',
+    textPrimary: '#e6d3a8',
+    textSecondary: '#b8904c',
+    textMuted: '#8a7a5a',
+    active: '#e6d3a8',
+    accent: '#d4af37',
+    mobileBg: '#0a0e12',
   },
   brutalist: {
     bg: 'rgba(15, 15, 15, 0.85)',
@@ -57,82 +71,121 @@ const themeStyles: Record<ThemeVariant, any> = {
   }
 };
 
-export function LayoutHeader({ activeRole, theme = 'cinema' }: HeaderProps) {
+const homeChrome = {
+  bg: 'rgba(0,0,0,0.7)',
+  border: 'rgba(255,255,255,0.04)',
+  textPrimary: 'rgba(255,255,255,0.8)',
+  textSecondary: 'rgba(255,255,255,0.2)',
+  textMuted: 'rgba(255,255,255,0.15)',
+  active: 'rgba(255,255,255,0.6)',
+  accent: 'rgba(255,255,255,0.45)',
+  mobileBg: '#000000',
+};
+
+const panelRoleIds: PanelRoleId[] = ['developer', 'videographer', 'beverage'];
+
+export function LayoutHeader({ activeRole, theme = 'cinema', homePanels }: HeaderProps) {
   const { t } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
-  const styles = themeStyles[theme];
+  const styles = homePanels ? homeChrome : themeStyles[theme];
+  const currentRole = homePanels?.activeId ?? activeRole;
 
   const navLinks = [
     { id: 'developer', href: '/developer', labelEn: 'Developer', labelId: 'Developer' },
     { id: 'videographer', href: '/videographer', labelEn: 'Videographer', labelId: 'Videografer' },
-    { id: 'beverage', href: '/beverage', labelEn: 'Beverage', labelId: 'Peracik' },
+    { id: 'beverage', href: '/beverage', labelEn: 'Leadership', labelId: 'Leadership' },
     { id: 'about', href: '/about', labelEn: 'About', labelId: 'Tentang' },
   ];
 
+  function renderNavItem(link: (typeof navLinks)[number], className: string) {
+    const isActive = currentRole === link.id;
+    const isHomePanel = Boolean(homePanels && panelRoleIds.includes(link.id as PanelRoleId));
+
+    if (isHomePanel && homePanels) {
+      return (
+        <button
+          key={link.id}
+          type="button"
+          onClick={() => {
+            homePanels.onActivate(link.id as PanelRoleId);
+            setMenuOpen(false);
+          }}
+          className={className}
+          style={{ color: isActive ? styles.active : styles.textSecondary }}
+        >
+          {t(link.labelEn, link.labelId)}
+        </button>
+      );
+    }
+
+    if (isActive && !homePanels) {
+      return (
+        <span
+          key={link.id}
+          className={`${className} font-medium`}
+          style={{ color: styles.textPrimary }}
+        >
+          {t(link.labelEn, link.labelId)}
+        </span>
+      );
+    }
+
+    return (
+      <Link
+        key={link.id}
+        href={link.href}
+        className={className}
+        style={{ color: isActive ? styles.textPrimary : styles.textSecondary }}
+        onClick={() => setMenuOpen(false)}
+      >
+        {t(link.labelEn, link.labelId)}
+      </Link>
+    );
+  }
+
   return (
     <>
-      <nav 
+      <nav
         className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-4 sm:py-5 flex justify-between items-center transition-colors duration-500"
-        style={{ 
-          background: styles.bg, 
-          backdropFilter: 'blur(16px)', 
-          borderBottom: `1px solid ${styles.border}` 
+        style={{
+          background: styles.bg,
+          backdropFilter: 'blur(16px)',
+          borderBottom: `1px solid ${styles.border}`
         }}
       >
-        <Magnetic strength={0.3}>
-          <Link href="/" className="flex items-center gap-3 group">
-            <svg className="w-3.5 h-3.5 transition-colors" style={{ color: styles.textSecondary }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 12H5M5 12l7-7M5 12l7 7" />
-            </svg>
-            <span className="text-[10px] tracking-[0.25em] uppercase transition-colors" style={{ color: styles.textSecondary }}>
-              {t('Portfolio', 'Portofolio')}
-            </span>
-          </Link>
-        </Magnetic>
+        <Link href="/" className="flex items-center gap-3 group">
+          <svg className="w-3.5 h-3.5 transition-colors" style={{ color: styles.textSecondary }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 12H5M5 12l7-7M5 12l7 7" />
+          </svg>
+          <span className="text-[10px] tracking-[0.25em] uppercase transition-colors" style={{ color: styles.textSecondary }}>
+            {t('Portfolio', 'Portofolio')}
+          </span>
+        </Link>
 
         <div className="hidden md:flex items-center gap-7">
-          {navLinks.map((link) => (
-            <Magnetic key={link.id} strength={0.2}>
-              {activeRole === link.id ? (
-                <span 
-                  className="text-[10px] tracking-[0.2em] uppercase font-medium" 
-                  style={{ color: styles.active }}
-                >
-                  {t(link.labelEn, link.labelId)}
-                </span>
-              ) : (
-                <Link 
-                  href={link.href} 
-                  className="text-[10px] tracking-[0.2em] uppercase transition-colors" 
-                  style={{ color: styles.textSecondary }}
-                >
-                  {t(link.labelEn, link.labelId)}
-                </Link>
-              )}
-            </Magnetic>
-          ))}
+          {navLinks.map((link) =>
+            renderNavItem(link, 'text-[10px] tracking-[0.2em] uppercase transition-colors leading-none')
+          )}
           <div className="w-px h-3 ml-2" style={{ background: styles.border }} />
-          <Magnetic strength={0.2}>
-            <Link
-              href="/developer/work-with-me"
-              className="px-3.5 py-2 rounded-full text-[10px] tracking-[0.18em] uppercase transition-colors"
-              style={{ border: `1px solid ${styles.border}`, color: styles.accent }}
-            >
-              {t('Start Project', 'Mulai Project')}
-            </Link>
-          </Magnetic>
+          <Link
+            href="/developer/work-with-me"
+            className="px-3.5 py-2 rounded-full text-[10px] tracking-[0.18em] uppercase transition-colors"
+            style={{ border: `1px solid ${styles.border}`, color: styles.accent }}
+          >
+            {t('Start Project', 'Mulai Project')}
+          </Link>
           <LanguageSwitcher />
         </div>
 
         <div className="md:hidden flex items-center gap-2">
           <LanguageSwitcher />
-          <button 
-            onClick={() => setMenuOpen((v) => !v)} 
-            className="p-2 rounded-md border transition-colors" 
+          <button
+            onClick={() => setMenuOpen((v) => !v)}
+            className="p-2 rounded-md border transition-colors"
             style={{ borderColor: styles.border }}
             aria-label="Toggle menu"
           >
-            <svg className="w-4 h-4" style={{ color: styles.textPrimary + 'B3' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-4 h-4" style={{ color: styles.textPrimary }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d={menuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'} />
             </svg>
           </button>
@@ -141,31 +194,32 @@ export function LayoutHeader({ activeRole, theme = 'cinema' }: HeaderProps) {
 
       <AnimatePresence>
         {menuOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             className="fixed top-[58px] left-0 right-0 z-40 md:hidden px-4 py-3 border-b backdrop-blur-xl"
-            style={{ 
-              background: `${styles.mobileBg}F2`, 
-              borderColor: styles.border 
+            style={{
+              background: `${styles.mobileBg}F2`,
+              borderColor: styles.border
             }}
           >
             <div className="flex flex-col gap-2 text-[11px] tracking-[0.16em] uppercase">
-              {navLinks.map((link) => (
-                <Link 
-                  key={link.id}
-                  href={link.href} 
-                  className={`px-3 py-2 rounded-md transition-colors ${activeRole === link.id ? 'font-bold' : ''}`}
-                  style={{ 
-                    background: activeRole === link.id ? 'rgba(255,255,255,0.06)' : 'transparent',
-                    color: activeRole === link.id ? styles.textPrimary : styles.textSecondary
-                  }}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {t(link.labelEn, link.labelId)}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = currentRole === link.id;
+                return (
+                  <div
+                    key={link.id}
+                    className="rounded-md"
+                    style={{ background: isActive ? 'rgba(255,255,255,0.06)' : 'transparent' }}
+                  >
+                    {renderNavItem(
+                      link,
+                      `block w-full text-left px-3 py-2 rounded-md transition-colors ${isActive ? 'font-bold' : ''}`
+                    )}
+                  </div>
+                );
+              })}
               <Link
                 href="/developer/work-with-me"
                 className="px-3 py-2 rounded-md transition-colors font-bold"

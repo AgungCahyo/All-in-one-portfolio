@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Magnetic } from '@/components/ui/Magnetic';
 import { SkillBars } from '@/components/ui/SkillBars';
 import { JourneyTimeline } from '@/components/ui/JourneyTimeline';
 import { SectionLabel } from '@/components/ui/SectionLabel';
@@ -322,16 +321,12 @@ export default function DeveloperPage() {
             <p className="text-[14px]" style={{ color: '#2a3040' }}>{t("Share the scope first. I'll turn it into a practical build plan.", "Kirim dulu scope project-nya. Nanti aku ubah jadi build plan yang praktis.")}</p>
           </div>
           <div className="flex gap-3">
-            <Magnetic strength={0.2}>
-              <a href="https://github.com/agungcahyo" target="_blank" rel="noopener noreferrer"
-                className="px-5 py-3 rounded-full text-[13px] transition-all"
-                style={{ border: '1px solid rgba(255,255,255,0.08)', color: '#4a5870' }}>GitHub</a>
-            </Magnetic>
-            <Magnetic strength={0.2}>
-              <Link href="/developer/work-with-me"
-                className="px-7 py-3 font-medium rounded-full text-[13px] tracking-wide transition-all hover:opacity-90"
-                style={{ background: '#b8c8e0', color: '#090c10' }}>{t('Start a Project', 'Mulai Project')}</Link>
-            </Magnetic>
+            <a href="https://github.com/agungcahyo" target="_blank" rel="noopener noreferrer"
+              className="px-5 py-3 rounded-full text-[13px] transition-all"
+              style={{ border: '1px solid rgba(255,255,255,0.08)', color: '#4a5870' }}>GitHub</a>
+            <Link href="/developer/work-with-me"
+              className="px-7 py-3 font-medium rounded-full text-[13px] tracking-wide transition-all hover:opacity-90"
+              style={{ background: '#b8c8e0', color: '#090c10' }}>{t('Start a Project', 'Mulai Project')}</Link>
           </div>
         </div>
       </section>

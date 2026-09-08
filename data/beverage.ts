@@ -9,76 +9,71 @@ export interface BeverageCreation {
   insight: BilingualString;
 }
 
-export interface SensoryNote {
+export interface LeadershipTrait {
   note: BilingualString;
   icon: string;
 }
 
-export interface SignatureRecipe {
-  name: BilingualString;
-  subtitle: BilingualString;
-  profile: Record<string, number>;
-  ingredients: { amount: string; item: BilingualString }[];
-  method: BilingualString;
-  aroma: BilingualString;
-  taste: BilingualString;
+export interface LeadershipPractice {
+  title: BilingualString;
+  body: BilingualString;
 }
 
 export const creations: BeverageCreation[] = [
   {
-    title: { en: 'Signature Mocktail Menu', id: 'Menu Mocktail Signature' },
-    subtitle: { en: 'Menu Creation & Flavor Profiling', id: 'Pengembangan Menu & Profil Rasa' },
-    type: { en: 'Menu Development', id: 'Pengembangan Menu' },
-    description: {
-      en: 'Crafting refreshing, balanced mocktails goes beyond mixing syrups — it requires understanding chemical interactions between acidity, sweetness, and aromatics. Developed a seasonal beverage menu that increased customer satisfaction and streamlined ordering during peak shifts.',
-      id: 'Meracik mocktail yang segar dan seimbang bukan sekadar mencampur sirup. Butuh pemahaman mendalam tentang interaksi kimia antara asam, manis, dan aromatik. Menu minuman musiman yang saya kembangkan ini berhasil meningkatkan kepuasan pelanggan sekaligus mempercepat proses pemesanan di jam-jam sibuk.'
-    },
-    tags: ['Menu Engineering', 'Ingredient Sourcing', 'Standard Recipes', 'Garnish Design'],
-    insight: {
-      en: 'The same precision required to debug a React application is utilized when adjusting the micro-measurements of a beverage recipe.',
-      id: 'Presisi yang sama ketika men-debug aplikasi React juga saya terapkan saat menyetel ukuran mikro dalam sebuah resep minuman.'
-    },
-  },
-  {
-    title: { en: 'Butterfly Pea Lemonade Series', id: 'Seri Butterfly Pea Lemonade' },
-    subtitle: { en: 'Signature Color-Changing Mocktail', id: 'Mocktail Perubah Warna — Menu Signature' },
-    type: { en: 'Recipe Development', id: 'Pengembangan Resep' },
-    description: {
-      en: 'A visually dramatic mocktail series built around pH-reactive butterfly pea flower extract. The drink shifts naturally from deep indigo to vibrant violet when citrus is added — a chemistry-forward creation that became a customer favorite. Developed three flavor variations for different daypart menus.',
-      id: 'Seri mocktail yang dramatis secara visual, dibangun di sekitar ekstrak bunga telang yang sensitif terhadap pH. Minuman ini berubah secara alami dari biru nila tua menjadi ungu cerah saat jeruk ditambahkan — kreasi berbasis kimia yang langsung menjadi favorit pelanggan. Dikembangkan dalam tiga variasi rasa untuk menu waktu yang berbeda.'
-    },
-    tags: ['Color-Changing Chemistry', 'Butterfly Pea Flower', 'Seasonal Variation', 'Visual Presentation'],
-    insight: {
-      en: 'Using natural pH indicators is the beverage equivalent of writing code that responds dynamically to input.',
-      id: 'Menggunakan indikator pH alami itu seperti menulis kode yang merespons input secara dinamis — bedanya, inputnya adalah tetesan jeruk nipis.'
-    },
-  },
-  {
-    title: { en: 'Lemongrass & Basil Cold Brew', id: 'Cold Brew Serai & Kemangi' },
-    subtitle: { en: 'Cold Infusion Technique', id: 'Teknik Infusi Dingin' },
-    type: { en: 'Craft Technique', id: 'Teknik Kerajinan' },
-    description: {
-      en: 'Developed a 24-hour cold infusion protocol using fresh Indonesian lemongrass and Thai basil to create a layered herbal concentrate. The concentrate became the base for four distinct menu items, improving ingredient utilization by 40% and reducing prep waste during high-volume service.',
-      id: 'Mengembangkan protokol infusi dingin 24 jam menggunakan serai segar dan kemangi untuk menghasilkan konsentrat herbal berlapis. Konsentrat ini menjadi fondasi empat item menu berbeda, meningkatkan efisiensi bahan baku hingga 40%, dan menekan pemborosan selama jam layanan padat.'
-    },
-    tags: ['Cold Infusion', 'Herb Sourcing', 'Batch Preparation', 'Zero Waste Approach'],
-    insight: {
-      en: 'Cold brew infusion is like asynchronous programming — it runs quietly in the background and delivers a richer output.',
-      id: 'Infusi cold brew itu seperti pemrograman asinkron — berjalan diam-diam di latar belakang, lalu menghasilkan sesuatu yang jauh lebih kaya.'
-    },
-  },
-  {
     title: { en: 'Beverage Training SOP', id: 'SOP Pelatihan Minuman' },
-    subtitle: { en: 'Standard Operating Procedures & Team Training', id: 'SOP & Pelatihan Tim' },
-    type: { en: 'Operations & Leadership', id: 'Operasional & Kepemimpinan' },
+    subtitle: { en: 'Onboarding, coaching, and documented standards', id: 'Onboarding, coaching, dan standar terdokumentasi' },
+    type: { en: 'Leadership', id: 'Kepemimpinan' },
     description: {
-      en: "Developed documented SOPs for consistent drink preparation, inventory tracking, and speed-of-service during high-volume shifts. Led hands-on training sessions for new bar staff, reducing onboarding time from 2 weeks to 4 days. Combines 5+ years of F&B expertise with a developer's systematic approach to documentation.",
-      id: 'Membuat SOP terdokumentasi untuk konsistensi penyajian minuman, pengelolaan stok, dan kecepatan layanan di jam sibuk. Memimpin pelatihan langsung untuk staf bar baru, memangkas waktu orientasi dari 2 minggu menjadi 4 hari. Perpaduan 5+ tahun pengalaman F&B dengan pendekatan sistematis ala developer.'
+      en: 'Built a repeatable training system so new bar staff could reach service-ready quality faster. Led hands-on sessions, wrote SOPs for prep and peak-hour flow, and cut onboarding from 2 weeks to 4 days without dropping consistency.',
+      id: 'Membangun sistem pelatihan yang bisa diulang supaya staf bar baru siap layanan lebih cepat. Memimpin sesi langsung, menyusun SOP prep dan alur jam sibuk, dan memangkas onboarding dari 2 minggu menjadi 4 hari tanpa menurunkan konsistensi.'
     },
-    tags: ['Quality Control', 'Inventory Management', 'Staff Training', 'Documentation', 'Leadership'],
+    tags: ['Staff Training', 'SOP', 'Coaching', 'Quality Control', 'Documentation'],
     insight: {
-      en: 'Treating a bar workflow like a software system — every step documented, every variable controlled, every output reproducible.',
-      id: 'Mengelola alur kerja bar seperti sistem software — setiap langkah tercatat, setiap variabel terkendali, setiap hasil bisa direplikasi.'
+      en: 'Leadership here is not a title — it is making the next person able to run the station without you standing over them.',
+      id: 'Leadership di sini bukan gelar — tapi membuat orang berikutnya bisa menjalankan station tanpa harus diawasi terus.'
+    },
+  },
+  {
+    title: { en: 'Peak-Hour Team Coordination', id: 'Koordinasi Tim Jam Sibuk' },
+    subtitle: { en: 'Shift ownership when volume spikes', id: 'Ownership shift saat volume naik' },
+    type: { en: 'Operations', id: 'Operasional' },
+    description: {
+      en: 'Coordinated beverage teams through high-volume shifts and seasonal menu changes. Assigned roles, kept communication short, and protected speed-of-service without sacrificing the standard guests already expected.',
+      id: 'Mengkoordinasikan tim minuman di shift volume tinggi dan saat menu musiman berganti. Membagi peran, menjaga komunikasi singkat, dan melindungi kecepatan layanan tanpa mengorbankan standar yang sudah diharapkan tamu.'
+    },
+    tags: ['Shift Coordination', 'High-Volume Service', 'Communication', 'Prioritization'],
+    insight: {
+      en: 'A calm station during rush is a leadership output — not luck, and not individual talent alone.',
+      id: 'Station yang tenang di jam sibuk itu hasil leadership — bukan keberuntungan, dan bukan bakat individu semata.'
+    },
+  },
+  {
+    title: { en: 'Menu Ownership & Cost Control', id: 'Ownership Menu & Kontrol Biaya' },
+    subtitle: { en: 'Sourcing, costing, and seasonal updates', id: 'Pengadaan, costing, dan pembaruan musiman' },
+    type: { en: 'Operations', id: 'Operasional' },
+    description: {
+      en: 'Took ownership of beverage menu decisions — sourcing, costing, and seasonal rotation — so the team had a clear offering they could execute at scale. Used the same systems mindset later applied in software: document the standard, then coach people to hit it.',
+      id: 'Memegang keputusan menu minuman — pengadaan, costing, dan rotasi musiman — supaya tim punya offering yang jelas dan bisa dieksekusi dalam skala. Pola pikirnya sama dengan software: dokumentasikan standar, lalu latih orang untuk mencapainya.'
+    },
+    tags: ['Menu Engineering', 'Cost Control', 'Inventory', 'Seasonal Planning'],
+    insight: {
+      en: 'Owning a menu is owning a system: ingredients, people, timing, and the guest experience all have to stay in sync.',
+      id: 'Memegang menu berarti memegang sistem: bahan, orang, timing, dan pengalaman tamu harus tetap selaras.'
+    },
+  },
+  {
+    title: { en: 'Quality Standard Across Stations', id: 'Standar Kualitas Antar Station' },
+    subtitle: { en: 'Consistency the whole team can reproduce', id: 'Konsistensi yang bisa direproduksi seluruh tim' },
+    type: { en: 'Quality Systems', id: 'Sistem Kualitas' },
+    description: {
+      en: 'Turned recipe knowledge into team-wide standards: batch prep, garnish, and pour consistency that did not depend on one person being on shift. Craft became a teaching tool — the point was a station anyone trained could run.',
+      id: 'Mengubah pengetahuan resep menjadi standar tim: prep massal, garnish, dan konsistensi pour yang tidak bergantung pada satu orang saja yang masuk shift. Craft jadi alat mengajar — tujuannya station yang bisa dijalankan siapa pun yang sudah dilatih.'
+    },
+    tags: ['Quality Control', 'Batch Preparation', 'Knowledge Transfer', 'Reproducibility'],
+    insight: {
+      en: 'If only one person can make it right, the operation is fragile. Leadership is making quality transferable.',
+      id: 'Kalau cuma satu orang yang bisa bikin dengan benar, operasionalnya rapuh. Leadership adalah membuat kualitas bisa ditransfer.'
     },
   },
 ];
@@ -89,8 +84,8 @@ export const journey: JourneyItem[] = [
     phase: { en: 'Foundation', id: 'Fondasi' },
     title: { en: 'Vocational School Graduate — Culinary Arts', id: 'Lulus SMK Tata Boga' },
     body: {
-      en: 'Formal culinary & beverage education. First exposure to recipe formulation, hygiene standards, and the science behind flavor balance. Graduated with distinction in food & beverage service.',
-      id: 'Pendidikan formal kuliner dan minuman. Di sinilah saya pertama kali mengenal formulasi resep, standar higienitas, dan ilmu di balik keseimbangan rasa. Lulus dengan predikat memuaskan di bidang Food & Beverage Service.'
+      en: 'Formal culinary & beverage education. Learned hygiene, service standards, and how precision in a kitchen becomes trust on the floor.',
+      id: 'Pendidikan formal kuliner dan minuman. Belajar higienitas, standar layanan, dan bagaimana presisi di dapur menjadi kepercayaan di lantai operasional.'
     },
   },
   {
@@ -98,147 +93,194 @@ export const journey: JourneyItem[] = [
     phase: { en: 'Entry', id: 'Awal Karir' },
     title: { en: 'First F&B Role', id: 'Langkah Pertama di Industri F&B' },
     body: {
-      en: 'Entered the industry during a uniquely challenging year. Learned high-pressure service, speed-of-service optimization, and the fundamentals of consistent quality under volume. Developed resilience and real-world adaptability.',
-      id: 'Terjun ke industri di tahun yang penuh tantangan. Belajar menghadapi tekanan tinggi, mengoptimalkan kecepatan layanan, dan menjaga kualitas tetap konsisten di tengah lonjakan pesanan. Dari sini saya belajar apa artinya adaptasi yang sesungguhnya.'
+      en: 'Entered hospitality under pressure. Learned high-volume service, staying consistent when the floor is loud, and taking responsibility for what leaves the station.',
+      id: 'Masuk hospitality di bawah tekanan. Belajar layanan volume tinggi, tetap konsisten saat lantai ramai, dan bertanggung jawab atas apa yang keluar dari station.'
     },
   },
   {
     year: '2021',
-    phase: { en: 'Specialization', id: 'Spesialisasi' },
-    title: { en: 'Mocktail Focus & Recipe Development', id: 'Mendalami Mocktail & Pengembangan Resep' },
+    phase: { en: 'Growth', id: 'Pertumbuhan' },
+    title: { en: 'From Execution to Coaching', id: 'Dari Eksekusi ke Coaching' },
     body: {
-      en: 'Started developing original mocktail recipes, experimenting with cold infusions, house syrups, and local Indonesian ingredients. Created the first version of the Butterfly Pea Lemonade Series that would become a signature item.',
-      id: 'Mulai meracik resep mocktail orisinal, bereksperimen dengan cold infusion, house-made syrup, dan bahan-bahan lokal. Di sini lahir versi pertama Butterfly Pea Lemonade Series yang kemudian jadi menu andalan.'
+      en: 'Started helping newer staff hit the same standard. Realized the work is not only making the drink — it is making sure the next person can make it the same way.',
+      id: 'Mulai membantu staf baru mencapai standar yang sama. Sadar kerjanya bukan hanya meracik — tapi memastikan orang berikutnya bisa mengerjakannya dengan cara yang sama.'
     },
   },
   {
     year: '2022–2023',
-    phase: { en: 'Mastery', id: 'Penguasaan' },
-    title: { en: 'Menu Engineering & Operations', id: 'Rekayasa Menu & Manajemen Operasional' },
+    phase: { en: 'Leadership', id: 'Kepemimpinan' },
+    title: { en: 'Beverage Team Coordinator', id: 'Koordinator Tim Minuman' },
     body: {
-      en: 'Took ownership of the beverage menu — sourcing, costing, seasonal updates, and design. Developed training SOPs that reduced new-hire onboarding from 2 weeks to 4 days. Started connecting beverage craft with software thinking.',
-      id: 'Memegang penuh tanggung jawab menu minuman — mulai dari pengadaan bahan, kalkulasi biaya, hingga pembaruan musiman. Membuat SOP pelatihan yang memangkas waktu orientasi staf baru dari 2 minggu menjadi 4 hari. Di fase ini saya mulai melihat paralel antara dunia minuman dan software engineering.'
+      en: 'Coordinated the beverage team: training, seasonal menu changes, and peak-hour ownership. Cut onboarding from 2 weeks to 4 days. Started treating operations like a system — documented, coachable, repeatable.',
+      id: 'Mengkoordinasikan tim minuman: pelatihan, perubahan menu musiman, dan ownership jam sibuk. Memangkas onboarding dari 2 minggu menjadi 4 hari. Mulai memperlakukan operasional seperti sistem — terdokumentasi, bisa dilatih, bisa diulang.'
     },
   },
   {
     year: '2024–Now',
     phase: { en: 'Multi-Discipline', id: 'Multi-Disiplin' },
-    title: { en: 'Craft + Code + Cinema', id: 'Karya + Kode + Sinema' },
+    title: { en: 'Lead · Code · Cinema', id: 'Pimpin · Kode · Sinema' },
     body: {
-      en: 'Recognized that precision, creativity, and systems thinking carry across all three disciplines. Now operate simultaneously as a Beverage Crafter, Full-Stack Developer, and Videographer — each craft sharpening the others.',
-      id: 'Saya menyadari bahwa presisi, kreativitas, dan cara berpikir sistematis adalah benang merah yang menghubungkan ketiga bidang ini. Kini saya bergerak sekaligus sebagai Peracik Minuman, Full-Stack Developer, dan Videografer — satu bidang mengasah yang lain.'
+      en: 'The same coordination, documentation, and coaching now sit beside software and film. Leadership is the through-line: make the system clear, then help people run it.',
+      id: 'Koordinasi, dokumentasi, dan coaching yang sama sekarang berjalan bersama software dan film. Leadership adalah benang merahnya: buat sistemnya jelas, lalu bantu orang menjalankannya.'
     },
   },
 ];
 
 export const techniques: SkillBar[] = [
-  { name: { en: 'Cold Infusion', id: 'Cold Infusion' }, level: 90, desc: { en: 'Herb & botanical extracts', id: 'Ekstrak herbal & botanikal' } },
-  { name: { en: 'House Syrup Production', id: 'Produksi Sirup Sendiri' }, level: 85, desc: { en: 'Custom flavor bases', id: 'Basis rasa kustom' } },
-  { name: { en: 'Flavor Profiling', id: 'Profil Rasa' }, level: 88, desc: { en: 'Acidity, sweetness, bitterness balance', id: 'Keseimbangan asam, manis, pahit' } },
-  { name: { en: 'Garnish Design', id: 'Desain Garnish' }, level: 80, desc: { en: 'Dehydrated, fresh & sculptural', id: 'Teknik kering, segar & ukiran' } },
-  { name: { en: 'Menu Engineering', id: 'Rekayasa Menu' }, level: 82, desc: { en: 'Costing, layout & psychology', id: 'Kalkulasi biaya, tata letak & psikologi' } },
-  { name: { en: 'Batch Preparation', id: 'Persiapan Massal' }, level: 88, desc: { en: 'High-volume consistency', id: 'Konsistensi volume tinggi' } },
-  { name: { en: 'Ingredient Sourcing', id: 'Pengadaan Bahan' }, level: 78, desc: { en: 'Local & seasonal focus', id: 'Bahan lokal & musiman' } },
-  { name: { en: 'Staff Training', id: 'Pelatihan Tim' }, level: 85, desc: { en: 'SOP development & coaching', id: 'Penyusunan SOP & pembinaan' } },
+  { name: { en: 'Staff Training', id: 'Pelatihan Tim' }, level: 90, desc: { en: 'Hands-on coaching & onboarding', id: 'Coaching langsung & onboarding' } },
+  { name: { en: 'SOP Development', id: 'Penyusunan SOP' }, level: 88, desc: { en: 'Documented, repeatable workflows', id: 'Alur kerja terdokumentasi & bisa diulang' } },
+  { name: { en: 'Shift Coordination', id: 'Koordinasi Shift' }, level: 86, desc: { en: 'Roles, timing, peak-hour calm', id: 'Peran, timing, ketenangan jam sibuk' } },
+  { name: { en: 'Quality Control', id: 'Kontrol Kualitas' }, level: 88, desc: { en: 'Standards the whole team can hit', id: 'Standar yang bisa dicapai seluruh tim' } },
+  { name: { en: 'Inventory & Costing', id: 'Stok & Costing' }, level: 80, desc: { en: 'Sourcing, waste, menu economics', id: 'Pengadaan, waste, ekonomi menu' } },
+  { name: { en: 'High-Volume Service', id: 'Layanan Volume Tinggi' }, level: 85, desc: { en: 'Speed without dropping the standard', id: 'Cepat tanpa menurunkan standar' } },
+  { name: { en: 'Knowledge Transfer', id: 'Transfer Pengetahuan' }, level: 84, desc: { en: 'Make quality independent of one person', id: 'Kualitas tidak bergantung pada satu orang' } },
+  { name: { en: 'Menu Operations', id: 'Operasional Menu' }, level: 82, desc: { en: 'Seasonal updates the team can execute', id: 'Pembaruan musiman yang bisa dieksekusi tim' } },
 ];
 
 export const skills: SkillCategory[] = [
   {
-    category: { en: 'Craft', id: 'Keahlian' },
+    category: { en: 'Leadership', id: 'Kepemimpinan' },
     items: [
-      { en: 'Mocktail Mixology', id: 'Mocktail Mixology' },
-      { en: 'Recipe Formulation', id: 'Formulasi Resep' },
-      { en: 'Flavor Profiling', id: 'Profil Rasa' },
-      { en: 'Garnish Design', id: 'Desain Garnish' },
-      { en: 'Cold Infusion', id: 'Cold Infusion' },
-      { en: 'House Syrups', id: 'Sirup Buatan Sendiri' }
+      { en: 'Staff Training', id: 'Pelatihan Tim' },
+      { en: 'Hands-on Coaching', id: 'Coaching Langsung' },
+      { en: 'Shift Coordination', id: 'Koordinasi Shift' },
+      { en: 'Knowledge Transfer', id: 'Transfer Pengetahuan' },
+      { en: 'Calm Under Pressure', id: 'Tenang di Bawah Tekanan' },
+      { en: 'Accountability', id: 'Akuntabilitas' }
     ],
   },
   {
     category: { en: 'Operations', id: 'Operasional' },
     items: [
+      { en: 'SOP Development', id: 'Penyusunan SOP' },
       { en: 'Inventory Management', id: 'Manajemen Stok' },
-      { en: 'Menu Development', id: 'Pengembangan Menu' },
-      { en: 'Speed of Service', id: 'Kecepatan Layanan' },
       { en: 'Quality Control', id: 'Kontrol Kualitas' },
-      { en: 'Staff Training', id: 'Pelatihan Tim' },
-      { en: 'Cost Control', id: 'Efisiensi Biaya' }
+      { en: 'Cost Control', id: 'Kontrol Biaya' },
+      { en: 'Speed of Service', id: 'Kecepatan Layanan' },
+      { en: 'Seasonal Planning', id: 'Perencanaan Musiman' }
     ],
   },
   {
-    category: { en: 'Background', id: 'Latar Belakang' },
+    category: { en: 'Hospitality', id: 'Hospitality' },
     items: [
-      { en: 'Vocational High School', id: 'SMK Tata Boga' },
-      { en: 'Culinary Arts', id: 'Seni Kuliner' },
       { en: 'F&B Industry 5+ Years', id: '5+ Tahun di F&B' },
+      { en: 'High-Volume Service', id: 'Layanan Volume Tinggi' },
       { en: 'Customer Experience', id: 'Pengalaman Pelanggan' },
-      { en: 'High-Volume Service', id: 'Layanan Volume Tinggi' }
+      { en: 'Culinary Vocational School', id: 'SMK Tata Boga' },
+      { en: 'Floor Communication', id: 'Komunikasi Lantai' }
     ],
   },
 ];
 
+export const leadershipSystem = [
+  {
+    key: 'people',
+    icon: '◆',
+    label: { en: 'People', id: 'Orang' },
+    body: {
+      en: 'Investing in people so they can operate independently.',
+      id: 'Investasi pada orang supaya mereka bisa beroperasi mandiri.',
+    },
+  },
+  {
+    key: 'systems',
+    icon: '◎',
+    label: { en: 'Systems', id: 'Sistem' },
+    body: {
+      en: 'Creating repeatable, documented standards that survive turnover.',
+      id: 'Standar terdokumentasi yang bertahan saat orang berganti.',
+    },
+  },
+  {
+    key: 'execution',
+    icon: '☰',
+    label: { en: 'Execution', id: 'Eksekusi' },
+    body: {
+      en: 'Consistent, calm performance under pressure because the system guides action.',
+      id: 'Performa tenang di bawah tekanan karena sistem yang memandu.',
+    },
+  },
+  {
+    key: 'outcome',
+    icon: '⚖',
+    label: { en: 'Outcome', id: 'Hasil' },
+    body: {
+      en: 'Quality becomes transferable; the operation does not depend on any single individual.',
+      id: 'Kualitas bisa dititipkan; operasional tidak bergantung pada satu orang.',
+    },
+  },
+] as const;
+
 export const philosophy: PhilosophyItem[] = [
   {
-    icon: '⚗',
-    title: { en: 'Precision', id: 'Presisi' },
+    icon: '◆',
+    title: { en: 'People First', id: 'Orang Dulu' },
     body: {
-      en: 'Micro-measurements matter as much in a cocktail as in a codebase. Every gram, every milliliter, every pixel — intentionality scales.',
-      id: 'Ukuran mikro sama pentingnya dalam sebuah cocktail maupun dalam basis kode. Setiap gram, mililiter, hingga piksel — semua punya tujuan yang disengaja.'
+      en: 'A station is only as strong as the people running it. Training, feedback, and clear ownership come before clever recipes.',
+      id: 'Station hanya sekuat orang yang menjalankannya. Pelatihan, umpan balik, dan ownership yang jelas lebih dulu daripada resep yang canggih.'
     },
   },
   {
     icon: '◎',
-    title: { en: 'Customer Focus', id: 'Pelanggan di Atas Segalanya' },
+    title: { en: 'Documented Systems', id: 'Sistem Terdokumentasi' },
     body: {
-      en: 'Five years in hospitality taught me empathy first. The best beverage is the one that makes someone pause and say nothing — just smile.',
-      id: 'Lima tahun di dunia hospitality mengajarkan satu hal: empati dulu, baru segalanya. Minuman terbaik adalah yang membuat seseorang terdiam sejenak, lalu tersenyum tanpa berkata-kata.'
+      en: 'If it is not written down, it cannot be coached. SOP is how quality survives a new hire and a busy Saturday.',
+      id: 'Kalau tidak tertulis, tidak bisa dilatih. SOP adalah cara kualitas bertahan saat ada staf baru dan Sabtu yang ramai.'
     },
   },
   {
-    icon: '⧳',
-    title: { en: 'Systems Thinking', id: 'Berpikir Sistematis' },
+    icon: '⚖',
+    title: { en: 'Calm in Peak Hours', id: 'Tenang di Jam Sibuk' },
     body: {
-      en: 'A well-run bar is software in physical form. Every step documented, every variable controlled, every output reproducible at scale.',
-      id: 'Bar yang dikelola dengan baik itu seperti software dalam wujud fisik. Setiap langkah tercatat, setiap variabel terkendali, dan setiap hasil bisa direplikasi dalam skala besar.'
+      en: 'Leadership shows when volume spikes. Short communication, clear roles, and protecting the standard guests already trust.',
+      id: 'Leadership terlihat saat volume naik. Komunikasi singkat, peran yang jelas, dan menjaga standar yang sudah dipercaya tamu.'
     },
   },
   {
-    icon: '❧',
-    title: { en: 'Continuous Refinement', id: 'Penyempurnaan Tanpa Henti' },
+    icon: '→',
+    title: { en: 'Transferable Quality', id: 'Kualitas yang Bisa Dititipkan' },
     body: {
-      en: "Every recipe is version 1.0. After 5+ years, I've learned that the best creations come from obsessive iteration — tasting, adjusting, tasting again.",
-      id: 'Setiap resep itu versi 1.0. Setelah 5+ tahun, saya belajar bahwa karya terbaik lahir dari iterasi yang tanpa henti — cicip, sesuaikan, cicip lagi.'
+      en: 'If only one person can do it right, the operation is fragile. The job is making the standard reproducible.',
+      id: 'Kalau hanya satu orang yang bisa mengerjakannya dengan benar, operasionalnya rapuh. Tugasnya membuat standar itu bisa direproduksi.'
     },
   },
 ];
 
-export const sensoryNotes: SensoryNote[] = [
-  { note: { en: 'Bright Citrus', id: 'Citrus Segar' }, icon: '🍋' },
-  { note: { en: 'Herbal Depth', id: 'Nuansa Herbal' }, icon: '🌿' },
-  { note: { en: 'Floral Top Note', id: 'Aroma Bunga' }, icon: '🏵️' },
-  { note: { en: 'Balanced Acidity', id: 'Keasaman Seimbang' }, icon: '⚖️' },
-  { note: { en: 'Clean Finish', id: 'Akhiran Bersih' }, icon: '✨' },
+export const leadershipTraits: LeadershipTrait[] = [
+  { note: { en: 'Team Coordination', id: 'Koordinasi Tim' }, icon: '◎' },
+  { note: { en: 'Staff Training', id: 'Pelatihan Tim' }, icon: '◆' },
+  { note: { en: 'SOP & Standards', id: 'SOP & Standar' }, icon: '☰' },
+  { note: { en: 'Peak-Hour Calm', id: 'Tenang Jam Sibuk' }, icon: '⚖' },
+  { note: { en: 'Ownership', id: 'Ownership' }, icon: '→' },
 ];
 
-export const signatureRecipe: SignatureRecipe = {
-  name: { en: 'Signature Mocktail', id: 'Signature Mocktail' },
-  subtitle: { en: 'House Specialty — Non-Alcoholic', id: 'Andalan Rumah — Non-Alkohol' },
-  profile: { sweetness: 65, acidity: 80, bitterness: 20, body: 70 },
-  ingredients: [
-    { amount: '60ml', item: { en: 'Fresh Lime Juice', id: 'Air Jeruk Nipis Segar' } },
-    { amount: '30ml', item: { en: 'Lemongrass Syrup', id: 'Sirup Serai' } },
-    { amount: '15ml', item: { en: 'Butterfly Pea Flower Extract', id: 'Ekstrak Bunga Telang' } },
-    { amount: '120ml', item: { en: 'Sparkling Mineral Water', id: 'Air Mineral Berkarbonasi' } },
-    { amount: '2 dash', item: { en: 'Aromatic Bitters', id: 'Bitter Aromatik' } },
-  ],
-  method: { en: 'Build in glass · Ice cubes · Garnish with lime wheel & mint sprig', id: 'Tuang langsung ke gelas · Tambahkan es batu · Hiasi dengan irisan jeruk nipis & daun mint' },
-  aroma: { en: 'Citrus-forward, with herbal undertones and a floral fade', id: 'Citrus yang menonjol, dengan nuansa herbal di balik aroma bunga yang lembut' },
-  taste: { en: 'Bright acidity, balanced sweetness, clean effervescent finish', id: 'Keasaman yang cerah, manis yang terukur, diakhiri dengan kesegaran karbonasi yang bersih' },
-};
+export const leadershipPractices: LeadershipPractice[] = [
+  {
+    title: { en: 'Coach on the floor', id: 'Coach di lantai' },
+    body: {
+      en: 'Training happens during real service, not only in a briefing. Short corrections, then let people run the station.',
+      id: 'Pelatihan terjadi saat layanan nyata, bukan hanya briefing. Koreksi singkat, lalu biarkan orang menjalankan station.'
+    },
+  },
+  {
+    title: { en: 'Write the standard once', id: 'Tulis standarnya sekali' },
+    body: {
+      en: 'Prep, pour, and peak-hour flow live in SOP so quality does not depend on who is on shift.',
+      id: 'Prep, pour, dan alur jam sibuk ada di SOP supaya kualitas tidak bergantung siapa yang masuk shift.'
+    },
+  },
+  {
+    title: { en: 'Protect the guest during rush', id: 'Lindungi tamu saat ramai' },
+    body: {
+      en: 'Roles stay clear when volume spikes. Speed is useless if the standard drops.',
+      id: 'Peran tetap jelas saat volume naik. Cepat tidak ada artinya kalau standarnya turun.'
+    },
+  },
+];
 
 export const heroStats = [
-  { n: { en: 'Culinary School', id: 'Sekolah Kuliner' }, l: { en: 'Foundation', id: 'Fondasi' } },
-  { n: { en: 'Mocktails', id: 'Mocktail' }, l: { en: 'Specialty', id: 'Spesialisasi' } },
-  { n: { en: 'Flavor Profiling', id: 'Profil Rasa' }, l: { en: 'Core Skill', id: 'Keahlian Utama' } },
-  { n: { en: 'Precision', id: 'Presisi' }, l: { en: 'Philosophy', id: 'Filosofi' } },
+  { n: { en: 'Team Coordinator', id: 'Koordinator Tim' }, l: { en: 'Role', id: 'Peran' } },
+  { n: { en: 'Staff Training', id: 'Pelatihan Tim' }, l: { en: 'Practice', id: 'Praktik' } },
+  { n: { en: 'SOP Systems', id: 'Sistem SOP' }, l: { en: 'Method', id: 'Metode' } },
+  { n: { en: '5+ Years F&B', id: '5+ Tahun F&B' }, l: { en: 'Context', id: 'Konteks' } },
 ];

@@ -135,6 +135,25 @@ export const projects: DevProject[] = [
       { en: 'Designed specifically for real-world F&B workflow', id: 'Dirancang spesifik untuk workflow F&B di lapangan' }
     ],
   },
+  {
+    title: 'Digital Wedding Invitation',
+    subtitle: { en: 'Digital Wedding Invitation Platform', id: 'Platform Undangan Pernikahan Digital' },
+    type: { en: 'Web Application', id: 'Aplikasi Web' },
+    year: '2026',
+    status: 'Production',
+    description: {
+      en: 'Built a digital wedding invitation platform using Next.js, React, TypeScript, Tailwind CSS, and PostgreSQL.',
+      id: 'Membangun platform undangan pernikahan digital menggunakan Next.js, React, TypeScript, Tailwind CSS, dan PostgreSQL.'
+    },
+    tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'PostgreSQL'],
+    links: [],
+    highlights: [
+      { en: 'Next.js, React, TypeScript stack', id: 'Stack Next.js, React, TypeScript' },
+      { en: 'Tailwind CSS for styling', id: 'Tailwind CSS untuk styling' },
+      { en: 'PostgreSQL database', id: 'Database PostgreSQL' },
+      { en: 'Production deployment', id: 'Deployment produksi' }
+    ]
+  }
 ];
 
 export const techStack: Record<string, string[]> = {
