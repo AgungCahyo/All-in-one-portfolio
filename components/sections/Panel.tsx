@@ -29,7 +29,11 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
     : isTerminal
     ? 'linear-gradient(to top, #0a0d12 0%, transparent 50%)'
     : isLeadership
-    ? 'linear-gradient(to top, #201609 0%, transparent 50%)'
+    // Warms up on activation instead of staying near-black — foreshadows
+    // the light /leadership page instead of jump-cutting into it.
+    ? isActive
+      ? 'linear-gradient(to top, rgba(250,246,238,0.92) 0%, rgba(250,246,238,0.25) 55%, transparent 80%)'
+      : 'linear-gradient(to top, #201609 0%, transparent 50%)'
     : 'linear-gradient(to top, #0b1016 0%, transparent 50%)';
 
   // Leadership-specific enhancements
@@ -48,12 +52,12 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
       {/* Leadership badge */}
       {isLeadershipPanel && (
         <div className={`absolute top-2 right-2 z-20 flex h-6 w-6 items-center justify-center rounded-full
-          ${isActive ? 'bg-[rgba(245,195,107,0.28)]' : 'bg-[rgba(245,195,107,0.14)]'}
+          ${isActive ? 'bg-[rgba(232,162,61,0.28)]' : 'bg-[rgba(232,162,61,0.14)]'}
           ${leadershipPulse}
           backdrop-blur-sm
-          border border-[rgba(245,195,107,0.4)]
+          border border-[rgba(232,162,61,0.4)]
           transition-all duration-300`}>
-          <span className="text-[8px] font-bold text-[rgba(245,195,107,0.95)]">L</span>
+          <span className="text-[8px] font-bold text-[rgba(232,162,61,0.95)]">L</span>
         </div>
       )}
 
@@ -65,7 +69,7 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
           fill
           className="object-cover object-[50%_20%]"
           style={{
-            filter: `${panel.PhotoFilter} brightness(${isLeadership ? (isActive ? 0.18 : 0.1) : isActive ? 0.38 : 0.15})`,
+            filter: `${panel.PhotoFilter} brightness(${isLeadership ? (isActive ? 0.98 : 0.1) : isActive ? 0.38 : 0.15})`,
             transform: panel.photoFlip ? 'scaleX(-1)' : 'none',
             transition: 'filter 700ms ease, transform 700ms ease',
             objectPosition: '50% 20%',
@@ -75,7 +79,12 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
         {isLeadership && (
           <div
             className="absolute inset-0"
-            style={{ background: isActive ? 'rgba(28,20,12,0.5)' : 'rgba(28,20,12,0.68)' }}
+            style={{
+              // Dark, moody wash while collapsed (matches its dark siblings
+              // in the row); warms into the actual page palette once active.
+              background: isActive ? 'rgba(250,246,238,0.58)' : 'rgba(28,20,12,0.68)',
+              transition: 'background 700ms ease',
+            }}
           />
         )}
         <div className="absolute inset-0" style={{ background: bottomGradient }} />
@@ -83,7 +92,7 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
         {isLeadershipPanel && isActive && (
           <div className="absolute inset-0 -z-10"
             style={{
-              border: '2px solid rgba(245,195,107,0.5)',
+              border: '2px solid rgba(232,162,61,0.5)',
               borderRadius: 'inherit',
               pointerEvents: 'none',
               animation: 'leadershipGlow 3s ease-in-out infinite alternate'
@@ -190,10 +199,10 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
                 <motion.h2
                   key="collapsed"
                   initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}
-                  className={`${isTerminal ? 'font-mono' : isLeadership ? "font-['Fraunces',serif]" : "font-['Cormorant_Garamond',serif]"} font-bold`}
+                  className={`${isTerminal ? 'font-mono' : isLeadership ? 'font-display' : "font-['Cormorant_Garamond',serif]"} font-bold`}
                   style={{
                     fontSize: '0.85rem',
-                    color: isLeadership ? 'rgba(245,195,107,0.22)' : isTerminal ? 'rgba(184,200,224,0.18)' : 'rgba(206,200,192,0.18)',
+                    color: isLeadership ? 'rgba(232,162,61,0.28)' : isTerminal ? 'rgba(184,200,224,0.18)' : 'rgba(206,200,192,0.18)',
                     writingMode: 'vertical-rl',
                     letterSpacing: '0.1em',
                   }}

@@ -28,7 +28,7 @@ export function LeadPanelContent({ panel, reduced }: LeadPanelContentProps) {
       <div className="grid min-h-0 flex-1 grid-cols-1 content-start items-start gap-4 md:grid-cols-[minmax(0,1.2fr)_minmax(0,0.9fr)] md:content-center md:items-center md:gap-8 lg:gap-10">
         <motion.blockquote
           {...fade(0)}
-          className="m-0 font-['Fraunces',serif] font-semibold italic"
+          className="m-0 font-display font-semibold italic"
           style={{
             color: panel.accent,
             fontSize: 'clamp(1.28rem, 1.1vw + 1.05rem, 2.15rem)',
@@ -48,7 +48,7 @@ export function LeadPanelContent({ panel, reduced }: LeadPanelContentProps) {
           <div
             aria-hidden="true"
             className="absolute top-2 bottom-2 w-px"
-            style={{ left: '7px', background: 'rgba(245,195,107,0.25)' }}
+            style={{ left: '7px', background: 'rgba(31,110,82,0.3)' }}
           />
           {philosophy.map((stage, index) => (
             <motion.li

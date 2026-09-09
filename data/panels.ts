@@ -33,9 +33,12 @@ export const panels: Panel[] = [
         subtitle: { en: 'Coordinating teams, training new staff, and keeping beverage operations moving.', id: 'Mengkoordinasikan tim, melatih staf baru, dan menjaga operasional minuman tetap berjalan.' },
         tag: { en: 'Leadership · Staff Training · Operations', id: 'Leadership · Pelatihan Tim · Operasional' },
         cta: { en: 'View Leadership Work', id: 'Lihat Kerja Leadership' },
-        accent: '#F5C36B',
-        dim: '#EDE6D6',
-        bg: '#1C140C',
+        // Evergreen + amber + warm paper — matches the /leadership page.
+        // On hover, this panel now warms up into the same palette instead
+        // of staying dark like the two sibling panels.
+        accent: '#1f6e52',
+        dim: '#6b6357',
+        bg: '#faf6ee',
         photo: '/profile.png',
         photoFlip: false,
         PhotoFilter: 'grayscale(8%) sepia(35%) hue-rotate(-6deg) saturate(1.15) brightness(0.95)',

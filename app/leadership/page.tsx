@@ -60,7 +60,7 @@ export default function LeadershipPage() {
 
   return (
     <main
-      className="min-h-screen leadership-page font-['DM_Sans',sans-serif]"
+      className="min-h-screen leadership-page font-body"
       style={{ background: 'var(--lp-bg)', color: INK }}
     >
       <LayoutHeader activeRole="leadership" theme="leadership" />
@@ -91,13 +91,13 @@ export default function LeadershipPage() {
               <div className="relative">
                 <span
                   aria-hidden="true"
-                  className="absolute -left-3 -top-8 select-none pointer-events-none font-['Fraunces',serif]"
+                  className="absolute -left-3 -top-8 select-none pointer-events-none font-display"
                   style={{ fontSize: '5.5rem', color: AMBER, opacity: 0.35, lineHeight: 1 }}
                 >
                   &ldquo;
                 </span>
                 <h1
-                  className="font-['Fraunces',serif] font-semibold relative"
+                  className="font-display font-semibold relative"
                   style={{
                     color: INK,
                     fontSize: 'clamp(2.4rem, 4.6vw, 3.75rem)',
@@ -187,13 +187,15 @@ export default function LeadershipPage() {
         <div className="max-w-6xl mx-auto">
           <SectionTag tone="evergreen">{t('The system', 'Sistem')}</SectionTag>
 
-          <div className="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-4 mt-2">
-            {/* connector line, desktop only */}
-            <div
-              className="hidden lg:block absolute top-[34px] left-[12.5%] right-[12.5%] h-px"
-              style={{ background: BORDER }}
+          <div className="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-5 mt-4">
+            {/* connector line, desktop only — dashed, hand-drawn feel
+                instead of a flat corporate ruler line */}
+            <svg
+              className="hidden lg:block absolute top-[26px] left-[12.5%] right-[12.5%] w-[75%] h-px overflow-visible"
               aria-hidden="true"
-            />
+            >
+              <line x1="0" y1="0.5" x2="100%" y2="0.5" stroke={BORDER} strokeWidth="1.5" strokeDasharray="1.5 6" strokeLinecap="round" />
+            </svg>
             {philosophy.map((stage, index) => {
               const tone: Tone = index % 2 === 0 ? 'evergreen' : 'amber';
               const c = toneColors(tone);
@@ -204,19 +206,21 @@ export default function LeadershipPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.08 }}
-                  className="relative rounded-2xl p-5"
-                  style={{ background: 'var(--lp-surface)', border: `1px solid ${BORDER}` }}
+                  className="leadership-card rounded-[22px] p-5"
+                  style={{ border: `1px solid ${BORDER}`, ['--tilt' as any]: index % 2 === 0 ? '-0.5deg' : '0.5deg' }}
                 >
+                  {/* blob badge — an irregular squircle instead of the
+                      generic "icon in a perfect circle" pattern */}
                   <div
-                    className="relative z-10 flex h-9 w-9 items-center justify-center rounded-full text-[14px] font-semibold mb-4"
-                    style={{ color: c.fg, background: c.soft }}
+                    className="relative z-10 flex h-10 w-10 items-center justify-center text-[15px] font-semibold mb-4"
+                    style={{ color: c.fg, background: c.soft, borderRadius: '38% 62% 58% 42% / 55% 42% 58% 45%' }}
                   >
                     {stage.icon}
                   </div>
                   <p className="text-[11px] font-medium mb-1.5" style={{ color: c.fg }}>
                     {t(`Step ${index + 1}`, `Tahap ${index + 1}`)}
                   </p>
-                  <h3 className="mb-1.5 text-[17px] font-['Fraunces',serif] font-semibold" style={{ color: INK }}>
+                  <h3 className="mb-1.5 text-[17px] font-display font-semibold" style={{ color: INK }}>
                     {(stage.title as any)[lang]}
                   </h3>
                   <p className="text-[13px] leading-relaxed" style={{ color: INK_SOFT }}>
@@ -258,7 +262,7 @@ export default function LeadershipPage() {
                     className="absolute top-0 left-6 right-6 h-1 rounded-full -translate-y-1/2"
                     style={{ background: c.fg }}
                   />
-                  <h3 className="font-['Fraunces',serif] text-[21px] font-semibold mb-2.5" style={{ color: INK }}>
+                  <h3 className="font-display text-[21px] font-semibold mb-2.5" style={{ color: INK }}>
                     {practice.title[lang]}
                   </h3>
                   <p className="text-[14px] leading-relaxed" style={{ color: INK_SOFT }}>
@@ -283,10 +287,13 @@ export default function LeadershipPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="rounded-2xl overflow-hidden p-7 lg:p-8"
-              style={{ background: 'var(--lp-surface)', border: `1px solid ${BORDER}`, borderLeft: `4px solid ${EVERGREEN}` }}
+              className="leadership-card rounded-[24px] overflow-visible p-7 lg:p-8 mt-3"
+              style={{ border: `1px solid ${BORDER}`, ['--tilt' as any]: '-0.3deg' }}
             >
-              <h3 className="mb-2 text-[22px] font-['Fraunces',serif] font-semibold" style={{ color: INK }}>
+              <span className="leadership-corner-tag" style={{ background: EVERGREEN, color: '#fdfaf3' }}>
+                {t('Primary case', 'Studi utama')}
+              </span>
+              <h3 className="mb-2 text-[22px] font-display font-semibold" style={{ color: INK }}>
                 {creations[0].title[lang]}
               </h3>
               <p className="mb-3 text-[14px] font-medium" style={{ color: EVERGREEN }}>
@@ -315,7 +322,7 @@ export default function LeadershipPage() {
             </motion.div>
 
             {/* Supporting case studies */}
-            <div className="grid md:grid-cols-2 gap-5">
+            <div className="grid md:grid-cols-2 gap-6 mt-3">
               {creations.slice(1).map((c, i) => {
                 const tone: Tone = i % 2 === 0 ? 'amber' : 'evergreen';
                 const tc = toneColors(tone);
@@ -326,15 +333,15 @@ export default function LeadershipPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: (i + 1) * 0.06 }}
-                    className="rounded-2xl overflow-hidden p-6"
-                    style={{ background: 'var(--lp-surface)', border: `1px solid ${BORDER}`, borderLeft: `4px solid ${tc.fg}` }}
+                    className="leadership-card rounded-[22px] overflow-visible p-6"
+                    style={{ border: `1px solid ${BORDER}`, ['--tilt' as any]: i % 2 === 0 ? '0.4deg' : '-0.4deg' }}
                   >
-                    <h3 className="mb-2 text-[18px] font-['Fraunces',serif] font-semibold" style={{ color: INK }}>
+                    <span className="leadership-corner-tag" style={{ background: tc.fg, color: tone === 'amber' ? '#fdfaf3' : '#fdfaf3' }}>
+                      {c.subtitle[lang]}
+                    </span>
+                    <h3 className="mb-2 mt-2 text-[18px] font-display font-semibold" style={{ color: INK }}>
                       {c.title[lang]}
                     </h3>
-                    <p className="mb-2 text-[13px] font-medium" style={{ color: tc.fg }}>
-                      {c.subtitle[lang]}
-                    </p>
                     <p className="text-[13px] leading-relaxed" style={{ color: INK_SOFT }}>
                       {c.description[lang]}
                     </p>
@@ -434,13 +441,51 @@ export default function LeadershipPage() {
 
       {/* ── CTA ── */}
       <section className="px-6 sm:px-8 lg:px-16 py-16 lg:py-20">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto relative">
+          {/* Offset paper layer peeking out behind — same "stacked paper"
+              trick as the tilted sticky notes, so the CTA doesn't read as
+              a bolted-on gradient banner. */}
           <div
-            className="rounded-[28px] p-8 lg:p-12 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-8"
-            style={{ background: `linear-gradient(135deg, ${EVERGREEN} 0%, #175a41 100%)`, color: '#fdfaf3' }}
+            aria-hidden="true"
+            className="absolute inset-0 rounded-[18px_36px_18px_36px]"
+            style={{ background: AMBER_SOFT, transform: 'rotate(-1.4deg) translate(6px, 8px)' }}
+          />
+
+          <div
+            className="relative  rounded-[36px_18px_36px_18px] p-8 lg:p-12 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-8"
+            style={{ background: EVERGREEN, color: '#fdfaf3' }}
           >
-            <div>
-              <h2 className="font-['Fraunces',serif] text-3xl lg:text-4xl font-semibold mb-3" style={{ letterSpacing: '-0.01em' }}>
+            {/* grain, reused from the hero, instead of a diagonal gradient */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+                opacity: 0.05,
+                mixBlendMode: 'overlay',
+              }}
+            />
+            {/* decorative quote mark, echoing the hero — ties the CTA back
+                to the top of the page instead of feeling like a separate
+                template block */}
+            <span
+              aria-hidden="true"
+              className="absolute -right-2 -bottom-8 select-none pointer-events-none font-display"
+              style={{ fontSize: '9rem', color: AMBER, opacity: 0.14, lineHeight: 1 }}
+            >
+              &rdquo;
+            </span>
+
+            {/* rotated stamp-style chip, same sticker language as the hero
+                portrait badge */}
+            <div
+              className="absolute -top-3 left-8 px-3 py-1 rounded-lg text-[10.5px] font-semibold"
+              style={{ background: AMBER, color: '#241a09', transform: 'rotate(-4deg)', boxShadow: '0 8px 16px -8px rgba(0,0,0,0.35)' }}
+            >
+              {t('Open to work', 'Terbuka untuk kerja sama')}
+            </div>
+
+            <div className="relative">
+              <h2 className="font-display text-3xl lg:text-4xl font-semibold mb-3" style={{ letterSpacing: '-0.01em' }}>
                 {t("Let's build a team that runs itself.", "Yuk bangun tim yang bisa jalan sendiri.")}
               </h2>
               <p className="text-[15px] leading-relaxed max-w-md" style={{ color: 'rgba(253,250,243,0.82)' }}>
@@ -449,10 +494,13 @@ export default function LeadershipPage() {
             </div>
             <a
               href="mailto:cahyoprasetyo507@gmail.com"
-              className="px-7 py-3.5 font-semibold rounded-full text-[14px] whitespace-nowrap transition-transform duration-300 hover:-translate-y-0.5"
+              className="relative inline-flex items-center gap-2 px-7 py-3.5 font-semibold rounded-full text-[14px] whitespace-nowrap transition-transform duration-300 hover:-translate-y-0.5 hover:rotate-[-1.5deg]"
               style={{ background: AMBER, color: '#241a09' }}
             >
               {t('Get in touch', 'Get in touch')}
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
             </a>
           </div>
         </div>

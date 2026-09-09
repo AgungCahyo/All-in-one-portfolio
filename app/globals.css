@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+/* Maps next/font's generated CSS variables to real Tailwind font-family
+   utilities. `font-['Fraunces',serif]` was never actually resolving to the
+   loaded Fraunces font — next/font doesn't register a font by that literal
+   name, only via --font-fraunces — so headlines were silently falling back
+   to the browser's generic serif. font-display / font-body fix that. */
+@theme {
+  --font-display: var(--font-fraunces);
+  --font-body: var(--font-dm-sans);
+}
+
 :root {
   --theme-accent: #cec8c0;
   --theme-bg: #0d0c0b;
@@ -96,16 +106,16 @@
 /* Leadership-specific animations */
 @keyframes leadershipGlow {
   0% {
-    box-shadow: 0 0 0 rgba(245,195,107,0.4),
-                0 0 0 rgba(245,195,107,0.2);
+    box-shadow: 0 0 0 rgba(232,162,61,0.4),
+                0 0 0 rgba(232,162,61,0.2);
   }
   50% {
-    box-shadow: 0 0 15px rgba(245,195,107,0.6),
-                0 0 30px rgba(245,195,107,0.4);
+    box-shadow: 0 0 15px rgba(232,162,61,0.6),
+                0 0 30px rgba(232,162,61,0.4);
   }
   100% {
-    box-shadow: 0 0 20px rgba(245,195,107,0.8),
-                0 0 40px rgba(245,195,107,0.6);
+    box-shadow: 0 0 20px rgba(232,162,61,0.8),
+                0 0 40px rgba(232,162,61,0.6);
   }
 }
 
@@ -160,10 +170,65 @@
 /* Sticky-note style practice cards get a light hover tilt — motion that
    responds to the person's own hover, not a scattered ambient effect. */
 .leadership-note {
+  position: relative;
   transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 320ms ease, border-color 320ms ease;
+}
+
+.leadership-note::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  mix-blend-mode: multiply;
 }
 
 .leadership-note:hover {
   transform: translateY(-4px) rotate(var(--tilt, -1deg));
   box-shadow: 0 18px 30px -18px rgba(36,33,27,0.22);
+}
+
+/* ── Shared card material ──
+   One consistent "paper" language (grain + slight tilt + lift-on-hover)
+   used across System, Proof and How-I-Lead cards, instead of three
+   different card idioms (plain bordered box / left-accent stripe /
+   sticky note) fighting each other on the same page. */
+.leadership-card {
+  position: relative;
+  background: var(--lp-surface);
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 320ms ease;
+  transform: rotate(var(--tilt, 0deg));
+}
+
+.leadership-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  mix-blend-mode: multiply;
+}
+
+.leadership-card:hover {
+  transform: translateY(-3px) rotate(var(--tilt, 0deg));
+  box-shadow: 0 16px 28px -18px rgba(36,33,27,0.2);
+}
+
+/* Small rotated corner tag — replaces the generic "colored left border"
+   accent stripe pattern with the same sticker language as the hero badge. */
+.leadership-corner-tag {
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  padding: 3px 11px;
+  border-radius: 8px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transform: rotate(-3deg);
+  box-shadow: 0 6px 14px -6px rgba(36,33,27,0.35);
 }

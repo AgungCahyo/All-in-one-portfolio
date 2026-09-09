@@ -154,15 +154,17 @@ export function TextureOverlays() {
             exit={{ opacity: 0 }}
             className="absolute inset-0"
           >
-            {/* Sensory Labels - ONLY ON HOME (sits over the dark panel) */}
+            {/* Sensory Labels - ONLY ON HOME (panel is dark by default, but
+                warms into the light /leadership palette when hovered/active,
+                so this needs to read against either) */}
             {pathname === '/' && (
               <div className="absolute inset-0 overflow-hidden hidden lg:block">
                 {['Leadership', 'Coordination', 'Training', 'Operations'].map((text, i) => (
                   <motion.div
                     key={text}
-                    className="absolute font-['Fraunces',serif] italic text-[14px]"
+                    className="absolute font-display italic text-[14px]"
                     style={{
-                      color: 'rgba(245,195,107,0.12)',
+                      color: 'rgba(31,110,82,0.16)',
                       left: `${20 + i * 20}%`,
                       top: `${40 + (i % 2) * 20}%`,
                     }}
