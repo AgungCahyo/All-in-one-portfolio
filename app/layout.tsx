@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Cormorant_Garamond, DM_Sans } from 'next/font/google'
+import { Cormorant_Garamond, DM_Sans, Fraunces } from 'next/font/google'
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -14,6 +14,17 @@ const dmSans = DM_Sans({
   weight: ['300', '400', '500', '600'],
   display: 'swap',
   variable: '--font-dm-sans',
+})
+
+// Used for the leadership panel + page — a warmer, more expressive display
+// serif than the site's default Cormorant, carrying the "fresh/fun/credible"
+// redesign without needing a whole second body font.
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+  variable: '--font-fraunces',
 })
 import { CursorFollower } from '@/components/ui/CursorFollower'
 import { ThemeColor } from '@/components/ui/ThemeColor'
@@ -138,7 +149,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${dmSans.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${dmSans.variable} ${fraunces.variable}`}>
       <head>
         <script
           type="application/ld+json"

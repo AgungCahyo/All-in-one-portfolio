@@ -33,12 +33,12 @@ export const panels: Panel[] = [
         subtitle: { en: 'Coordinating teams, training new staff, and keeping beverage operations moving.', id: 'Mengkoordinasikan tim, melatih staf baru, dan menjaga operasional minuman tetap berjalan.' },
         tag: { en: 'Leadership · Staff Training · Operations', id: 'Leadership · Pelatihan Tim · Operasional' },
         cta: { en: 'View Leadership Work', id: 'Lihat Kerja Leadership' },
-        accent: '#fff44f',
-        dim: '#2e2e2e',
-        bg: '#0a0a0a',
+        accent: '#F5C36B',
+        dim: '#EDE6D6',
+        bg: '#1C140C',
         photo: '/profile.png',
         photoFlip: false,
-        PhotoFilter: 'grayscale(10%) hue-rotate(30deg) saturate(1.2) brightness(1.1)',
+        PhotoFilter: 'grayscale(8%) sepia(35%) hue-rotate(-6deg) saturate(1.15) brightness(0.95)',
         theme: 'leadership'
     },
     {

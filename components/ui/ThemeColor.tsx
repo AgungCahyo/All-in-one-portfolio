@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useActivePanel } from '@/lib/activePanelContext';
 
 const THEMES = {
-  leadership: { color: '#ffffff', accent: '#fff44f', bg: '#0a0a0a' },
+  leadership: { color: '#faf6ee', accent: '#1f6e52', bg: '#faf6ee' },
   developer: { color: '#0a0d12', accent: '#b8c8e0', bg: '#0a0d12' },
   videographer: { color: '#0d0c0b', accent: '#cec8c0', bg: '#0d0c0b' },
   about: { color: '#080808', accent: '#e8e4e0', bg: '#080808' },

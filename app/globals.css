@@ -96,16 +96,16 @@
 /* Leadership-specific animations */
 @keyframes leadershipGlow {
   0% {
-    box-shadow: 0 0 0 rgba(223,224,195,0.4),
-                0 0 0 rgba(223,224,195,0.2);
+    box-shadow: 0 0 0 rgba(245,195,107,0.4),
+                0 0 0 rgba(245,195,107,0.2);
   }
   50% {
-    box-shadow: 0 0 15px rgba(223,224,195,0.6),
-                0 0 30px rgba(223,224,195,0.4);
+    box-shadow: 0 0 15px rgba(245,195,107,0.6),
+                0 0 30px rgba(245,195,107,0.4);
   }
   100% {
-    box-shadow: 0 0 20px rgba(223,224,195,0.8),
-                0 0 40px rgba(223,224,195,0.6);
+    box-shadow: 0 0 20px rgba(245,195,107,0.8),
+                0 0 40px rgba(245,195,107,0.6);
   }
 }
 
@@ -122,11 +122,24 @@
   animation: pulseSlow 2.2s ease-in-out infinite;
 }
 
-/* Leadership-specific styles */
+/* ── Leadership page — warm paper, evergreen + amber ── */
+.leadership-page {
+  --lp-bg: #faf6ee;
+  --lp-surface: #ffffff;
+  --lp-tint: #f2ede0;
+  --lp-ink: #24211b;
+  --lp-ink-soft: #6b6357;
+  --lp-border: rgba(36,33,27,0.12);
+  --lp-evergreen: #1f6e52;
+  --lp-evergreen-soft: #e4efe9;
+  --lp-amber: #e8a23d;
+  --lp-amber-ink: #9c5f12;
+  --lp-amber-soft: #fbebd2;
+}
+
+/* Faint warm paper grain behind the hero — a texture layer only, never on
+   top of content. */
 .leadership-section-bg {
-  /* Subtle noise texture layered behind the leadership hero — applied as a
-     background layer only, so it no longer fades the section's own content
-     (it previously set opacity: 0.03 on the whole section, hero text included). */
   position: relative;
 }
 
@@ -136,40 +149,21 @@
   inset: 0;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: 0.05;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
 }
 
 .leadership-divider {
-  /* Green, matching the leadership accent. */
-  border-top: 1px solid rgba(223,224,195,0.28) !important;
+  border-top: 1px solid var(--lp-border) !important;
 }
 
-.leadership-thesis {
-  /* Enhanced thesis blockquote */
-  background: rgba(223,224,195,0.06);
-  border-left: 3px solid rgba(223,224,195,0.45);
-  padding-left: 16px;
-  border-radius: 0 4px 4px 0;
-  box-shadow: -1px 0 12px -4px rgba(223,224,195,0.15);
+/* Sticky-note style practice cards get a light hover tilt — motion that
+   responds to the person's own hover, not a scattered ambient effect. */
+.leadership-note {
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 320ms ease, border-color 320ms ease;
 }
 
-/* Makes the leadership page read heavier/bolder than the other two role pages */
-.leadership-page h1,
-.leadership-page h2,
-.leadership-page h3 {
-  text-shadow: 0 0 24px rgba(223,224,195,0.12);
-}
-
-.leadership-page .leadership-underline {
-  position: relative;
-}
-
-.leadership-page .leadership-underline::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  height: 2px;
-  width: 40px;
-  background: linear-gradient(to right, rgba(223,224,195,0.9), transparent);
+.leadership-note:hover {
+  transform: translateY(-4px) rotate(var(--tilt, -1deg));
+  box-shadow: 0 18px 30px -18px rgba(36,33,27,0.22);
 }

@@ -28,6 +28,8 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
     ? 'linear-gradient(to top, #0d0c0b 0%, transparent 50%)'
     : isTerminal
     ? 'linear-gradient(to top, #0a0d12 0%, transparent 50%)'
+    : isLeadership
+    ? 'linear-gradient(to top, #201609 0%, transparent 50%)'
     : 'linear-gradient(to top, #0b1016 0%, transparent 50%)';
 
   // Leadership-specific enhancements
@@ -46,12 +48,12 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
       {/* Leadership badge */}
       {isLeadershipPanel && (
         <div className={`absolute top-2 right-2 z-20 flex h-6 w-6 items-center justify-center rounded-full
-          ${isActive ? 'bg-[rgba(223,224,195,0.25)]' : 'bg-[rgba(223,224,195,0.12)]'}
+          ${isActive ? 'bg-[rgba(245,195,107,0.28)]' : 'bg-[rgba(245,195,107,0.14)]'}
           ${leadershipPulse}
           backdrop-blur-sm
-          border border-[rgba(223,224,195,0.35)]
+          border border-[rgba(245,195,107,0.4)]
           transition-all duration-300`}>
-          <span className="text-[8px] font-bold text-[rgba(223,224,195,0.9)]">L</span>
+          <span className="text-[8px] font-bold text-[rgba(245,195,107,0.95)]">L</span>
         </div>
       )}
 
@@ -73,7 +75,7 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
         {isLeadership && (
           <div
             className="absolute inset-0"
-            style={{ background: isActive ? 'rgba(10,18,16,0.55)' : 'rgba(10,18,16,0.7)' }}
+            style={{ background: isActive ? 'rgba(28,20,12,0.5)' : 'rgba(28,20,12,0.68)' }}
           />
         )}
         <div className="absolute inset-0" style={{ background: bottomGradient }} />
@@ -81,7 +83,7 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
         {isLeadershipPanel && isActive && (
           <div className="absolute inset-0 -z-10"
             style={{
-              border: '2px solid rgba(223,224,195,0.45)',
+              border: '2px solid rgba(245,195,107,0.5)',
               borderRadius: 'inherit',
               pointerEvents: 'none',
               animation: 'leadershipGlow 3s ease-in-out infinite alternate'
@@ -188,10 +190,10 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
                 <motion.h2
                   key="collapsed"
                   initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}
-                  className={`${isTerminal ? 'font-mono' : "font-['Cormorant_Garamond',serif]"} font-bold`}
+                  className={`${isTerminal ? 'font-mono' : isLeadership ? "font-['Fraunces',serif]" : "font-['Cormorant_Garamond',serif]"} font-bold`}
                   style={{
                     fontSize: '0.85rem',
-                    color: isLeadership ? 'rgba(197,208,218,0.18)' : isTerminal ? 'rgba(184,200,224,0.18)' : 'rgba(206,200,192,0.18)',
+                    color: isLeadership ? 'rgba(245,195,107,0.22)' : isTerminal ? 'rgba(184,200,224,0.18)' : 'rgba(206,200,192,0.18)',
                     writingMode: 'vertical-rl',
                     letterSpacing: '0.1em',
                   }}

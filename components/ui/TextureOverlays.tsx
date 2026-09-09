@@ -145,24 +145,24 @@ export function TextureOverlays() {
           </motion.div>
         )}
 
-        {/* Artisan: Organic Floating Dust + Sensory labels */}
+        {/* Leadership: soft floating dots + sensory labels, warm gold */}
         {theme === 'leadership' && (
           <motion.div 
-            key="artisan"
+            key="leadership-texture"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="absolute inset-0"
           >
-            {/* Sensory Labels - ONLY ON HOME */}
+            {/* Sensory Labels - ONLY ON HOME (sits over the dark panel) */}
             {pathname === '/' && (
               <div className="absolute inset-0 overflow-hidden hidden lg:block">
                 {['Leadership', 'Coordination', 'Training', 'Operations'].map((text, i) => (
                   <motion.div
                     key={text}
-                    className="absolute font-['Cormorant_Garamond',serif] italic text-[14px]"
+                    className="absolute font-['Fraunces',serif] italic text-[14px]"
                     style={{
-                      color: 'rgba(150,170,190,0.1)',
+                      color: 'rgba(245,195,107,0.12)',
                       left: `${20 + i * 20}%`,
                       top: `${40 + (i % 2) * 20}%`,
                     }}
@@ -172,31 +172,14 @@ export function TextureOverlays() {
                     {text}
                   </motion.div>
                 ))}
-                
-                {/* Minimalist Formula Icon (Caffeine-ish) */}
-                <motion.div 
-                  className="absolute right-20 bottom-20 opacity-[0.05]"
-                  style={{ mixBlendMode: 'screen' }}
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
-                >
-                  <svg width="120" height="120" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1">
-                    <path d="M50 20 L80 40 L80 70 L50 90 L20 70 L20 40 Z" />
-                    <circle cx="50" cy="20" r="3" />
-                    <circle cx="80" cy="40" r="3" />
-                    <circle cx="20" cy="70" r="3" />
-                    <path d="M50 20 L50 5" />
-                    <path d="M80 70 L95 78" />
-                  </svg>
-                </motion.div>
               </div>
             )}
 
-            <div className="absolute inset-0 opacity-[0.45]">
+            <div className="absolute inset-0 opacity-[0.35]">
               {isMounted && particles.map((p) => (
                 <motion.div
                   key={p.id}
-                  className="absolute w-2.5 h-2.5 bg-[rgba(150,170,190,0.2)] rounded-full blur-[2px] shadow-[0_0_8px_rgba(150,170,190,0.3)]"
+                  className={`absolute rounded-full blur-[2px] ${p.id % 3 === 0 ? 'w-2 h-2 bg-[rgba(31,110,82,0.16)] shadow-[0_0_8px_rgba(31,110,82,0.2)]' : 'w-2.5 h-2.5 bg-[rgba(232,162,61,0.18)] shadow-[0_0_8px_rgba(232,162,61,0.22)]'}`}
                   style={{
                     left: `${p.left}%`,
                     top: `${p.top}%`,
@@ -204,8 +187,8 @@ export function TextureOverlays() {
                   animate={{
                     x: [0, p.animX, 0],
                     y: [0, p.animY, 0],
-                    opacity: [0.2, 0.8, 0.2],
-                    scale: [1, 1.2, 1],
+                    opacity: [0.2, 0.7, 0.2],
+                    scale: [1, 1.15, 1],
                   }}
                   transition={{
                     duration: p.duration,
