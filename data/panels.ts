@@ -25,9 +25,26 @@ export const panels: Panel[] = [
         theme: 'terminal'
     },
     {
+        id: 'leadership',
+        href: '/leadership',
+        num: '02',
+        title: { en: 'Team\nCoordinator', id: 'Koordinator\nTim' },
+        titleShort: 'Lead',
+        subtitle: { en: 'Coordinating teams, training new staff, and keeping beverage operations moving.', id: 'Mengkoordinasikan tim, melatih staf baru, dan menjaga operasional minuman tetap berjalan.' },
+        tag: { en: 'Leadership · Staff Training · Operations', id: 'Leadership · Pelatihan Tim · Operasional' },
+        cta: { en: 'View Leadership Work', id: 'Lihat Kerja Leadership' },
+        accent: '#fff44f',
+        dim: '#2e2e2e',
+        bg: '#0a0a0a',
+        photo: '/profile.png',
+        photoFlip: false,
+        PhotoFilter: 'grayscale(10%) hue-rotate(30deg) saturate(1.2) brightness(1.1)',
+        theme: 'leadership'
+    },
+    {
         id: 'videographer',
         href: '/videographer',
-        num: '02',
+        num: '03',
         title: { en: 'Videographer\n& Editor', id: 'Videographer\n& Editor' },
         titleShort: 'Video',
         subtitle: { en: 'Cinematic storytelling — corporate, documentary & brand film', id: 'Cinematic storytelling - corporate, documentary, dan brand film' },
@@ -40,22 +57,5 @@ export const panels: Panel[] = [
         photoFlip: true,
         PhotoFilter: 'grayscale(40%)',
         theme: 'cinema'
-    },
-    {
-        id: 'beverage',
-        href: '/beverage',
-        num: '03',
-        title: { en: 'Team\nCoordinator', id: 'Koordinator\nTim' },
-        titleShort: 'Lead',
-        subtitle: { en: 'Coordinating teams, training new staff, and keeping beverage operations moving.', id: 'Mengkoordinasikan tim, melatih staf baru, dan menjaga operasional minuman tetap berjalan.' },
-        tag: { en: 'Leadership · Staff Training · Operations', id: 'Leadership · Pelatihan Tim · Operasional' },
-        cta: { en: 'View Leadership Work', id: 'Lihat Kerja Leadership' },
-        accent: '#d4af37',
-        dim: '#b8904c',
-        bg: '#0a0e12',
-        photo: '/profile.png',
-        photoFlip: false,
-        PhotoFilter: 'grayscale(10%) hue-rotate(30deg) saturate(1.2) brightness(1.1)',
-        theme: 'leadership'
     },
 ];

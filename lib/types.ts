@@ -4,7 +4,7 @@ export interface BilingualString {
     id: string;
 }
 
-export type RoleType = 'videographer' | 'developer' | 'beverage' | 'about';
+export type RoleType = 'videographer' | 'developer' | 'leadership' | 'about';
 export type ThemeVariant = 'cinema' | 'terminal' | 'artisan' | 'leadership' | 'brutalist';
 
 export interface AboutTimeline {

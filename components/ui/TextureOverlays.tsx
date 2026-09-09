@@ -6,11 +6,11 @@ import { usePathname } from 'next/navigation';
 import { useActivePanel } from '@/lib/activePanelContext';
 import { grainUrl } from '@/data/panels';
 
-type Theme = 'cinema' | 'terminal' | 'artisan';
+type Theme = 'cinema' | 'terminal' | 'leadership';
 
 function getThemeFromPath(path: string): Theme | null {
   if (path.startsWith('/developer')) return 'terminal';
-  if (path.startsWith('/beverage'))  return 'artisan';
+  if (path.startsWith('/leadership'))  return 'leadership';
   if (path.startsWith('/videographer')) return 'cinema';
   if (path === '/about') return null;
   return null;
@@ -18,7 +18,7 @@ function getThemeFromPath(path: string): Theme | null {
 
 function getThemeFromPanel(panel: string): Theme {
   if (panel === 'developer') return 'terminal';
-  if (panel === 'beverage') return 'artisan';
+  if (panel === 'leadership') return 'leadership';
   return 'cinema';
 }
 
@@ -146,7 +146,7 @@ export function TextureOverlays() {
         )}
 
         {/* Artisan: Organic Floating Dust + Sensory labels */}
-        {theme === 'artisan' && (
+        {theme === 'leadership' && (
           <motion.div 
             key="artisan"
             initial={{ opacity: 0 }}

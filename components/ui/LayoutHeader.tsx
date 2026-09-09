@@ -7,7 +7,7 @@ import { LanguageSwitcher } from './LanguageSwitcher';
 import { useLanguage } from '@/lib/languageContext';
 import { RoleType, ThemeVariant } from '@/lib/types';
 
-type PanelRoleId = 'developer' | 'videographer' | 'beverage';
+type PanelRoleId = 'developer' | 'videographer' | 'leadership';
 
 interface HeaderProps {
   activeRole?: RoleType;
@@ -46,17 +46,17 @@ const themeStyles: Record<ThemeVariant, Record<string, string>> = {
     textSecondary: '#6d7a88',
     textMuted: '#6d7a88',
     active: '#c5d0da',
-    accent: '#d4af37',
+    accent: '#e8e8e8',
     mobileBg: '#0b1016',
   },
   leadership: {
     bg: 'rgba(10,14,18,0.85)',
-    border: 'rgba(212,175,55,0.14)',
-    textPrimary: '#e6d3a8',
-    textSecondary: '#b8904c',
-    textMuted: '#8a7a5a',
-    active: '#e6d3a8',
-    accent: '#d4af37',
+    border: 'rgba(232,232,232,0.14)',
+    textPrimary: '#f5f5f5',
+    textSecondary: '#9a9a9a',
+    textMuted: '#6a6a6a',
+    active: '#f5f5f5',
+    accent: '#e8e8e8',
     mobileBg: '#0a0e12',
   },
   brutalist: {
@@ -82,7 +82,7 @@ const homeChrome = {
   mobileBg: '#000000',
 };
 
-const panelRoleIds: PanelRoleId[] = ['developer', 'videographer', 'beverage'];
+const panelRoleIds: PanelRoleId[] = ['developer', 'videographer', 'leadership'];
 
 export function LayoutHeader({ activeRole, theme = 'cinema', homePanels }: HeaderProps) {
   const { t } = useLanguage();
@@ -92,8 +92,8 @@ export function LayoutHeader({ activeRole, theme = 'cinema', homePanels }: Heade
 
   const navLinks = [
     { id: 'developer', href: '/developer', labelEn: 'Developer', labelId: 'Developer' },
+    { id: 'leadership', href: '/leadership', labelEn: 'Leadership', labelId: 'Leadership' },
     { id: 'videographer', href: '/videographer', labelEn: 'Videographer', labelId: 'Videografer' },
-    { id: 'beverage', href: '/beverage', labelEn: 'Leadership', labelId: 'Leadership' },
     { id: 'about', href: '/about', labelEn: 'About', labelId: 'Tentang' },
   ];
 

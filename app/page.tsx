@@ -49,7 +49,7 @@ export default function Home() {
   }, [paused, next, active]);
 
   useEffect(() => {
-    setActivePanel(panels[active].id as 'beverage' | 'developer' | 'videographer');
+    setActivePanel(panels[active].id as 'leadership' | 'developer' | 'videographer');
   }, [active, setActivePanel]);
 
   useEffect(() => {
@@ -83,7 +83,7 @@ export default function Home() {
     setPaused(true);
   }
 
-  function handleActivateRole(id: 'developer' | 'videographer' | 'beverage') {
+  function handleActivateRole(id: 'developer' | 'videographer' | 'leadership') {
     const i = panels.findIndex((p) => p.id === id);
     if (i >= 0) handleActivate(i);
   }
@@ -149,7 +149,7 @@ export default function Home() {
 
       <LayoutHeader
         homePanels={{
-          activeId: panels[active].id as 'developer' | 'videographer' | 'beverage',
+          activeId: panels[active].id as 'developer' | 'videographer' | 'leadership',
           onActivate: handleActivateRole,
         }}
       />

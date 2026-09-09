@@ -22,7 +22,7 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
   const reduced = useReducedMotion();
   const isCinema = panel.theme === 'cinema';
   const isTerminal = panel.theme === 'terminal';
-  const isArtisan = panel.theme === 'artisan';
+  const isLeadership = panel.theme === 'leadership';
 
   const bottomGradient = isCinema
     ? 'linear-gradient(to top, #0d0c0b 0%, transparent 50%)'
@@ -31,11 +31,9 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
     : 'linear-gradient(to top, #0b1016 0%, transparent 50%)';
 
   // Leadership-specific enhancements
-  const isLeadershipPanel = panel.id === 'beverage';
+  const isLeadershipPanel = panel.id === 'leadership';
   const leadershipPulse = isLeadershipPanel && isActive ?
     `animate-pulse-slow` : '';
-  const leadershipBorderGlow = isLeadershipPanel && isActive ?
-    'border-[2px] border-[rgba(197,208,218,0.4)]' : '';
 
   return (
     <div
@@ -48,12 +46,12 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
       {/* Leadership badge */}
       {isLeadershipPanel && (
         <div className={`absolute top-2 right-2 z-20 flex h-6 w-6 items-center justify-center rounded-full
-          ${isActive ? 'bg-[rgba(197,208,218,0.2)]' : 'bg-[rgba(197,208,218,0.1])'}
+          ${isActive ? 'bg-[rgba(223,224,195,0.25)]' : 'bg-[rgba(223,224,195,0.12)]'}
           ${leadershipPulse}
           backdrop-blur-sm
-          border border-[rgba(197,208,218,0.1)]
+          border border-[rgba(223,224,195,0.35)]
           transition-all duration-300`}>
-          <span className="text-[8px] font-bold text-[rgba(197,208,218,0.8)">L</span>
+          <span className="text-[8px] font-bold text-[rgba(223,224,195,0.9)]">L</span>
         </div>
       )}
 
@@ -65,17 +63,17 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
           fill
           className="object-cover object-[50%_20%]"
           style={{
-            filter: `${panel.PhotoFilter} brightness(${isArtisan ? (isActive ? 0.18 : 0.1) : isActive ? 0.38 : 0.15})`,
+            filter: `${panel.PhotoFilter} brightness(${isLeadership ? (isActive ? 0.18 : 0.1) : isActive ? 0.38 : 0.15})`,
             transform: panel.photoFlip ? 'scaleX(-1)' : 'none',
             transition: 'filter 700ms ease, transform 700ms ease',
             objectPosition: '50% 20%',
           }}
           priority
         />
-        {isArtisan && (
+        {isLeadership && (
           <div
             className="absolute inset-0"
-            style={{ background: isActive ? 'rgba(11,16,22,0.55)' : 'rgba(11,16,22,0.7)' }}
+            style={{ background: isActive ? 'rgba(10,18,16,0.55)' : 'rgba(10,18,16,0.7)' }}
           />
         )}
         <div className="absolute inset-0" style={{ background: bottomGradient }} />
@@ -83,7 +81,7 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
         {isLeadershipPanel && isActive && (
           <div className="absolute inset-0 -z-10"
             style={{
-              border: '2px solid rgba(197,208,218,0.4)',
+              border: '2px solid rgba(223,224,195,0.45)',
               borderRadius: 'inherit',
               pointerEvents: 'none',
               animation: 'leadershipGlow 3s ease-in-out infinite alternate'
@@ -134,7 +132,7 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
             paddingLeft: isActive ? 'clamp(28px, 3.5vw, 52px)' : '20px',
             paddingRight: isActive ? 'clamp(28px, 3.5vw, 52px)' : '20px',
             transition: 'padding-left 700ms cubic-bezier(0.4,0,0.2,1), padding-right 700ms cubic-bezier(0.4,0,0.2,1)',
-            minHeight: isArtisan && isActive ? '100%' : 'calc(100vh - 60px)',
+            minHeight: isLeadership && isActive ? '100%' : 'calc(100vh - 60px)',
           }}
         >
           {/* Top: number */}
@@ -155,15 +153,15 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
             >
               {panel.id === 'developer' ? (lang === 'en' ? 'BUILD' : 'BANGUN') :
                panel.id === 'videographer' ? (lang === 'en' ? 'CREATE' : 'CIPTA') :
-               panel.id === 'beverage' ? (lang === 'en' ? 'LEAD' : 'MEMPIMPIN') : ''}
+               panel.id === 'leadership' ? (lang === 'en' ? 'LEAD' : 'MEMPIMPIN') : ''}
             </span>
           </div>
 
           {/* Middle: title */}
-          <div className={`flex-1 flex overflow-hidden ${isArtisan && isActive ? 'min-h-0 items-stretch' : 'items-center'}`}>
+          <div className={`flex-1 flex overflow-hidden ${isLeadership && isActive ? 'min-h-0 items-stretch' : 'items-center'}`}>
             <AnimatePresence mode="wait">
               {isActive ? (
-                <motion.div key="active" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.35 }} className={isArtisan ? 'h-full min-h-0 w-full' : undefined}>
+                <motion.div key="active" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.35 }} className={isLeadership ? 'h-full min-h-0 w-full' : undefined}>
                   {isCinema && (
                     <h2 className="font-['Cormorant_Garamond',serif] font-bold leading-[0.88] whitespace-pre-line"
                       style={{ fontSize: 'clamp(2.2rem, 3.8vw, 4.2rem)', color: panel.accent, letterSpacing: '-0.02em' }}>
@@ -184,7 +182,7 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
                       </h2>
                     </div>
                   )}
-                  {isArtisan && <LeadPanelContent panel={panel} reduced={reduced} />}
+                  {isLeadership && <LeadPanelContent panel={panel} reduced={reduced} />}
                 </motion.div>
               ) : (
                 <motion.h2
@@ -193,7 +191,7 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
                   className={`${isTerminal ? 'font-mono' : "font-['Cormorant_Garamond',serif]"} font-bold`}
                   style={{
                     fontSize: '0.85rem',
-                    color: isArtisan ? 'rgba(197,208,218,0.18)' : isTerminal ? 'rgba(184,200,224,0.18)' : 'rgba(206,200,192,0.18)',
+                    color: isLeadership ? 'rgba(197,208,218,0.18)' : isTerminal ? 'rgba(184,200,224,0.18)' : 'rgba(206,200,192,0.18)',
                     writingMode: 'vertical-rl',
                     letterSpacing: '0.1em',
                   }}
@@ -206,7 +204,7 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
 
           {/* Bottom: meta — only when active */}
           <AnimatePresence>
-            {isActive && !isArtisan && (
+            {isActive && !isLeadership && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 4 }}
                 transition={{ duration: 0.4, delay: 0.2 }}

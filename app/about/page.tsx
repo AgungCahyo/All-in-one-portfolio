@@ -588,7 +588,7 @@ export default function AboutPage() {
               className="flex items-baseline gap-6 py-5"
               style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}
             >
-              <span className="font-mono text-[9px] flex-shrink-0" style={{ color: 'rgba(255,255,255,0.24)', width: '24px' }}>
+              <span className="font-mono text-[9px] shrink-0" style={{ color: 'rgba(255,255,255,0.24)', width: '24px' }}>
                 {String(i + 1).padStart(2, '0')}
               </span>
               <p className="text-[14px]" style={{ color: 'rgba(232,228,224,0.55)' }}>

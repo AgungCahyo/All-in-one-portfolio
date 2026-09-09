@@ -269,7 +269,7 @@ export default function VideographerPage() {
           {t('Prev', 'Sebelumnya')}: {t('Developer', 'Developer')}
         </Link>
         <span className="text-[11px] font-medium" style={{ color: '#2a2520' }}>02 / {t('Videographer', 'Videografer')}</span>
-        <Link href="/beverage" className="text-[11px] flex items-center gap-2 transition-colors" style={{ color: '#3a3530' }}>
+        <Link href="/leadership" className="text-[11px] flex items-center gap-2 transition-colors" style={{ color: '#3a3530' }}>
           {t('Next', 'Selanjutnya')}: {t('Leadership', 'Leadership')}
           <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />

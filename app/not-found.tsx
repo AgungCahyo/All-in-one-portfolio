@@ -19,7 +19,7 @@ const navLinks = [
   { href: '/',             labelEn: '← Home',           labelId: '← Beranda'          },
   { href: '/developer',   labelEn: 'Developer',         labelId: 'Developer'           },
   { href: '/videographer', labelEn: 'Videographer',     labelId: 'Videografer'         },
-  { href: '/beverage',    labelEn: 'Leadership',        labelId: 'Leadership'          },
+  { href: '/leadership',    labelEn: 'Leadership',        labelId: 'Leadership'          },
   { href: '/about',       labelEn: 'About',             labelId: 'Tentang'             },
 ];
 

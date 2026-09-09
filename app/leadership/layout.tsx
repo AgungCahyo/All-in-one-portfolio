@@ -7,13 +7,13 @@ export const metadata: Metadata = {
   description:
     'Leadership portfolio of Agung Cahyo Prasetyo: coordinating beverage teams, staff training, SOP systems, and operations under pressure.',
   alternates: {
-    canonical: '/beverage',
+    canonical: '/leadership',
   },
   openGraph: {
     title: 'Team Coordinator & Leadership | Agung Cahyo Prasetyo',
     description:
       'Coordinating teams, training staff, and keeping beverage operations moving — leadership in a high-volume F&B context.',
-    url: '/beverage',
+    url: '/leadership',
     type: 'website',
   },
 }
@@ -33,7 +33,7 @@ export default function BeverageLayout({ children }: { children: React.ReactNode
         '@type': 'ListItem',
         position: 2,
         name: 'Leadership',
-        item: `${siteUrl}/beverage`,
+        item: `${siteUrl}/leadership`,
       },
     ],
   }

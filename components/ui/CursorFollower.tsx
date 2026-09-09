@@ -4,20 +4,20 @@ import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { useActivePanel } from '@/lib/activePanelContext';
 
-type Role = 'cinema' | 'dev' | 'artisan';
+type Role = 'cinema' | 'dev' | 'leadership';
 
 interface TailPoint { x: number; y: number; }
 
 function getRoleFromPath(path: string): Role {
   if (path.startsWith('/developer')) return 'dev';
-  if (path.startsWith('/beverage')) return 'artisan';
+  if (path.startsWith('/leadership')) return 'leadership';
   if (path.startsWith('/work-with-me')) return 'dev'
   return 'cinema';
 }
 
 function getRoleFromPanel(panel: string): Role {
   if (panel === 'developer') return 'dev';
-  if (panel === 'beverage') return 'artisan';
+  if (panel === 'leadership') return 'leadership';
   return 'cinema';
 }
 
@@ -325,7 +325,7 @@ export function CursorFollower() {
     if (isTouchDevice) return;
 
     function lerp(a: number, b: number, t: number) { return a + (b - a) * t; }
-    const speed = role === 'artisan' ? 0.07 : role === 'cinema' ? 0.11 : 0.17;
+    const speed = role === 'leadership' ? 0.07 : role === 'cinema' ? 0.11 : 0.17;
 
     function loop() {
       frameRef.current++;
@@ -339,7 +339,7 @@ export function CursorFollower() {
           return next.slice(0, TAIL_LEN);
         });
       }
-      if (role === 'artisan') setRotation(r => r + 0.4 * (Math.PI / 180));
+      if (role === 'leadership') setRotation(r => r + 0.4 * (Math.PI / 180));
       setFrame(frameRef.current);
       rafRef.current = requestAnimationFrame(loop);
     }
@@ -358,7 +358,7 @@ export function CursorFollower() {
     <>
       {role === 'cinema' && <CinemaCursor x={x} y={y} tail={tail} frame={frame} />}
       {role === 'dev'     && <DevCursor    x={x} y={y} tail={tail} frame={frame} />}
-      {role === 'artisan' && <ArtisanCursor x={x} y={y} tail={tail} rotation={rotation} />}
+      {role === 'leadership' && <ArtisanCursor x={x} y={y} tail={tail} rotation={rotation} />}
     </>
   );
 }

@@ -10,7 +10,7 @@ import { useActivePanel } from '@/lib/activePanelContext';
  */
 function getThemeColors(pathname: string, activePanel: string) {
   const isTerminal = pathname.startsWith('/developer') || (pathname === '/' && activePanel === 'developer');
-  const isArtisan = pathname.startsWith('/beverage') || (pathname === '/' && activePanel === 'beverage');
+  const isArtisan = pathname.startsWith('/leadership') || (pathname === '/' && activePanel === 'leadership');
   const isBrutalist = pathname.startsWith('/about') || (pathname === '/' && activePanel === 'about');
   const isWorkWithMe = pathname.startsWith('/work-with-me') || (pathname === '/' && activePanel === 'work-with-me');
 

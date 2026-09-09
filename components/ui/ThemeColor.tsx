@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useActivePanel } from '@/lib/activePanelContext';
 
 const THEMES = {
-  beverage: { color: '#0b1016', accent: '#c5d0da', bg: '#0b1016' },
+  leadership: { color: '#ffffff', accent: '#fff44f', bg: '#0a0a0a' },
   developer: { color: '#0a0d12', accent: '#b8c8e0', bg: '#0a0d12' },
   videographer: { color: '#0d0c0b', accent: '#cec8c0', bg: '#0d0c0b' },
   about: { color: '#080808', accent: '#e8e4e0', bg: '#080808' },
@@ -24,8 +24,8 @@ export function ThemeColor() {
       theme = THEMES.about;
     } else if (pathname?.startsWith('/developer')) {
       theme = THEMES.developer;
-    } else if (pathname?.startsWith('/beverage')) {
-      theme = THEMES.beverage;
+    } else if (pathname?.startsWith('/leadership')) {
+      theme = THEMES.leadership;
     } else if (pathname?.startsWith('/videographer')) {
       theme = THEMES.videographer;
     }
