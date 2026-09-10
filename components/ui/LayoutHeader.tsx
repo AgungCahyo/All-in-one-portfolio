@@ -20,14 +20,14 @@ interface HeaderProps {
 
 const themeStyles: Record<ThemeVariant, Record<string, string>> = {
   cinema: {
-    bg: 'rgba(12,11,10,0.85)',
-    border: 'rgba(255,255,255,0.04)',
-    textPrimary: '#cec8c0',
-    textSecondary: '#4a4540',
-    textMuted: '#3a3530',
-    active: '#a09890',
-    accent: '#cec8c0',
-    mobileBg: '#0c0b0a',
+    bg: 'rgba(247,243,238,0.88)',
+    border: 'rgba(36,29,24,0.1)',
+    textPrimary: '#241d18',
+    textSecondary: '#8c7d70',
+    textMuted: '#a89b8d',
+    active: '#c1613f',
+    accent: '#c1613f',
+    mobileBg: '#f7f3ee',
   },
   terminal: {
     bg: 'rgba(9,12,16,0.85)',
@@ -59,6 +59,16 @@ const themeStyles: Record<ThemeVariant, Record<string, string>> = {
     accent: '#1f6e52',
     mobileBg: '#faf6ee',
   },
+  blueprint: {
+    bg: 'rgba(245,247,250,0.88)',
+    border: 'rgba(52,84,164,0.14)',
+    textPrimary: '#1c2333',
+    textSecondary: '#8a95ab',
+    textMuted: '#8a95ab',
+    active: '#3454a4',
+    accent: '#3454a4',
+    mobileBg: '#f5f7fa',
+  },
   brutalist: {
     bg: 'rgba(15, 15, 15, 0.85)',
     border: 'rgba(255,255,255,0.06)',
@@ -71,23 +81,17 @@ const themeStyles: Record<ThemeVariant, Record<string, string>> = {
   }
 };
 
-const homeChrome = {
-  bg: 'rgba(0,0,0,0.7)',
-  border: 'rgba(255,255,255,0.04)',
-  textPrimary: 'rgba(255,255,255,0.8)',
-  textSecondary: 'rgba(255,255,255,0.2)',
-  textMuted: 'rgba(255,255,255,0.15)',
-  active: 'rgba(255,255,255,0.6)',
-  accent: 'rgba(255,255,255,0.45)',
-  mobileBg: '#000000',
-};
-
 const panelRoleIds: PanelRoleId[] = ['developer', 'videographer', 'leadership'];
 
 export function LayoutHeader({ activeRole, theme = 'cinema', homePanels }: HeaderProps) {
   const { t } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
-  const styles = homePanels ? homeChrome : themeStyles[theme];
+  // All three roles now have a light theme on their own pages, so the
+  // homepage nav follows whichever panel is active instead of staying
+  // permanently dark — it used to hardcode a black `homeChrome` here
+  // regardless of `theme`, which is why the nav stayed black even once
+  // every panel underneath it went light.
+  const styles = themeStyles[theme];
   const currentRole = homePanels?.activeId ?? activeRole;
 
   const navLinks = [
@@ -211,7 +215,7 @@ export function LayoutHeader({ activeRole, theme = 'cinema', homePanels }: Heade
                   <div
                     key={link.id}
                     className="rounded-md"
-                    style={{ background: isActive ? 'rgba(255,255,255,0.06)' : 'transparent' }}
+                    style={{ background: isActive ? `${styles.accent}14` : 'transparent' }}
                   >
                     {renderNavItem(
                       link,
@@ -224,7 +228,7 @@ export function LayoutHeader({ activeRole, theme = 'cinema', homePanels }: Heade
                 href="/developer/work-with-me"
                 className="px-3 py-2 rounded-md transition-colors font-bold"
                 style={{
-                  background: 'rgba(255,255,255,0.06)',
+                  background: `${styles.accent}14`,
                   color: styles.textPrimary,
                 }}
                 onClick={() => setMenuOpen(false)}

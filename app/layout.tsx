@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Cormorant_Garamond, DM_Sans, Fraunces } from 'next/font/google'
+import { Cormorant_Garamond, DM_Sans, Fraunces, Space_Grotesk, Bodoni_Moda } from 'next/font/google'
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -25,6 +25,25 @@ const fraunces = Fraunces({
   style: ['normal', 'italic'],
   display: 'swap',
   variable: '--font-fraunces',
+})
+
+// Used for the developer panel + page — geometric/technical display font for
+// the "Blueprint / Workbench" redesign, distinct from leadership's Fraunces.
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-space-grotesk',
+})
+
+// Used for the videographer panel + page — high-contrast editorial serif,
+// like a film title card, for the "Contact Sheet / Golden Hour" redesign.
+const bodoniModa = Bodoni_Moda({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+  variable: '--font-bodoni',
 })
 import { CursorFollower } from '@/components/ui/CursorFollower'
 import { ThemeColor } from '@/components/ui/ThemeColor'
@@ -149,7 +168,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${dmSans.variable} ${fraunces.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${dmSans.variable} ${fraunces.variable} ${spaceGrotesk.variable} ${bodoniModa.variable}`}>
       <head>
         <script
           type="application/ld+json"

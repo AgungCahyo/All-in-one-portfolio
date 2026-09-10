@@ -5,7 +5,7 @@ export interface BilingualString {
 }
 
 export type RoleType = 'videographer' | 'developer' | 'leadership' | 'about';
-export type ThemeVariant = 'cinema' | 'terminal' | 'artisan' | 'leadership' | 'brutalist';
+export type ThemeVariant = 'cinema' | 'terminal' | 'artisan' | 'leadership' | 'brutalist' | 'blueprint';
 
 export interface AboutTimeline {
     year: string;

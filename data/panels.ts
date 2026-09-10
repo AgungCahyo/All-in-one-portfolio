@@ -16,12 +16,14 @@ export const panels: Panel[] = [
         subtitle: { en: '3+ years shipping production apps — SaaS, AI & mobile', id: '3+ tahun shipping production apps - SaaS, AI, dan mobile' },
         tag: { en: 'TypeScript · n8n · AI · React · Node.js', id: 'TypeScript · n8n · AI · React · Node.js' },
         cta: { en: 'View Engineering Work', id: 'Lihat Engineering Work' },
-        accent: '#b8c8e0',
-        dim: '#5a6880',
-        bg: '#0a0d12',
+        // Indigo + mint on light "blueprint" base — matches the redesigned
+        // /developer page. Panel rests light like its sibling panels.
+        accent: '#3454a4',
+        dim: '#5a6478',
+        bg: '#f5f7fa',
         photo: '/profile.png',
         photoFlip: true,
-        PhotoFilter: 'grayscale(20%) sepia(60%) hue-rotate(180deg) brightness(0.8)',
+        PhotoFilter: 'grayscale(10%) sepia(28%) hue-rotate(178deg) saturate(1.4) brightness(1.0)',
         theme: 'terminal'
     },
     {
@@ -34,8 +36,6 @@ export const panels: Panel[] = [
         tag: { en: 'Leadership · Staff Training · Operations', id: 'Leadership · Pelatihan Tim · Operasional' },
         cta: { en: 'View Leadership Work', id: 'Lihat Kerja Leadership' },
         // Evergreen + amber + warm paper — matches the /leadership page.
-        // On hover, this panel now warms up into the same palette instead
-        // of staying dark like the two sibling panels.
         accent: '#1f6e52',
         dim: '#6b6357',
         bg: '#faf6ee',
@@ -53,12 +53,14 @@ export const panels: Panel[] = [
         subtitle: { en: 'Cinematic storytelling — corporate, documentary & brand film', id: 'Cinematic storytelling - corporate, documentary, dan brand film' },
         tag: { en: '4K · Premiere Pro · DaVinci Resolve · CapCut', id: '4K · Premiere Pro · DaVinci Resolve · CapCut' },
         cta: { en: 'View Visual Work', id: 'Lihat Visual Work' },
-        accent: '#cec8c0',
-        dim: '#6b6560',
-        bg: '#0d0c0b',
+        // Terracotta + teal (a desaturated colorist grade) on warm-cool
+        // paper — matches the redesigned /videographer page.
+        accent: '#c1613f',
+        dim: '#6b5f56',
+        bg: '#f7f3ee',
         photo: '/hero.png',
         photoFlip: true,
-        PhotoFilter: 'grayscale(40%)',
+        PhotoFilter: 'sepia(30%) saturate(1.3) hue-rotate(-10deg) brightness(1.0)',
         theme: 'cinema'
     },
 ];

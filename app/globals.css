@@ -8,6 +8,91 @@
 @theme {
   --font-display: var(--font-fraunces);
   --font-body: var(--font-dm-sans);
+  --font-tech: var(--font-space-grotesk);
+  --font-editorial: var(--font-bodoni);
+}
+
+/* ── Developer theme: "Blueprint / Workbench" ──
+   Light, precise, dot-grid material instead of leadership's warm paper. */
+.dev-card {
+  position: relative;
+  background: #ffffff;
+  transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 280ms ease, border-color 280ms ease;
+}
+
+.dev-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(52,84,164,0.16) 1px, transparent 1px);
+  background-size: 14px 14px;
+  opacity: 0.5;
+}
+
+.dev-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 28px -18px rgba(28,35,51,0.16);
+  border-color: rgba(52,84,164,0.35) !important;
+}
+
+/* Small pill tag, blueprint-style corner label — echoes a `<tag>` marker
+   rather than a plain colored border stripe. */
+.dev-corner-tag {
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  font-family: var(--font-mono, monospace);
+  box-shadow: 0 6px 14px -6px rgba(28,35,51,0.3);
+}
+
+/* ── Videographer theme: "Contact Sheet / Golden Hour" ──
+   Frame material — sprocket hairline instead of a solid letterbox block,
+   plus a taped-corner accent instead of a flat card border. */
+.reel-frame {
+  position: relative;
+  background: #fffdfa;
+  transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 280ms ease;
+}
+
+.reel-frame::before,
+.reel-frame::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background-image: radial-gradient(circle, rgba(36,29,24,0.35) 1.5px, transparent 1.5px);
+  background-size: 14px 100%;
+  background-repeat: repeat-x;
+  background-position: center;
+  pointer-events: none;
+}
+.reel-frame::before { top: 0; }
+.reel-frame::after { bottom: 0; }
+
+.reel-frame:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 28px -18px rgba(36,29,24,0.22);
+}
+
+/* Small rotated tape swatch, like a piece of tape holding a print down —
+   replaces a plain "type" label pill. */
+.reel-tape {
+  position: absolute;
+  top: -9px;
+  left: 22px;
+  width: 46px;
+  height: 18px;
+  background: rgba(255,255,255,0.55);
+  border: 1px solid rgba(36,29,24,0.12);
+  transform: rotate(-4deg);
+  box-shadow: 0 4px 8px -4px rgba(36,29,24,0.25);
 }
 
 :root {

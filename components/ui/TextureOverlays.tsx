@@ -67,10 +67,12 @@ export function TextureOverlays() {
               }} 
             />
             
-            {/* Camera HUD Decoration - ONLY ON HOME */}
+            {/* Camera HUD Decoration - ONLY ON HOME. Recolored to dark ink
+                — this used to assume a near-black cinema panel, but the
+                panel now rests in its light "Contact Sheet" palette. */}
             {pathname === '/' && (
-              <div className="absolute inset-8 md:inset-12 pointer-events-none opacity-[0.3]" style={{ mixBlendMode: 'screen' }}>
-                <div className="absolute top-4 left-6 flex items-center gap-2 font-mono text-[10px] tracking-widest text-white/70">
+              <div className="absolute inset-8 md:inset-12 pointer-events-none opacity-[0.3]">
+                <div className="absolute top-4 left-6 flex items-center gap-2 font-mono text-[10px] tracking-widest text-[#241d18]/70">
                   <motion.div 
                     animate={{ opacity: [1, 0, 1] }} 
                     transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }} 
@@ -78,18 +80,18 @@ export function TextureOverlays() {
                   />
                   REC 4K
                 </div>
-                <div className="absolute top-4 right-6 font-mono text-[10px] tracking-widest text-white/50">
+                <div className="absolute top-4 right-6 font-mono text-[10px] tracking-widest text-[#241d18]/50">
                   ISO: 800 | 1/50
                 </div>
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 font-mono text-[10px] tracking-widest text-white/40">
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 font-mono text-[10px] tracking-widest text-[#241d18]/40">
                   00:24:08:12
                 </div>
                 
                 {/* Corner brackets */}
-                <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-white/40" />
-                <div className="absolute top-0 right-0 w-6 h-6 border-t border-r border-white/40" />
-                <div className="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-white/40" />
-                <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-white/40" />
+                <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-[#241d18]/30" />
+                <div className="absolute top-0 right-0 w-6 h-6 border-t border-r border-[#241d18]/30" />
+                <div className="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-[#241d18]/30" />
+                <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-[#241d18]/30" />
               </div>
             )}
           </motion.div>
@@ -124,7 +126,7 @@ export function TextureOverlays() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 0.15, x: 0 }}
                 className="absolute right-[10%] top-[30%] font-mono text-[11px] leading-relaxed hidden lg:block"
-                style={{ color: '#b8c8e0' }}
+                style={{ color: '#3454a4' }}
               >
                 <div className="flex items-center gap-1.5 mb-3 opacity-40">
                   <div className="w-1.5 h-1.5 rounded-full bg-red-400/50" />
@@ -145,7 +147,7 @@ export function TextureOverlays() {
           </motion.div>
         )}
 
-        {/* Leadership: soft floating dots + sensory labels, warm gold */}
+        {/* Leadership: soft floating dots, warm evergreen/amber */}
         {theme === 'leadership' && (
           <motion.div 
             key="leadership-texture"
@@ -154,28 +156,11 @@ export function TextureOverlays() {
             exit={{ opacity: 0 }}
             className="absolute inset-0"
           >
-            {/* Sensory Labels - ONLY ON HOME (panel is dark by default, but
-                warms into the light /leadership palette when hovered/active,
-                so this needs to read against either) */}
-            {pathname === '/' && (
-              <div className="absolute inset-0 overflow-hidden hidden lg:block">
-                {['Leadership', 'Coordination', 'Training', 'Operations'].map((text, i) => (
-                  <motion.div
-                    key={text}
-                    className="absolute font-display italic text-[14px]"
-                    style={{
-                      color: 'rgba(31,110,82,0.16)',
-                      left: `${20 + i * 20}%`,
-                      top: `${40 + (i % 2) * 20}%`,
-                    }}
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 6 + i, repeat: Infinity, ease: 'easeInOut' }}
-                  >
-                    {text}
-                  </motion.div>
-                ))}
-              </div>
-            )}
+            {/* Sensory word labels used to sit here too, but they were only
+                readable-safe when this panel was near-black — now that it's
+                light, they land directly on top of the real hero quote and
+                stage list instead of staying decorative. Dropped rather
+                than chasing a position that dodges content that can move. */}
 
             <div className="absolute inset-0 opacity-[0.35]">
               {isMounted && particles.map((p) => (

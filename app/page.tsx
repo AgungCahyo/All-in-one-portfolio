@@ -7,7 +7,18 @@ import { panels, ROTATE_INTERVAL } from '@/data/panels';
 import { useActivePanel } from '@/lib/activePanelContext';
 import { useLanguage } from '@/lib/languageContext';
 import { LayoutHeader } from '@/components/ui/LayoutHeader';
+import type { ThemeVariant } from '@/lib/types';
 import Link from 'next/link';
+
+// Maps each panel's id to the LayoutHeader theme that matches its
+// redesigned page — distinct from panel.theme in data/panels.ts, which
+// drives Panel.tsx's own photo/typography treatment under older names
+// ('terminal', 'cinema') that predate this redesign.
+const headerThemeByPanel: Record<string, ThemeVariant> = {
+  developer: 'blueprint',
+  leadership: 'leadership',
+  videographer: 'cinema',
+};
 
 export default function Home() {
   const [active, setActive] = useState(0);
@@ -93,7 +104,7 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-black text-white font-['DM_Sans',sans-serif] overflow-hidden">
+    <main className="min-h-screen font-body overflow-hidden" style={{ background: panels[active].bg, transition: 'background 700ms ease' }}>
       <h1 className="sr-only">Agung Cahyo Prasetyo - Full-Stack Developer portfolio based in Kudus</h1>
       {/* <AnimatePresence>
         {!isRevealed && (
@@ -148,6 +159,7 @@ export default function Home() {
       >
 
       <LayoutHeader
+        theme={headerThemeByPanel[panels[active].id]}
         homePanels={{
           activeId: panels[active].id as 'developer' | 'videographer' | 'leadership',
           onActivate: handleActivateRole,
@@ -158,10 +170,10 @@ export default function Home() {
       <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0 select-none overflow-hidden">
         <motion.p
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.018 }}
+          animate={{ opacity: 0.05 }}
           transition={{ delay: 1, duration: 2 }}
-          className="font-['Cormorant_Garamond',serif] font-bold whitespace-nowrap tracking-[-0.04em]"
-          style={{ fontSize: '10vw', color: 'white' }}
+          className="font-display font-bold whitespace-nowrap tracking-[-0.04em]"
+          style={{ fontSize: '10vw', color: panels[active].accent, transition: 'color 700ms ease' }}
         >
           {t('CODE · CINEMA · CRAFT', 'KODE · SINEMA · RACIK')}
         </motion.p>
