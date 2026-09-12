@@ -10,6 +10,7 @@
   --font-body: var(--font-dm-sans);
   --font-tech: var(--font-space-grotesk);
   --font-editorial: var(--font-bodoni);
+  --font-heading: var(--font-cormorant);
 }
 
 /* ── Developer theme: "Blueprint / Workbench" ──

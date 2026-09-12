@@ -70,14 +70,14 @@ const themeStyles: Record<ThemeVariant, Record<string, string>> = {
     mobileBg: '#f5f7fa',
   },
   brutalist: {
-    bg: 'rgba(15, 15, 15, 0.85)',
-    border: 'rgba(255,255,255,0.06)',
-    textPrimary: '#e8e4e0',
-    textSecondary: '#666666',
-    textMuted: '#444444',
-    active: '#ffffff',
-    accent: '#ffffff',
-    mobileBg: '#080808',
+    bg: 'rgba(245,243,240,0.88)',
+    border: 'rgba(36,31,26,0.1)',
+    textPrimary: '#241f1a',
+    textSecondary: '#8f8880',
+    textMuted: '#a8a29a',
+    active: '#241f1a',
+    accent: '#241f1a',
+    mobileBg: '#f5f3f0',
   }
 };
 
@@ -86,11 +86,6 @@ const panelRoleIds: PanelRoleId[] = ['developer', 'videographer', 'leadership'];
 export function LayoutHeader({ activeRole, theme = 'cinema', homePanels }: HeaderProps) {
   const { t } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
-  // All three roles now have a light theme on their own pages, so the
-  // homepage nav follows whichever panel is active instead of staying
-  // permanently dark — it used to hardcode a black `homeChrome` here
-  // regardless of `theme`, which is why the nav stayed black even once
-  // every panel underneath it went light.
   const styles = themeStyles[theme];
   const currentRole = homePanels?.activeId ?? activeRole;
 

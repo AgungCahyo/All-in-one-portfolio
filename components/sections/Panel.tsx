@@ -4,11 +4,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ProgressBar } from './ProgressBar';
-import { LeadPanelContent } from './LeadPanelContent';
 import { ROTATE_INTERVAL } from '@/data/panels';
 import type { Panel as PanelType } from '@/lib/types';
 import { useLanguage } from '@/lib/languageContext';
-import { useReducedMotion } from 'framer-motion';
 
 interface PanelProps {
   panel: PanelType;
@@ -22,7 +20,6 @@ interface PanelProps {
 // dim/bright distinction within that palette, not a dark/light one.
 export function Panel({ panel, isActive, onActivate }: PanelProps) {
   const { lang, t } = useLanguage();
-  const reduced = useReducedMotion();
   const isCinema = panel.theme === 'cinema';
   const isTerminal = panel.theme === 'terminal';
   const isLeadership = panel.theme === 'leadership';
@@ -40,6 +37,18 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
     >
       {/* Base bg */}
       <div className="absolute inset-0" style={{ background: panel.bg }} />
+      {/* Leadership badge */}
+      {isLeadershipPanel && (
+        <div className={`absolute top-2 right-2 z-20 flex h-6 w-6 items-center justify-center rounded-full
+          ${isActive ? 'bg-[rgba(232,162,61,0.28)]' : 'bg-[rgba(232,162,61,0.14)]'}
+          ${leadershipPulse}
+          backdrop-blur-sm
+          border border-[rgba(232,162,61,0.4)]
+          transition-all duration-300`}>
+          <span className="text-[8px] font-bold text-[rgba(232,162,61,0.95)]">L</span>
+        </div>
+      )}
+
       {/* Photo background */}
       <div className="absolute inset-0">
         <Image
@@ -178,7 +187,21 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
                       </h2>
                     </div>
                   )}
-                  {isLeadership && <LeadPanelContent panel={panel} reduced={reduced} />}
+                  {isLeadership && (
+                    <div>
+                      <span
+                        aria-hidden="true"
+                        className="font-display italic block mb-1"
+                        style={{ fontSize: '1.6rem', color: panel.dim, opacity: 0.5, lineHeight: 1 }}
+                      >
+                        &ldquo;
+                      </span>
+                      <h2 className="font-display font-semibold leading-[0.95] whitespace-pre-line italic"
+                        style={{ fontSize: 'clamp(2rem, 3.4vw, 3.6rem)', color: panel.accent, letterSpacing: '-0.01em' }}>
+                        {typeof panel.title === 'string' ? panel.title : panel.title[lang]}
+                      </h2>
+                    </div>
+                  )}
                 </motion.div>
               ) : (
                 <motion.h2
@@ -200,7 +223,7 @@ export function Panel({ panel, isActive, onActivate }: PanelProps) {
 
           {/* Bottom: meta — only when active */}
           <AnimatePresence>
-            {isActive && !isLeadership && (
+            {isActive && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 4 }}
                 transition={{ duration: 0.4, delay: 0.2 }}

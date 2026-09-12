@@ -106,51 +106,6 @@ export default function Home() {
   return (
     <main className="min-h-screen font-body overflow-hidden" style={{ background: panels[active].bg, transition: 'background 700ms ease' }}>
       <h1 className="sr-only">Agung Cahyo Prasetyo - Full-Stack Developer portfolio based in Kudus</h1>
-      {/* <AnimatePresence>
-        {!isRevealed && (
-          <motion.section
-            key="home-plain-entry"
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-120 flex items-center justify-center bg-black"
-          >
-            {!isBooting ? (
-              <div className="text-center px-6">
-                <p className="text-sm mb-3 tracking-[0.18em] uppercase text-white/65">
-                  Agung Cahyo Prasetyo
-                </p>
-                <p className="text-[11px] mb-6 tracking-[0.14em] uppercase text-white/45">
-                  {t('Developer services first', 'Fokus utama: jasa developer')}
-                </p>
-                <button
-                  onClick={() => setIsBooting(true)}
-                  className="px-8 py-3 border border-white/40 text-sm tracking-[0.22em] uppercase text-white hover:bg-white hover:text-black transition-all duration-500"
-                >
-                  {t('Enter Portfolio', 'Masuk Portfolio')}
-                </button>
-              </div>
-            ) : (
-              <div className="w-full max-w-2xl mx-6 border border-white/15 bg-black/80 backdrop-blur-sm p-5">
-                <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/45 mb-3">
-                  {t('Booting Home Experience', 'Booting Home Experience')}
-                </p>
-                <pre className="font-mono text-[12px] leading-relaxed text-white/78 whitespace-pre-wrap min-h-[132px]">
-                  {bootScript.slice(0, typedChars)}
-                  <span className="animate-pulse">|</span>
-                </pre>
-                <div className="mt-4">
-                  <div className="h-1.5 w-full bg-white/10 overflow-hidden">
-                    <motion.div className="h-full bg-white/80" animate={{ width: `${bootProgress}%` }} transition={{ ease: 'easeOut', duration: 0.2 }} />
-                  </div>
-                  <p className="font-mono text-[10px] mt-2 text-white/45">{bootProgress}%</p>
-                </div>
-              </div>
-            )}
-          </motion.section>
-        )}
-      </AnimatePresence> */}
-
       <motion.div
         initial={false}
         animate={isRevealed ? { opacity: 1 } : { opacity: 0 }}
@@ -172,7 +127,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.05 }}
           transition={{ delay: 1, duration: 2 }}
-          className="font-display font-bold whitespace-nowrap tracking-[-0.04em]"
+          className="font-heading font-bold whitespace-nowrap tracking-[-0.04em]"
           style={{ fontSize: '10vw', color: panels[active].accent, transition: 'color 700ms ease' }}
         >
           {t('CODE · CINEMA · CRAFT', 'KODE · SINEMA · RACIK')}
@@ -208,7 +163,7 @@ export default function Home() {
               width: active === i ? '24px' : '6px',
               height: '6px',
               borderRadius: '3px',
-              background: active === i ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.15)',
+              background: active === i ? panels[active].accent : `${panels[active].dim}55`,
               transition: 'width 400ms ease, background 400ms ease',
             }}
           />
@@ -218,17 +173,22 @@ export default function Home() {
       {/* Bottom strip */}
       <div
         className="fixed bottom-0 left-0 right-0 px-8 py-4 flex justify-between items-center z-40"
-        style={{ borderTop: '1px solid rgba(255,255,255,0.04)', background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(8px)' }}
+        style={{
+          borderTop: `1px solid ${panels[active].dim}22`,
+          background: `${panels[active].bg}CC`,
+          backdropFilter: 'blur(8px)',
+          transition: 'background 700ms ease, border-color 700ms ease',
+        }}
       >
-        <span className="font-mono text-[9px] tracking-[0.2em] uppercase" style={{ color: 'rgba(255,255,255,0.15)' }}>
+        <span className="font-mono text-[9px] tracking-[0.2em] uppercase" style={{ color: panels[active].dim }}>
           Kudus, Indonesia
         </span>
         <div className="flex items-center gap-4">
-          <span className="font-mono text-[9px] tracking-[0.2em] uppercase" style={{ color: 'rgba(255,255,255,0.15)' }}>
+          <span className="font-mono text-[9px] tracking-[0.2em] uppercase" style={{ color: panels[active].dim }}>
             {t('Open for developer projects', 'Open untuk project developer')}
           </span>
           <Link href="/developer/work-with-me" className="font-mono text-[9px] tracking-[0.2em] uppercase"
-            style={{ color: 'rgba(255,255,255,0.45)' }}>
+            style={{ color: panels[active].accent }}>
             {t('Start Project', 'Mulai Project')}
           </Link>
         </div>

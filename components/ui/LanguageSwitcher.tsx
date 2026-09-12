@@ -15,46 +15,49 @@ function getThemeColors(pathname: string, activePanel: string) {
   const isWorkWithMe = pathname.startsWith('/work-with-me') || (pathname === '/' && activePanel === 'work-with-me');
 
   if (isTerminal || isWorkWithMe) {
+    // Developer / "Blueprint" — indigo, light bg (was light-blue-on-dark)
     return {
-      border: 'rgba(100,130,200,0.15)',
-      bg: 'rgba(100,130,200,0.03)',
-      active: '#8a9ab8',
-      inactive: 'rgba(100,130,200,0.3)',
-      dot: '#8a9ab8',
-      dotGlow: 'rgba(138,154,184,0.3)',
+      border: 'rgba(52,84,164,0.18)',
+      bg: 'rgba(52,84,164,0.05)',
+      active: '#3454a4',
+      inactive: 'rgba(28,35,51,0.35)',
+      dot: '#3fae74',
+      dotGlow: 'rgba(63,174,116,0.35)',
     };
   }
 
   if (isArtisan) {
+    // Leadership — evergreen + amber, light bg
     return {
-      border: 'rgba(150,170,190,0.15)',
-      bg: 'rgba(150,170,190,0.03)',
-      active: '#c5d0da',
-      inactive: 'rgba(150,170,190,0.3)',
-      dot: '#c5d0da',
-      dotGlow: 'rgba(197,208,218,0.3)',
+      border: 'rgba(31,110,82,0.18)',
+      bg: 'rgba(31,110,82,0.05)',
+      active: '#1f6e52',
+      inactive: 'rgba(36,33,27,0.35)',
+      dot: '#e8a23d',
+      dotGlow: 'rgba(232,162,61,0.35)',
     };
   }
 
   if (isBrutalist) {
+    // About — neutral ink, light bg (was white-on-near-black)
     return {
-      border: 'rgba(255, 255, 255, 0.1)',
-      bg: 'rgba(255, 255, 255, 0.03)',
-      active: '#e8e4e0',
-      inactive: 'rgba(255, 255, 255, 0.3)',
-      dot: '#e8e4e0',
-      dotGlow: 'rgba(232, 228, 224, 0.3)',
+      border: 'rgba(36,31,26,0.12)',
+      bg: 'rgba(36,31,26,0.04)',
+      active: '#241f1a',
+      inactive: 'rgba(36,31,26,0.35)',
+      dot: '#241f1a',
+      dotGlow: 'rgba(36,31,26,0.3)',
     };
   }
 
-  // cinema / videographer / default
+  // videographer / default — terracotta + teal, light bg
   return {
-    border: 'rgba(206,200,192,0.15)',
-    bg: 'rgba(206,200,192,0.03)',
-    active: '#a09890',
-    inactive: 'rgba(206,200,192,0.3)',
-    dot: '#a09890',
-    dotGlow: 'rgba(160,152,144,0.3)',
+    border: 'rgba(193,97,63,0.18)',
+    bg: 'rgba(193,97,63,0.05)',
+    active: '#c1613f',
+    inactive: 'rgba(36,29,24,0.35)',
+    dot: '#2c5f66',
+    dotGlow: 'rgba(44,95,102,0.35)',
   };
 }
 

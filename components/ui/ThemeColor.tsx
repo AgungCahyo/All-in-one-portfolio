@@ -6,9 +6,9 @@ import { useActivePanel } from '@/lib/activePanelContext';
 
 const THEMES = {
   leadership: { color: '#faf6ee', accent: '#1f6e52', bg: '#faf6ee' },
-  developer: { color: '#0a0d12', accent: '#b8c8e0', bg: '#0a0d12' },
-  videographer: { color: '#0d0c0b', accent: '#cec8c0', bg: '#0d0c0b' },
-  about: { color: '#080808', accent: '#e8e4e0', bg: '#080808' },
+  developer: { color: '#f5f7fa', accent: '#3454a4', bg: '#f5f7fa' },
+  videographer: { color: '#f7f3ee', accent: '#c1613f', bg: '#f7f3ee' },
+  about: { color: '#f5f3f0', accent: '#241f1a', bg: '#f5f3f0' },
 } as const;
 
 export function ThemeColor() {
@@ -57,7 +57,9 @@ export function ThemeColor() {
       metaApple.setAttribute('name', 'apple-mobile-web-app-status-bar-style');
       document.head.appendChild(metaApple);
     }
-    metaApple.setAttribute('content', 'black-translucent');
+    // Every page is light now, so a normal (dark-text) status bar reads
+    // best everywhere — no more dark page needing the translucent style.
+    metaApple.setAttribute('content', 'default');
 
   }, [pathname, activePanel]);
 
